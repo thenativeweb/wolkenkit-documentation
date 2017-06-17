@@ -33,7 +33,7 @@ let activeVersion = page.getVersion(activePath);
 if (!activeVersion) {
   activeVersion = metadata.stable;
   activePath = [ activeVersion ];
-  history.push(`/${activeVersion}/`);
+  history.replace(`/${activeVersion}/`);
 }
 
 page.load({
