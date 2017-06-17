@@ -13,7 +13,7 @@ const Intro = function () {
           <p>
             Finally, we have released wolkenkit, a semantic JavaScript backend. It
             empowers you to setup an API for your business to bridge the language
-            gap between your domain and technology. <a href='/latest/getting-started/understanding-wolkenkit/why-wolkenkit/'>Want to get started?</a>
+            gap between your domain and technology. <a href='/1.0.0/getting-started/understanding-wolkenkit/why-wolkenkit/'>Want to get started?</a>
           </p>
         </section>
       </div>
