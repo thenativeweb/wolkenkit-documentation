@@ -1,0 +1,31 @@
+.wk-page {
+  font-size: @font-size-default;
+  list-style-type: none;
+  margin: 0px;
+
+  a,
+  a:visited {
+    color: #fff;
+    position: relative;
+    display: block;
+    padding: 6px @grid-size 6px 32px;
+    opacity: 0.5;
+  }
+
+  a:hover,
+  a:focus {
+    opacity: 1;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  &.wk-page--active {
+    a,
+    a:hover {
+      color: @color-brand-blue-highlight;
+      opacity: 1;
+      background: transparent;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,115 @@
+@import "../../node_modules/cookieconsent/build/cookieconsent.min.css";
+
+@import "_variables.less";
+
+@import "_highlight.less";
+
+@import "../components/navigation/Chapter.less";
+@import "../components/navigation/Page.less";
+@import "../components/navigation/PageMenu.less";
+@import "../components/navigation/Section.less";
+@import "../components/Bar.less";
+@import "../components/Brand.less";
+@import "../components/Breadcrumbs.less";
+@import "../components/Docs.less";
+@import "../components/Dropdown.less";
+@import "../components/Feed.less";
+@import "../components/Icon.less";
+@import "../components/IntroPage.less";
+@import "../components/MobileNavigation.less";
+@import "../components/Navigation.less";
+@import "../components/PageContent.less";
+@import "../components/PageFooter.less";
+@import "../components/Pattern.less";
+
+body {
+  color: @color-brand-gray-dark;
+  line-height: 1.42857143;
+  font-family: @font-family-default;
+  font-weight: 400;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul, ol {
+  margin: 0;
+}
+
+a,
+a:visited,
+a:active {
+  color: @color-brand-blue-highlight;
+  text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  th {
+      text-align: left;
+  }
+}
+
+
+/*
+* Components
+*/
+.wk-brand-typo {
+  font-size: 18px;
+  font-family: @font-family-headline;
+  font-weight: 500;
+  color: @color-brand-blue-highlight !important;
+  text-align: center;
+
+  span {
+    color: #fff;
+  }
+}
+
+/* cookie consent */
+.cc-window {
+  font-family: @font-family-default;
+  font-size: @font-size-default;
+  background-color: @color-brand-blue-highlight;
+  color: #fff;
+  font-weight: 400;
+}
+
+.cc-window.cc-banner {
+  padding: 0.4em 1.2em;
+}
+
+.cc-btn {
+  font-family: @font-family-default;
+  background-color: @color-brand-blue-highlight;
+  border: 2px solid #fff;
+  color: #fff;
+  outline: 0;
+}
+
+.cc-link {
+  text-decoration: none;
+  opacity: 1;
+  color: #fff;
+  outline: 0;
+  font-weight: 700;
+}
+
+.cc-link:active,
+.cc-link:visited {
+  color: #fff;
+}

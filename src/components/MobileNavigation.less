@@ -1,0 +1,62 @@
+.wk-mobile-navigation {
+  position: fixed;
+  z-index: 500;
+  width: 100vw;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+
+  .wk-mobile-navigation__backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .wk-mobile-navigation__toggle {
+    background: @color-brand-gray-dark;
+    position: absolute;
+    top: @grid-size/3;
+    left: @grid-size/3;
+    border-radius: 50%;
+    fill: #eee;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    will-change: opacity;
+  }
+}
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 768px) {
+  .wk-mobile-navigation {
+    .wk-mobile-navigation__toggle {
+      display: flex;
+      pointer-events: auto;
+      transition: opacity 0.5s 0.2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    }
+  }
+
+  .wk-mobile--nav-visible {
+    .wk-mobile-navigation {
+      .wk-mobile-navigation__backdrop {
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .wk-mobile-navigation__toggle {
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+      }
+    }
+  }
+}

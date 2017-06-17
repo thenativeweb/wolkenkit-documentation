@@ -1,0 +1,62 @@
+.wk-chapter {
+  flex: 1 1 100%;
+
+  .wk-chapter__title {
+    display: block;
+    font-size: inherit;
+    line-height: 1.1;
+    color: #fff;
+    margin: 0;
+    padding: 5px 10px 5px 14px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.5;
+
+    .wk-icon {
+      width: 11px;
+      height: 11px;
+      transform: rotate(0);
+      transition: transform 150ms ease-in-out;
+      margin-right: 6px;
+      fill: #fff;
+    }
+
+    &:hover {
+      color: #fff;
+      opacity: 1;
+
+      .expand-icon {
+        fill: #fff;
+      }
+    }
+  }
+
+  &.wk-chapter--expanded {
+    .wk-chapter__title {
+      .wk-icon {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &.wk-chapter--active {
+    .wk-chapter__title {
+      font-weight: 600;
+      opacity: 1;
+    }
+
+    .wk-chapter__pages .wk-page a {
+      opacity: 1;
+    }
+
+    .wk-chapter__pages .wk-page a:hover {
+      color: @color-brand-blue-highlight;
+    }
+  }
+
+  .wk-chapter__pages {
+    padding: 0;
+  }
+}

@@ -1,0 +1,23 @@
+.wk-intro-page {
+  flex: 3 3 75vw;
+  width: 75vw;
+  overflow: hidden;
+  transition: width 800ms cubic-bezier(0.190, 1.000, 0.220, 1.000);
+  will-change: width;
+  display: flex;
+  flex-direction: row;
+
+  &.wk-intro-page--collapsed {
+    flex: 0 0 auto;
+    width: 0px;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 768px) {
+  .wk-intro-page {
+    flex-direction: column;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

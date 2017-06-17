@@ -1,0 +1,26 @@
+.wk-breadcrumbs {
+  display: flex;
+  align-items: center;
+  min-height: @grid-size*3;
+  padding: 0 @grid-size*3;
+  font-size: @font-size-default;
+  border-bottom: 1px solid @color-content-border;
+  color: #666;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+
+  .wk-breadcrumbs__item {
+    display: flex;
+    align-items: center;
+  }
+
+  .wk-icon {
+    width: @grid-size;
+    height: @grid-size;
+    fill: #aaa;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 2px;
+  }
+}
