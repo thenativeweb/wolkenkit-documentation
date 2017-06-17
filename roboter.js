@@ -56,6 +56,9 @@ roboter.
         // BSD-3-Clause, see https://github.com/fb55/entities/blob/v1.1.1/LICENSE
         entities: '1.1.1',
 
+        // BSD-3-Clause, see https://github.com/estools/esquery/blob/v1.0.0/license.txt
+        esquery: '1.0.0',
+
         // BSD-3-Clause, see https://github.com/JedWatson/exenv/blob/v1.2.1/LICENSE
         exenv: '1.2.1',
 
@@ -81,8 +84,8 @@ roboter.
         // MIT, see https://github.com/stevenvachon/nopter/blob/bb0478aa64b6a1a156c28cfc51e94788617d6c0f/package.json
         nopter: '0.3.0',
 
-        // BSD-2-Clause, see https://github.com/facebook/regenerator/blob/ec774948ed1671f338bf0faa060a8c437d8e1fa1/LICENSE
-        'regenerator-transform': '0.9.8',
+        // BSD-2-Clause, see https://github.com/facebook/regenerator/blob/85c9e43331576be96e5dcc61757995397ab15b77/LICENSE
+        'regenerator-transform': '0.9.11',
 
         // BSD-2-Clause, see https://github.com/jviereck/regjsparser/blob/0.1.5/LICENSE.BSD
         regjsparser: '0.1.5',
