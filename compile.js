@@ -28,7 +28,10 @@ const webpackConfiguration = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        include: [
+          path.join(__dirname, 'src'),
+          path.join(__dirname, 'node_modules', 'markdown-it-anchor')
+        ],
         loader: 'babel-loader'
       },
       {
@@ -56,23 +59,35 @@ const webpackConfiguration = {
 };
 
 if (isProductionMode) {
-  webpackConfiguration.plugins.push(new webpack.optimize.UglifyJsPlugin());
   webpackConfiguration.plugins.push(new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify('production')
     }
   }));
+  webpackConfiguration.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 const compile = function (callback) {
   const compiler = webpack(webpackConfiguration);
 
   if (isProductionMode) {
-    return compiler.run(err => {
+    return compiler.run((err, stats) => {
       if (err) {
         logger.error('Failed to compile.', { err });
 
         return callback(err);
+      }
+
+      const info = stats.toJson();
+
+      if (stats.hasErrors()) {
+        logger.error('Failed to compile.', { err: info.errors });
+
+        return callback(info.errors);
+      }
+
+      if (stats.hasWarnings()) {
+        logger.warn('Encountered warnings during compilation.', { err: info.warnings });
       }
 
       logger.info('Finished compiling.');
@@ -80,9 +95,19 @@ const compile = function (callback) {
     });
   }
 
-  compiler.watch({}, err => {
+  compiler.watch({}, (err, stats) => {
     if (err) {
       return logger.error('Failed to compile.', { err });
+    }
+
+    const info = stats.toJson();
+
+    if (stats.hasErrors()) {
+      return logger.error('Failed to compile.', { err: info.errors });
+    }
+
+    if (stats.hasWarnings()) {
+      logger.warn('Encountered warnings during compilation.', { err: info.warnings });
     }
 
     logger.info('Finished compiling.');
