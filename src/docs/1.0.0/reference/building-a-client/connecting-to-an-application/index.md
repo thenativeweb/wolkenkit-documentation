@@ -39,7 +39,7 @@ This provides a global `wolkenkit` variable that allows you to access the SDK.
 If you are using a module bundler such as webpack, or you are building a client application using Node.js, install the wolkenkit SDK into your client application using npm:
 
 ```shell
-$ npm install thenativeweb/wolkenkit-client-js#<%= current.versions.clientSdkJs %>
+$ npm install wolkenkit-client@<%= current.versions.clientSdkJs %>
 ```
 
 Then you can require the `wolkenkit-client` module:
