@@ -20,20 +20,22 @@ const Navigation = function (props) {
   return (
     <div className='wk-navigation'>
       <Pattern />
-      <Header
-        activePath={ activePath }
-        history={ history }
-        showLogo={ showLogo }
-        versions={ Object.keys(metadata.navigation) }
-        onLogoClick={ onLogoClick }
-        onVersionChange={ onVersionChange }
-      />
-      <PageMenu
-        activePath={ activePath }
-        history={ history }
-        metadata={ metadata }
-        onNavigated={ onNavigated }
-      />
+      <div className='wk-navigation__content'>
+        <Header
+          activePath={ activePath }
+          history={ history }
+          showLogo={ showLogo }
+          versions={ Object.keys(metadata.navigation) }
+          onLogoClick={ onLogoClick }
+          onVersionChange={ onVersionChange }
+        />
+        <PageMenu
+          activePath={ activePath }
+          history={ history }
+          metadata={ metadata }
+          onNavigated={ onNavigated }
+        />
+      </div>
     </div>
   );
 };
