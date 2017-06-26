@@ -32,7 +32,6 @@
       "email": "jan-hendrik.grundhoefer@thenativeweb.io"
     }
   ],
-  "private": true,
   "dependencies": {
     "autoprefixer": "7.1.1",
     "babel-core": "6.25.0",
