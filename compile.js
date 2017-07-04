@@ -32,15 +32,19 @@ const webpackConfiguration = {
           path.join(__dirname, 'src'),
           path.join(__dirname, 'node_modules', 'markdown-it-anchor')
         ],
-        loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        use: {
+          loader: 'json-loader'
+        }
       },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract({ loader: [ 'css-loader', 'less-loader' ], fallbackLoader: 'style-loader' })
+        use: ExtractTextPlugin.extract({ use: [ 'css-loader', 'less-loader' ], fallback: 'style-loader' })
       }
     ]
   },
