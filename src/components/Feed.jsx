@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 const FeedFallback = require('./FeedFallback.jsx'),
       FeedItem = require('./FeedItem.jsx'),
@@ -65,6 +66,10 @@ class Feed extends React.PureComponent {
 
 Feed.defaultProps = {
   url: '/news.json'
+};
+
+Feed.propTypes = {
+  url: PropTypes.string.isRequired
 };
 
 module.exports = Feed;

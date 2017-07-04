@@ -1,6 +1,7 @@
 'use strict';
 
-const Helmet = require('react-helmet'),
+const { Helmet } = require('react-helmet'),
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const Breadcrumbs = require('./Breadcrumbs.jsx'),
@@ -40,7 +41,9 @@ class PageContent extends React.Component {
 
     return (
       <div ref={ this.saveContainerRef } className={ pageContentClasses }>
-        <Helmet title={ pageTitle } />
+        <Helmet>
+          <title>{ pageTitle }</title>
+        </Helmet>
 
         <Breadcrumbs breadcrumbs={ info.breadcrumbs } />
 
@@ -53,13 +56,13 @@ class PageContent extends React.Component {
 }
 
 PageContent.propTypes = {
-  history: React.PropTypes.object.isRequired,
-  metadata: React.PropTypes.object.isRequired,
-  version: React.PropTypes.string.isRequired,
-  content: React.PropTypes.string,
-  info: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object
+  history: PropTypes.object.isRequired,
+  metadata: PropTypes.object.isRequired,
+  version: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  info: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
   ])
 };
 

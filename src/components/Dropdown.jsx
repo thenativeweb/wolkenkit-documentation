@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 const Icon = require('./Icon.jsx');
 
@@ -100,9 +101,9 @@ class Dropdown extends React.PureComponent {
 }
 
 Dropdown.propTypes = {
-  options: React.PropTypes.array.isRequired,
-  selected: React.PropTypes.string.isRequired,
-  onChange: React.PropTypes.func.isRequired
+  options: PropTypes.array.isRequired,
+  selected: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired
 };
 
 module.exports = Dropdown;

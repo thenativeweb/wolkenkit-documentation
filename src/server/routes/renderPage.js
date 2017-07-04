@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const Helmet = require('react-helmet');
+const { Helmet } = require('react-helmet');
 
 const readMarkdown = require('../readMarkdown'),
       render = require('../render.jsx');
@@ -22,7 +22,7 @@ const renderPage = function () {
         url: req.url.substr(1)
       });
 
-      const head = Helmet.rewind();
+      const head = Helmet.renderStatic();
 
       res.send(`<!doctype html>
         <html>

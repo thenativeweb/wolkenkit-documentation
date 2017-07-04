@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 const Dropdown = require('../Dropdown.jsx');
 
@@ -72,10 +73,10 @@ class NavigationHeader extends React.PureComponent {
 }
 
 NavigationHeader.propTypes = {
-  activePath: React.PropTypes.array.isRequired,
-  versions: React.PropTypes.array.isRequired,
-  onLogoClick: React.PropTypes.func.isRequired,
-  onVersionChange: React.PropTypes.func.isRequired
+  activePath: PropTypes.array.isRequired,
+  versions: PropTypes.array.isRequired,
+  onLogoClick: PropTypes.func.isRequired,
+  onVersionChange: PropTypes.func.isRequired
 };
 
 module.exports = NavigationHeader;
