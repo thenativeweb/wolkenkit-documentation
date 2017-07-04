@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "date": {
+      "year": 2017,
+      "month": 6,
+      "day": 20
+     },
+    "title": "Hello wolkenkit 🎉",
+    "content": "Finally, we have released wolkenkit, a semantic JavaScript backend. It empowers you to setup an API for your business to bridge the language gap between your domain and technology. [Want to get started?](https://docs.wolkenkit.io/1.0.0/getting-started/understanding-wolkenkit/why-wolkenkit/)"
+  }
+]

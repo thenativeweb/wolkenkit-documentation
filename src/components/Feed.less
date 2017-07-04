@@ -28,25 +28,23 @@
         font-size: @font-size-default;
         color: fade(@color-brand-white, 100%);
         font-weight: 600;
-        padding: 0 2*@grid-size 0 2*@grid-size;
+        padding: 0 2*@grid-size;
 
         .wk-feed__item__date {
           color: #BDBDC1;
           font-weight: 400;
           padding-right: @grid-size*2;
         }
-
-        .wk-emoji {
-          font-size: 16px;
-          margin-left: 8px;
-          margin-right: 8px;
-        }
       }
 
       p {
-        padding: 0 2*@grid-size 0 2*@grid-size;
+        padding: 0 2*@grid-size;
         color: fade(@color-brand-white, 80%);
       }
+    }
+
+    .wk-loading-indicator {
+      padding: 0 2*@grid-size;
     }
   }
 }

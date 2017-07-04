@@ -2,23 +2,63 @@
 
 const React = require('react');
 
-const Intro = function () {
-  return (
-    <div className={ 'wk-feed' }>
-      <div className='wk-bar' />
-      <div className='wk-bar'>News</div>
-      <div className='wk-feed__items'>
-        <section className='wk-feed__item'>
-          <h2 className='wk-feed__item__title'><span className='wk-feed__item__date'>20.06.2017</span> Hello wolkenkit <span className='wk-emoji'>🎉</span></h2>
-          <p>
-            Finally, we have released wolkenkit, a semantic JavaScript backend. It
-            empowers you to setup an API for your business to bridge the language
-            gap between your domain and technology. <a href='/1.0.0/getting-started/understanding-wolkenkit/why-wolkenkit/'>Want to get started?</a>
-          </p>
-        </section>
-      </div>
-    </div>
-  );
-};
+const FeedFallback = require('./FeedFallback.jsx'),
+      FeedItem = require('./FeedItem.jsx'),
+      LoadingIndicator = require('./LoadingIndicator.jsx'),
+      news = require('../services/news');
 
-module.exports = Intro;
+class Feed extends React.PureComponent {
+  constructor () {
+    super();
+
+    this.state = {
+      isLoading: true,
+      feed: undefined
+    };
+  }
+
+  componentDidMount () {
+    news.load({
+      url: '/news.json'
+    }, (err, feed) => {
+      if (err) {
+        return this.setState({
+          isLoading: false
+        });
+      }
+
+      this.setState({
+        isLoading: false,
+        feed
+      });
+    });
+  }
+
+  renderContent () {
+    const { feed, isLoading } = this.state;
+
+    if (isLoading) {
+      return <LoadingIndicator />;
+    }
+
+    if (!feed) {
+      return <FeedFallback />;
+    }
+
+    return feed.map(item => <FeedItem key={ item.id } item={ item } />);
+  }
+
+  render () {
+    return (
+      <div className={ 'wk-feed' }>
+        <div className='wk-bar' />
+        <div className='wk-bar'>News</div>
+        <div className='wk-feed__items'>
+          {this.renderContent()}
+        </div>
+      </div>
+    );
+  }
+}
+
+module.exports = Feed;
