@@ -17,13 +17,40 @@ const metadata = require('../docs/metadata'),
 
 const Docs = require('../components/Docs.jsx');
 
+const dom = {
+  nav: window.document.querySelector('.wk-navigation')
+};
+
 const handle = {
   windowLoaded () {
     window.cookieconsent.initialise({});
+  },
+
+  navClicked (event) {
+    if (event.target.tagName.toLowerCase() === 'a' &&
+        event.target.parentElement.classList.contains('wk-page')) {
+      handle.navLinkClicked(event);
+    }
+  },
+
+  navLinkClicked (event) {
+    if (!window.ga) {
+      return;
+    }
+
+    window.ga('send', {
+      hitType: 'event',
+      eventCategory: 'Navigation',
+      eventAction: 'click',
+      eventLabel: event.target.href,
+      transport: 'beacon'
+    });
   }
 };
 
 window.addEventListener('load', handle.windowLoaded);
+
+dom.nav.addEventListener('click', handle.navClicked);
 
 const history = createHistory();
 
