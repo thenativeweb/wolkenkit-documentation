@@ -13,10 +13,14 @@ const IntroPage = function (props) {
     introClasses += ' wk-intro-page--collapsed';
   }
 
+  /* eslint-disable no-process-env */
+  const feedUrl = process.env.NEWS_ENDPOINT;
+  /* eslint-enable no-process-env */
+
   return (
     <div className={ introClasses }>
       <Brand suffix={ 'Documentation' } isCollapsed={ isCollapsed } />
-      <Feed />
+      <Feed url={ feedUrl } />
     </div>
   );
 };

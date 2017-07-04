@@ -18,8 +18,10 @@ class Feed extends React.PureComponent {
   }
 
   componentDidMount () {
+    const { url } = this.props;
+
     news.load({
-      url: '/news.json'
+      url
     }, (err, feed) => {
       if (err) {
         return this.setState({
@@ -60,5 +62,9 @@ class Feed extends React.PureComponent {
     );
   }
 }
+
+Feed.defaultProps = {
+  url: '/news.json'
+};
 
 module.exports = Feed;

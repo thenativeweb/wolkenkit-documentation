@@ -58,14 +58,18 @@ const webpackConfiguration = {
   ]
 };
 
+const environmentConfig = {
+  'process.env': {
+    NEWS_ENDPOINT: JSON.stringify(processenv('NEWS_ENDPOINT'))
+  }
+};
+
 if (isProductionMode) {
-  webpackConfiguration.plugins.push(new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('production')
-    }
-  }));
+  environmentConfig['process.env'].NODE_ENV = JSON.stringify('production');
   webpackConfiguration.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
+
+webpackConfiguration.plugins.push(new webpack.DefinePlugin(environmentConfig));
 
 const compile = function (callback) {
   const compiler = webpack(webpackConfiguration);
