@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 const Icon = require('../Icon.jsx'),
       page = require('../../services/page');
@@ -56,8 +57,8 @@ class MenuBar extends React.PureComponent {
 }
 
 MenuBar.propTypes = {
-  expandedPath: React.PropTypes.array.isRequired,
-  onBackClick: React.PropTypes.func.isRequired
+  expandedPath: PropTypes.array.isRequired,
+  onBackClick: PropTypes.func.isRequired
 };
 
 module.exports = MenuBar;

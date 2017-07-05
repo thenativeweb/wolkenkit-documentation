@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 class Page extends React.PureComponent {
   constructor (props) {
@@ -35,10 +36,10 @@ class Page extends React.PureComponent {
 }
 
 Page.propTypes = {
-  activePath: React.PropTypes.array.isRequired,
-  path: React.PropTypes.array.isRequired,
-  title: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired
+  activePath: PropTypes.array.isRequired,
+  path: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 module.exports = Page;

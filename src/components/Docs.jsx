@@ -1,6 +1,7 @@
 'use strict';
 
-const Helmet = require('react-helmet'),
+const { Helmet } = require('react-helmet'),
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const IntroPage = require('../components/IntroPage.jsx'),
@@ -114,7 +115,9 @@ class Docs extends React.Component {
 
     return (
       <div className={ classes }>
-        <Helmet title={ metadata.name } />
+        <Helmet>
+          <title>{ metadata.name }</title>
+        </Helmet>
 
         <Symbols />
 
@@ -150,13 +153,13 @@ class Docs extends React.Component {
 }
 
 Docs.propTypes = {
-  activePath: React.PropTypes.array.isRequired,
-  history: React.PropTypes.object.isRequired,
-  metadata: React.PropTypes.object.isRequired,
-  pageContent: React.PropTypes.string,
-  pageInfo: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object
+  activePath: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
+  metadata: PropTypes.object.isRequired,
+  pageContent: PropTypes.string,
+  pageInfo: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
   ])
 };
 

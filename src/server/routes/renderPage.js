@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const Helmet = require('react-helmet'),
+const { Helmet } = require('react-helmet'),
       processenv = require('processenv');
 
 const readMarkdown = require('../readMarkdown'),
@@ -25,7 +25,7 @@ const renderPage = function () {
         url: req.url.substr(1)
       });
 
-      const head = Helmet.rewind();
+      const head = Helmet.renderStatic();
 
       let gaCode = '';
 

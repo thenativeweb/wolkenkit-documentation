@@ -4,6 +4,7 @@ const hljs = require('highlight.js'),
       markdownIt = require('markdown-it'),
       markdownItAnchor = require('markdown-it-anchor'),
       markdownItContainer = require('markdown-it-container'),
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const markdown = markdownIt({
@@ -65,8 +66,8 @@ class Markdown extends React.PureComponent {
 }
 
 Markdown.propTypes = {
-  component: React.PropTypes.string,
-  content: React.PropTypes.string
+  component: PropTypes.string,
+  content: PropTypes.string
 };
 
 Markdown.defaultProps = {

@@ -32,15 +32,19 @@ const webpackConfiguration = {
           path.join(__dirname, 'src'),
           path.join(__dirname, 'node_modules', 'markdown-it-anchor')
         ],
-        loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        use: {
+          loader: 'json-loader'
+        }
       },
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract({ loader: [ 'css-loader', 'less-loader' ], fallbackLoader: 'style-loader' })
+        use: ExtractTextPlugin.extract({ use: [ 'css-loader', 'less-loader' ], fallback: 'style-loader' })
       }
     ]
   },
@@ -58,14 +62,18 @@ const webpackConfiguration = {
   ]
 };
 
+const environmentConfig = {
+  'process.env': {
+    NEWS_URL: JSON.stringify(processenv('NEWS_URL'))
+  }
+};
+
 if (isProductionMode) {
-  webpackConfiguration.plugins.push(new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('production')
-    }
-  }));
+  environmentConfig['process.env'].NODE_ENV = JSON.stringify('production');
   webpackConfiguration.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
+
+webpackConfiguration.plugins.push(new webpack.DefinePlugin(environmentConfig));
 
 const compile = function (callback) {
   const compiler = webpack(webpackConfiguration);

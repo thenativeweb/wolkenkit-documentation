@@ -1,6 +1,7 @@
 'use strict';
 
 const isEqual = require('lodash/isEqual'),
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const Icon = require('../Icon.jsx'),
@@ -56,10 +57,10 @@ class Section extends React.PureComponent {
 }
 
 Section.propTypes = {
-  activePath: React.PropTypes.array.isRequired,
-  path: React.PropTypes.array.isRequired,
-  title: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired
+  activePath: PropTypes.array.isRequired,
+  path: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 module.exports = Section;

@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 const Icon = require('./Icon.jsx');
 
@@ -31,8 +32,8 @@ const PageFooter = function (props) {
 };
 
 PageFooter.propTypes = {
-  history: React.PropTypes.object.isRequired,
-  version: React.PropTypes.string.isRequired
+  history: PropTypes.object.isRequired,
+  version: PropTypes.string.isRequired
 };
 
 module.exports = PageFooter;

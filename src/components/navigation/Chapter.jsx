@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 const Icon = require('../Icon.jsx'),
       Page = require('./Page.jsx');
@@ -94,14 +95,14 @@ class Chapter extends React.PureComponent {
 }
 
 Chapter.propTypes = {
-  activePath: React.PropTypes.array.isRequired,
-  history: React.PropTypes.object.isRequired,
-  isExpanded: React.PropTypes.bool.isRequired,
-  pages: React.PropTypes.array.isRequired,
-  path: React.PropTypes.array.isRequired,
-  title: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
-  onPageClick: React.PropTypes.func.isRequired
+  activePath: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
+  isExpanded: PropTypes.bool.isRequired,
+  pages: PropTypes.array.isRequired,
+  path: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  onPageClick: PropTypes.func.isRequired
 };
 
 module.exports = Chapter;

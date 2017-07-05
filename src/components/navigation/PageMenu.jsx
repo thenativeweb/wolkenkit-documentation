@@ -1,6 +1,7 @@
 'use strict';
 
 const isEqual = require('lodash/isEqual'),
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const Chapter = require('./Chapter.jsx'),
@@ -165,10 +166,10 @@ class PageMenu extends React.Component {
 }
 
 PageMenu.propTypes = {
-  activePath: React.PropTypes.array.isRequired,
-  history: React.PropTypes.object.isRequired,
-  metadata: React.PropTypes.object.isRequired,
-  onNavigated: React.PropTypes.func.isRequired
+  activePath: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
+  metadata: PropTypes.object.isRequired,
+  onNavigated: PropTypes.func.isRequired
 };
 
 module.exports = PageMenu;

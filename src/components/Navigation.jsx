@@ -1,6 +1,7 @@
 'use strict';
 
-const React = require('react');
+const PropTypes = require('prop-types'),
+      React = require('react');
 
 const Header = require('./navigation/Header.jsx'),
       PageMenu = require('./navigation/PageMenu.jsx'),
@@ -41,13 +42,13 @@ const Navigation = function (props) {
 };
 
 Navigation.propTypes = {
-  activePath: React.PropTypes.array.isRequired,
-  history: React.PropTypes.object.isRequired,
-  metadata: React.PropTypes.object.isRequired,
-  showLogo: React.PropTypes.bool.isRequired,
-  onLogoClick: React.PropTypes.func.isRequired,
-  onNavigated: React.PropTypes.func.isRequired,
-  onVersionChange: React.PropTypes.func.isRequired
+  activePath: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
+  metadata: PropTypes.object.isRequired,
+  showLogo: PropTypes.bool.isRequired,
+  onLogoClick: PropTypes.func.isRequired,
+  onNavigated: PropTypes.func.isRequired,
+  onVersionChange: PropTypes.func.isRequired
 };
 
 module.exports = Navigation;
