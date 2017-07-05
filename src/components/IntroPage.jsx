@@ -14,13 +14,13 @@ const IntroPage = function (props) {
   }
 
   /* eslint-disable no-process-env */
-  const feedUrl = process.env.NEWS_ENDPOINT;
+  const newsUrl = process.env.NEWS_URL;
   /* eslint-enable no-process-env */
 
   return (
     <div className={ introClasses }>
       <Brand suffix={ 'Documentation' } isCollapsed={ isCollapsed } />
-      <Feed url={ feedUrl } />
+      <Feed url={ newsUrl } />
     </div>
   );
 };

@@ -48,7 +48,7 @@ class Feed extends React.PureComponent {
       return <FeedFallback />;
     }
 
-    return feed.map(item => <FeedItem key={ item.id } item={ item } />);
+    return feed.map(item => <FeedItem key={ `${item.date.year}${item.date.month}${item.date.day}${item.title}` } item={ item } />);
   }
 
   render () {

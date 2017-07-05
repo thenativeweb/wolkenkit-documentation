@@ -64,7 +64,7 @@ const webpackConfiguration = {
 
 const environmentConfig = {
   'process.env': {
-    NEWS_ENDPOINT: JSON.stringify(processenv('NEWS_ENDPOINT'))
+    NEWS_URL: JSON.stringify(processenv('NEWS_URL'))
   }
 };
 

@@ -4,6 +4,13 @@ const request = require('superagent');
 
 const news = {
   load (options, callback) {
+    if (!options) {
+      throw new Error('Options are missing.');
+    }
+    if (!callback) {
+      throw new Error('Callback is missing.');
+    }
+
     const { url } = options;
 
     if (!url) {
@@ -11,7 +18,7 @@ const news = {
     }
 
     request.
-      get(url).
+      get(`${url}?_=${Date.now()}`).
       end((err, response) => {
         if (err) {
           return callback(err);
