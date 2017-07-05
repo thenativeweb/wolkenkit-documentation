@@ -13,7 +13,7 @@ If the command takes any parameters, provide them using an options object.
 E.g., to send an `issue` command for an invoice and set its amount to `1000`, use the following code:
 
 ```javascript
-app.accounting.invoice().issue(
+app.accounting.invoice().issue({
   amount: 1000
 });
 ```
@@ -27,7 +27,7 @@ E.g., to send an `issue` command for an existing invoice, use the following code
 ```javascript
 const invoiceId = // ...
 
-app.accounting.invoice(invoiceId).issue(
+app.accounting.invoice(invoiceId).issue({
   // ...
 });
 ```
