@@ -3,8 +3,8 @@
 const metadata = {};
 
 metadata.versions = {
-  cli: '1.0.1',
-  docker: '17.03',
+  cli: '1.0.3',
+  docker: '17.06',
   node: '6.10.2',
 
   chrome: '57',
@@ -30,17 +30,12 @@ metadata.navigation = [
       { title: 'Installing on macOS' },
       { title: 'Installing on Linux' },
       { title: 'Installing using Docker Machine' }
+    ]},
+    { title: 'Updating wolkenkit', children: [
+      { title: 'Changelog' },
+      { title: 'Updating the CLI' },
+      { title: 'Updating an application' }
     ]}
-
-    /*
-    * This section has been removed temporarily. It will be added
-    * again once the next public version is released.
-    */
-    // { title: 'Updating wolkenkit', children: [
-    //   { title: 'Changelog' },
-    //   { title: 'Updating the CLI' },
-    //   { title: 'Updating an application' }
-    // ]}
   ]},
   { title: 'Guides', children: [
     { title: 'Creating your first application', children: [
