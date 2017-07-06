@@ -64,10 +64,6 @@ class Feed extends React.PureComponent {
   }
 }
 
-Feed.defaultProps = {
-  url: '/news.json'
-};
-
 Feed.propTypes = {
   url: PropTypes.string.isRequired
 };
