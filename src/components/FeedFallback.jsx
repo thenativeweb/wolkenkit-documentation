@@ -5,9 +5,16 @@ const React = require('react');
 const FeedItem = function () {
   return (
     <section className='wk-feed__item'>
+      <h2 className='wk-feed__item__title'>Failed to load the latest news 😢</h2>
       <p>
-        Couldn&apos;t load the latest news!
-        But there&apos;s more, <a title='Follow us on twitter' href='https://twitter.com/thenativeweb'>follow us on Twitter</a> or <a title='Visit the official website' href='https://www.wolkenkit.io/'>visit wolkenkit.io</a> to stay up to date.
+        Unfortunately, there went something wrong while loading the news.
+        Please <a href='mailto:hello@thenativeweb.io'>contact us</a> if this
+        problem persists.
+      </p>
+      <p>
+        Meanwhile, you may <a href='https://twitter.com/thenativeweb'>follow us
+        on Twitter</a> or visit the <a href='https://www.wolkenkit.io/'>wolkenkit
+        website</a>.
       </p>
     </section>
   );
