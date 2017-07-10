@@ -3,7 +3,7 @@
 const metadata = {};
 
 metadata.versions = {
-  cli: '1.0.3',
+  cli: '1.0.2',
   docker: '17.06',
   node: '6.10.2',
 
