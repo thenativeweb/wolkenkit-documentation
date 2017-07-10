@@ -41,8 +41,8 @@ roboter.
         // BSD-4-Clause, covered by a legal notice.
         'bcrypt-pbkdf': '1.0.0',
 
-        // MIT, see https://github.com/veged/coa/blob/v1.0.1/package.json
-        coa: '1.0.1',
+        // MIT, see https://github.com/veged/coa/blob/v1.0.4/package.json
+        coa: '1.0.4',
 
         // BSD-3-Clause, see https://github.com/fb55/css-select/blob/v1.2.0/LICENSE
         'css-select': '1.2.0',
