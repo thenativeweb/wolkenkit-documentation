@@ -13,7 +13,7 @@ const versions = [
 const metadata = {};
 
 metadata.name = 'wolkenkit Documentation';
-metadata.baseUrl = '';
+metadata.baseUrl = 'https://docs.wolkenkit.io';
 metadata.navigation = {};
 metadata.versions = {};
 

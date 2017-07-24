@@ -20,6 +20,8 @@ const app = express(),
       portHttp = processenv('PORT_HTTP') || 8000,
       portHttps = processenv('PORT_HTTPS') || 9000;
 
+app.use('/robots.txt', routes.renderRobots());
+app.use('/sitemap.txt', routes.renderSitemap());
 app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/', routes.serveClient());
 app.use('/', routes.serveContent());

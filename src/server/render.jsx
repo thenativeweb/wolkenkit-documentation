@@ -6,8 +6,8 @@ const createHistory = require('history').createMemoryHistory,
       ReactDOM = require('react-dom/server');
 /* eslint-enable no-unused-vars */
 
-const metadata = require('../docs/metadata.js'),
-      page = require('../services/page.js');
+const metadata = require('../docs/metadata'),
+      page = require('../services/page');
 
 const Docs = require('../components/Docs.jsx');
 
