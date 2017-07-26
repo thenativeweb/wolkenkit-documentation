@@ -10,7 +10,9 @@ The following significant changes have been made since wolkenkit `1.0.1`:
   - With CLI 1.0.2, wolkenkit is compatible with Docker backends running on Docker 17.05 and above.
   - See [thenativeweb/wolkenkit#5](https://github.com/thenativeweb/wolkenkit/issues/5) for details.
 - **Fixed** invalid read query handling in HTTP API
-  - There was a bug that caused invalid read queries to bring down the HTTP API. With wolkenkit <%= current.version %> this has been fixed.  
+  - There was a bug that caused invalid read queries to bring down the HTTP API. With wolkenkit <%= current.version %> this has been fixed.
+- **Fixed** a critical security issue in authorizing commands
+  - In certain circumstances wolkenkit failed to authorize commands correctly. This has been fixed.
 - **Contributions** by the community
   - [@coderbyheart](https://github.com/coderbyheart)
   - [@czosel](https://github.com/czosel)
