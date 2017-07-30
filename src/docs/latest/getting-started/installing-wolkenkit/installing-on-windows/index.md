@@ -1,4 +1,4 @@
-# Installing on Windows Hyper-V (using Docker Machine)
+# Installing on Windows
 
 To run wolkenkit using Docker Machine on Windows Hyper-V you need to setup a few things.
 
