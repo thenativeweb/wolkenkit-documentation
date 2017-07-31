@@ -1,6 +1,6 @@
-# Installing on Windows
+# Installing on Windows (experimental)
 
-To run wolkenkit using Docker Machine on Windows Hyper-V you need to setup a few things.
+To run wolkenkit (Linux container) on Windows, you have to use Docker Machine on Windows Hyper-V. For that you need to setup a few things.
 
 ## System requirements
 
@@ -97,17 +97,27 @@ $ docker-machine create --driver hyperv --hyperv-virtual-switch "<NameOfVirtualS
 
 ### Setting up environment variables
 
-Finally, you need to setup the environment variables `DOCKER_HOST`, `DOCKER_TLS_VERIFY` and `DOCKER_CERT_PATH`. To make Docker do this for you, run the following command:
-
-```shell
-$ eval $(docker-machine env --shell bash wolkenkit)
-```
+Finally, you need to setup the environment variables `DOCKER_HOST`, `DOCKER_TLS_VERIFY` and `DOCKER_CERT_PATH`.
 
 To have the environment variables set automatically each time you open a terminal, you need to add them to your `~/.bashrc` file. To do so, run:
 
 ```shell
 $ docker-machine env --shell bash wolkenkit >> ~/.bashrc
 ```
+
+Because there is a wrong path in the `DOCKER_CERT_PATH` environment variable, you have to change them manually. Open the `~/.bashrc` file and change the following line:
+
+```
+export DOCKER_CERT_PATH="C:\Users\<yourusername>\.docker\machine\machines\wolkenkit"
+```
+
+to
+
+```
+export DOCKER_CERT_PATH="/mnt/c/Users/<yourusername>/.docker/machine/machines/wolkenkit"
+```
+
+**Notice:** Now you have to reopen the *Bash on Ubuntu on Windows*.
 
 ## Setting up wolkenkit
 
@@ -119,8 +129,8 @@ $ curl https://install.wolkenkit.io | bash
 
 Additionally you have to setup wolkenkit as command to your *Bash on Ubuntu on Windows* with adding the following line to your `~/.bashrc` file:
 
-```
-export PATH="$PATH:$HOME/.wolkenkit"
+```shell
+$ echo export PATH="$PATH:$HOME/.wolkenkit" >> ~/.bashrc
 ```
 
 **Notice:** You have to restart the *Bash on Ubuntu on Windows as administrator*.
@@ -160,6 +170,12 @@ When developing wolkenkit applications you will usually run them on the domain `
 $ sudo sh -c 'echo $(docker-machine ip wolkenkit)\\tlocal.wolkenkit.io >> /etc/hosts'
 ```
 
-After that add also the same line to `C:\Windows\system32\drivers\etc\hosts` file, to make wolkenkit application reachable on your Windows System.
+After that add also the same line to `C:\Windows\System32\drivers\etc\hosts` file, to make wolkenkit application reachable on your Windows System. You have to open the *PowerShell as administrator* and execute the following command:
+
+```shell
+$ Add-Content C:\Windows\System32\drivers\etc\hosts "$(docker-machine ip wolkenkit)`tlocal.wolkenkit.io"
+```
+
+If this command does not work, then you have to open the file with *Notepad as administrator* and add the line manually.
 
 **Notice:** You have to restart your Windows system.
