@@ -27,6 +27,7 @@ metadata.navigation = [
       { title: 'Getting help' }
     ]},
     { title: 'Installing wolkenkit', children: [
+      { title: 'Verifying system requirements' },
       { title: 'Installing on macOS' },
       { title: 'Installing on Linux' },
       { title: 'Installing on Windows' },
