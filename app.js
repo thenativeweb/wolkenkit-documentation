@@ -2,13 +2,11 @@
 
 require('babel-register')();
 
-const fs = require('fs'),
-      http = require('http'),
-      https = require('https'),
-      path = require('path');
+const path = require('path');
 
 const express = require('express'),
       flaschenpost = require('flaschenpost'),
+      httpsOrHttp = require('https-or-http'),
       processenv = require('processenv');
 
 const compile = require('./compile'),
@@ -17,6 +15,7 @@ const compile = require('./compile'),
 const logger = flaschenpost.getLogger();
 
 const app = express(),
+      certificateDirectory = path.join('/', 'keys', 'local.wolkenkit.io'),
       portHttp = processenv('PORT_HTTP') || 8000,
       portHttps = processenv('PORT_HTTPS') || 9000;
 
@@ -27,42 +26,33 @@ app.use('/', routes.serveClient());
 app.use('/', routes.serveContent());
 app.get('*', routes.renderPage());
 
-try {
-  const keysPath = path.join('/', 'keys', 'local.wolkenkit.io');
+httpsOrHttp({
+  app,
+  certificateDirectory,
+  ports: {
+    http: portHttp,
+    https: portHttps
+  }
+}, (err, servers) => {
+  if (err) {
+    logger.error(err.message, err);
 
-  /* eslint-disable no-sync */
-  const privateKey = fs.readFileSync(path.join(keysPath, 'privateKey.pem'), { encoding: 'utf8' });
-  const certificate = fs.readFileSync(path.join(keysPath, 'certificate.pem'), { encoding: 'utf8' });
-  /* eslint-enable no-sync */
+    return;
+  }
 
-  https.createServer({ key: privateKey, cert: certificate }, app).listen(portHttps, () => {
-    logger.info('Documentation server started.', { port: portHttps });
-  });
+  logger.info('Documentation server started.', { protocol: servers.app.protocol, port: servers.app.port });
 
-  const appHttp = express();
-
-  appHttp.get(/.*/, (req, res) => {
-    res.writeHead(301, {
-      location: `https://${req.headers.host}${req.url}`
+  if (servers.app.protocol === 'http') {
+    compile(errCompile => {
+      if (errCompile) {
+        /* eslint-disable no-process-exit */
+        process.exit(1);
+        /* eslint-enable no-process-exit */
+      }
     });
-    res.end();
-  });
+  }
 
-  http.createServer(appHttp).listen(portHttp, () => {
-    logger.info('Documentation server started.', { port: portHttp });
-  });
-} catch (ex) {
-  logger.warn('Failed to load SSL keys, falling back to HTTP.');
-
-  compile(err => {
-    if (err) {
-      /* eslint-disable no-process-exit */
-      process.exit(1);
-      /* eslint-enable no-process-exit */
-    }
-
-    http.createServer(app).listen(portHttp, () => {
-      logger.info('Documentation server started.', { port: portHttp });
-    });
-  });
-}
+  if (servers.redirect) {
+    logger.info('Redirect server started.', { protocol: servers.redirect.protocol, port: servers.redirect.port });
+  }
+});
