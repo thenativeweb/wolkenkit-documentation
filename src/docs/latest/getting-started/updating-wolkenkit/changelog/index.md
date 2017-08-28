@@ -9,6 +9,8 @@ The following significant changes have been made since wolkenkit `1.0.1`:
 - **Added** support for wolkenkit on Windows
   - wolkenkit now runs on Windows 10 with Hyper-V and Docker Machine. The installation instructions can be found at [Installing on Windows](../../installing-wolkenkit/installing-on-windows/).
   - See [thenativeweb/wolkenkit#3](https://github.com/thenativeweb/wolkenkit/issues/3) for details.
+- **Updated** PostgreSQL to `9.6.4`
+  - There was a [security issue](https://www.postgresql.org/about/news/1772/) in PostgreSQL `9.6.2`. With wolkenkit <%= current.version %> PostgreSQL has been updated to `9.6.4`.
 - **Fixed** compatibility with Docker 17.05 and above
   - With CLI 1.0.2, wolkenkit is compatible with Docker backends running on Docker 17.05 and above.
   - See [thenativeweb/wolkenkit#5](https://github.com/thenativeweb/wolkenkit/issues/5) for details.
