@@ -37,7 +37,7 @@ const upload = function (data) {
 }
 ```
 
-To transform files, e.g. from a form, into a JavaScript object, you need to use the `FileReader` class. For details on how to use this see [Reading files in JavaScript using the File APIs](http://www.html5rocks.com/en/tutorials/file/dndfiles/).
+To transform files, e.g. from a form, into a JavaScript object, you need to use the `FileReader` class. For details on how to use this see [Reading files in JavaScript using the File APIs](https://www.html5rocks.com/en/tutorials/file/dndfiles/).
 
 Please make sure that you use its `readAsArrayBuffer` function to get the file into a format the `upload` function and the blob server do understand.
 

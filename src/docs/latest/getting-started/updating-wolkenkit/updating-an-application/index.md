@@ -4,13 +4,13 @@ To update an application to the current version of wolkenkit follow the steps gi
 
 ## package.json
 
-**Previous version (1.0.1)**
+**Previous version (1.1.0)**
 
 ```json
 "wolkenkit": {
   "application": "your-app",
   "runtime": {
-    "version": "1.0.1"
+    "version": "1.1.0"
   },
   "...": "..."
 }
