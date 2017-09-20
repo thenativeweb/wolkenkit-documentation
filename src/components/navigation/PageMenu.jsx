@@ -5,6 +5,7 @@ const isEqual = require('lodash/isEqual'),
       React = require('react');
 
 const Chapter = require('./Chapter.jsx'),
+      Icon = require('../Icon.jsx'),
       MenuBar = require('./MenuBar.jsx'),
       Page = require('./Page.jsx'),
       Section = require('./Section.jsx');
@@ -63,7 +64,7 @@ class PageMenu extends React.Component {
     const activeVersion = page.getVersion(activePath);
 
     return navigation.map(
-      section =>
+      section => (
         <Section
           key={ section.slug }
           activePath={ activePath }
@@ -71,7 +72,7 @@ class PageMenu extends React.Component {
           path={ [ activeVersion, section.slug ] }
           onClick={ this.handleItemClicked }
         />
-    );
+      ));
   }
 
   renderSecondLevel (navigation) {
@@ -159,6 +160,11 @@ class PageMenu extends React.Component {
               { this.renderSecondLevel(navigation) }
             </div>
           </div>
+        </div>
+        <div className='wk-menu__social-bar wk-bar wk-bar--bottom wk-bar--centered'>
+          <a href='https://github.com/thenativeweb/wolkenkit'><Icon name='github' /></a>
+          <a href='http://slackin.wolkenkit.io'><Icon name='slack' /></a>
+          <a href='http://stackoverflow.com/questions/tagged/wolkenkit'><Icon name='stackoverflow' /></a>
         </div>
       </div>
     );
