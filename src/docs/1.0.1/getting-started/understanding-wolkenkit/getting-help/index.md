@@ -1,6 +1,6 @@
 # Getting help
 
-If you need any help with wolkenkit, consider the following options.
+If you need any help with wolkenkit, consider the following options. Also, you are welcome to <a href="http://slackin.wolkenkit.io" target="_blank" rel="noopener noreferrer">join us on Slack</a>.
 
 ## Reporting an issue
 
