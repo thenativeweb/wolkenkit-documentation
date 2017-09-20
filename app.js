@@ -4,7 +4,8 @@ require('babel-register')();
 
 const path = require('path');
 
-const express = require('express'),
+const compression = require('compression'),
+      express = require('express'),
       flaschenpost = require('flaschenpost'),
       httpsOrHttp = require('https-or-http'),
       processenv = require('processenv');
@@ -19,6 +20,7 @@ const app = express(),
       portHttp = processenv('PORT_HTTP') || 8000,
       portHttps = processenv('PORT_HTTPS') || 9000;
 
+app.use(compression());
 app.use('/robots.txt', routes.renderRobots());
 app.use('/sitemap.txt', routes.renderSitemap());
 app.use('/', express.static(path.join(__dirname, 'static')));
