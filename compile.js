@@ -2,8 +2,7 @@
 
 const path = require('path');
 
-const autoprefixer = require('autoprefixer'),
-      ExtractTextPlugin = require('extract-text-webpack-plugin'),
+const ExtractTextPlugin = require('extract-text-webpack-plugin'),
       flaschenpost = require('flaschenpost'),
       processenv = require('processenv'),
       webpack = require('webpack');
@@ -44,21 +43,19 @@ const webpackConfiguration = {
       },
       {
         test: /\.less$/,
-        use: ExtractTextPlugin.extract({ use: [ 'css-loader', 'less-loader' ], fallback: 'style-loader' })
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'less-loader'
+          ],
+          fallback: 'style-loader'
+        })
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('wk-docs.css'),
-
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        context: __dirname,
-        postcss: [
-          autoprefixer
-        ]
-      }
-    })
+    new ExtractTextPlugin('wk-docs.css')
   ]
 };
 

@@ -1,3 +1,8 @@
 {
-  "extends": "eslint-config-es/2015/server"
+  "extends": "eslint-config-es/2015/server",
+  "rules": {
+    "no-extra-parens": ["error", "all", {
+      "ignoreJSX": "multi-line"
+     }]
+  }
 }
