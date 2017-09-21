@@ -28,7 +28,7 @@ const handle = {
 
   navClicked (event) {
     if (event.target.tagName.toLowerCase() === 'a' &&
-        event.target.parentElement.classList.contains('wk-page')) {
+        event.target.parentElement.classList.contains('wk-page-menu')) {
       handle.navLinkClicked(event);
     }
   },
