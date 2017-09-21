@@ -162,9 +162,9 @@ class PageMenu extends React.Component {
           </div>
         </div>
         <div className='wk-menu__social-bar wk-bar wk-bar--bottom wk-bar--centered'>
-          <a href='https://github.com/thenativeweb/wolkenkit'><Icon name='github' /></a>
-          <a href='http://slackin.wolkenkit.io'><Icon name='slack' /></a>
-          <a href='http://stackoverflow.com/questions/tagged/wolkenkit'><Icon name='stackoverflow' /></a>
+          <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='github' /></a>
+          <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'><Icon name='slack' /></a>
+          <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='stackoverflow' /></a>
         </div>
       </div>
     );
