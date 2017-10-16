@@ -78,6 +78,12 @@ To download and install wolkenkit, run the following command:
 $ npm install -g wolkenkit
 ```
 
+Finally, verify that wolkenkit is installed correctly by running the following command:
+
+```shell
+$ wolkenkit --version
+```
+
 ## Setting up local.wolkenkit.io
 
 When developing wolkenkit applications you will usually run them on the domain `local.wolkenkit.io`. This means that you need to set up this domain inside your `/etc/hosts` file and make it point to the Docker server running on your previously created virtual machine. For that, run the following command:
@@ -85,3 +91,19 @@ When developing wolkenkit applications you will usually run them on the domain `
 ```shell
 $ sudo sh -c 'echo $(docker-machine ip wolkenkit)\\tlocal.wolkenkit.io >> /etc/hosts'
 ```
+
+## Verifying the installation
+
+Verify that wolkenkit is installed correctly by running the following command:
+
+```shell
+$ wolkenkit --version
+```
+
+:::hint-congrats
+> **Yay, congratulations!**
+>
+> You have successfully installed wolkenkit!
+:::
+
+To learn how to build and run your first application, have a look at [creating your first application](../../../guides/creating-your-first-application/setting-the-objective/) 😊!

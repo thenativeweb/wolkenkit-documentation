@@ -31,3 +31,19 @@ To download and install wolkenkit, run the following command:
 ```shell
 $ npm install -g wolkenkit
 ```
+
+## Verifying the installation
+
+Verify that wolkenkit is installed correctly by running the following command:
+
+```shell
+$ wolkenkit --version
+```
+
+:::hint-congrats
+> **Yay, congratulations!**
+>
+> You have successfully installed wolkenkit!
+:::
+
+To learn how to build and run your first application, have a look at [creating your first application](../../../guides/creating-your-first-application/setting-the-objective/) 😊!

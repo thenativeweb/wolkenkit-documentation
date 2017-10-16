@@ -14,4 +14,6 @@ $ npm install -g wolkenkit
 > ```shell
 > $ npm install wolkenkit --save-dev
 > ```
+>
+> When installed locally, you can start the local version using [npx](https://www.npmjs.com/package/npx). This will always favor the local over the global installation.
 :::
