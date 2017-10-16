@@ -52,19 +52,11 @@ To have the environment variables set automatically each time you open a termina
 $ docker-machine env wolkenkit >> ~/.profile
 ```
 
-## Setting up wolkenkit
-
-To download and install wolkenkit, run the following command:
-
-```shell
-$ curl https://install.wolkenkit.io | bash
-```
-
 ## Setting up Node.js
 
-While you don't need to have Node.js installed to run wolkenkit applications, it is definitely recommended for serious JavaScript development. We recommend to install [Node.js](https://nodejs.org/) <%= current.versions.node %> or higher using [nvm](https://github.com/creationix/nvm), which allows you to easily switch between different Node.js versions.
+To run wolkenkit you need Node.js <%= current.versions.node %> or higher. We recommend installing Node.js using [nvm](https://github.com/creationix/nvm), which enables switching between different Node.js versions.
 
-To do so, install nvm using this command:
+First, install nvm using this command:
 
 ```shell
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
@@ -76,6 +68,14 @@ Then, restart your terminal and install Node.js using the following commands:
 $ nvm install <%= current.versions.node %>
 $ nvm alias default <%= current.versions.node %>
 $ nvm use <%= current.versions.node %>
+```
+
+## Setting up wolkenkit
+
+To download and install wolkenkit, run the following command:
+
+```shell
+$ npm install -g wolkenkit
 ```
 
 ## Setting up local.wolkenkit.io
