@@ -49,15 +49,8 @@ To exit from a container, just type `exit`.
 
 ## Freeing disk space
 
-If you are using Docker on a virtual machine, the virtual machine may run out of disk space eventually. To free disk space run the following commands:
+If you are using Docker on a virtual machine, the virtual machine may run out of disk space eventually. To free disk space run the following command:
 
 ```shell
-# Remove exited containers
-$ docker ps --filter status=dead --filter status=exited -aq | xargs docker rm -v
-
-# Remove unused images
-$ docker images --no-trunc | grep '<none>' | awk '{ print $3 }' | xargs docker rmi
-
-# Remove unused volumes
-$ docker volume ls -qf dangling=true | xargs docker volume rm
+$ docker system prune
 ```

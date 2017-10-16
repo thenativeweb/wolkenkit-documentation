@@ -10,13 +10,13 @@ $ wolkenkit start --shared-key <secret>
 
 ## Restarting an application
 
-When you restart an application you need to make sure to provide the very same shared key as before. If you don't, you won't be able to access your previously stored data any more:
+When you restart an application the CLI takes care of preserving the shared key between restarts. Hence you can simply run:
 
 ```shell
-$ wolkenkit restart --shared-key <secret>
+$ wolkenkit restart
 ```
 
-The same is true when stopping and then starting your application:
+This is *not* true when stopping and then starting your application. In this case you explicitly need to provide the very same shared key again, otherwise you won't be able to access your previously stored data:
 
 ```shell
 $ wolkenkit stop

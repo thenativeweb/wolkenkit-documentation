@@ -3,17 +3,17 @@
 To update the wolkenkit CLI to the latest version run the following command:
 
 ```shell
-$ wolkenkit update
+$ npm install -g wolkenkit
 ```
 
 :::hint-warning
-> **Backup old versions**
+> **Install the CLI locally**
 >
-> While new versions of the CLI usually provide new features, they may also drop support for previously supported wolkenkit runtime versions. Hence, copy the CLI to your application directory and add it to version control.
->
-> To find out which wolkenkit runtime versions are supported, run the following command:
+> New versions of the CLI may drop support for previously supported wolkenkit runtime versions. To ensure that you have the right version of the CLI for a specific application, install the CLI into the local context of your application:
 >
 > ```shell
-> $ wolkenkit ls-remote
+> $ npm install wolkenkit --save-dev
 > ```
+>
+> When installed locally, you can start the local version using [npx](https://www.npmjs.com/package/npx). This will always favor the local over the global installation.
 :::

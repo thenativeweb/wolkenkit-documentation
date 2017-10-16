@@ -6,7 +6,11 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `1.1.0`:
 
-- TBA
+- **Rewritten** wolkenkit CLI using Node.js
+  - The wolkenkit CLI was rewritten using Node.js, so you can now install it using npm, either globally or into the local context of your application.
+- **Contributions** by the community
+  - [@revrng](https://github.com/revrng)
+  - [@scherermichael](https://github.com/scherermichael)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 

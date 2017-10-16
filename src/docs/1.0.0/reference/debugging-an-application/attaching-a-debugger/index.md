@@ -10,12 +10,10 @@ To run a wolkenkit application in debug mode provide the `--debug` flag on the `
 $ wolkenkit start --debug
 ```
 
-You are also able to enable debug mode for an already running application by providing the `--debug` flag to the `wolkenkit restart` or `wolkenkit reload` command.
-
 :::hint-tip
 > **Stay debugging**
 >
-> If you need to run `wolkenkit restart` or `wolkenkit reload` while your application is running in debug mode, you do not have to provide the `--debug` flag again. Your application will stay in debug mode.
+> If you run `wolkenkit restart` or `wolkenkit reload` while your application is running in debug mode, your application stays in debug mode.
 :::
 
 ## Debugging an application
@@ -40,5 +38,5 @@ $ wolkenkit start
 :::hint-warning
 > **Only stop ends debugging**
 >
-> Running `wolkenkit restart` or `wolkenkit reload` without the `--debug` flag is not sufficient to leave debug mode. To actually leave debug mode you explicitly have to stop the application by running `wolkenkit stop`.
+> Running `wolkenkit restart` or `wolkenkit reload` is not sufficient to leave debug mode. To actually leave debug mode you explicitly have to stop the application by running `wolkenkit stop`.
 :::

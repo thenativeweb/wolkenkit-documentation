@@ -52,19 +52,11 @@ To have the environment variables set automatically each time you open a termina
 $ docker-machine env wolkenkit >> ~/.profile
 ```
 
-## Setting up wolkenkit
-
-To download and install wolkenkit, run the following command:
-
-```shell
-$ curl https://install.wolkenkit.io | bash
-```
-
 ## Setting up Node.js
 
-While you don't need to have Node.js installed to run wolkenkit applications, it is definitely recommended for serious JavaScript development. We recommend to install [Node.js](https://nodejs.org/) <%= current.versions.node %> or higher using [nvm](https://github.com/creationix/nvm), which allows you to easily switch between different Node.js versions.
+To run wolkenkit you need Node.js <%= current.versions.node %> or higher. We recommend installing Node.js using [nvm](https://github.com/creationix/nvm), which enables switching between different Node.js versions.
 
-To do so, install nvm using this command:
+First, install nvm using this command:
 
 ```shell
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
@@ -78,6 +70,14 @@ $ nvm alias default <%= current.versions.node %>
 $ nvm use <%= current.versions.node %>
 ```
 
+## Setting up wolkenkit
+
+To download and install wolkenkit, run the following command:
+
+```shell
+$ npm install -g wolkenkit
+```
+
 ## Setting up local.wolkenkit.io
 
 When developing wolkenkit applications you will usually run them on the domain `local.wolkenkit.io`. This means that you need to set up this domain inside your `/etc/hosts` file and make it point to the Docker server running on your previously created virtual machine. For that, run the following command:
@@ -85,3 +85,19 @@ When developing wolkenkit applications you will usually run them on the domain `
 ```shell
 $ sudo sh -c 'echo $(docker-machine ip wolkenkit)\\tlocal.wolkenkit.io >> /etc/hosts'
 ```
+
+## Verifying the installation
+
+Verify that wolkenkit is installed correctly by running the following command:
+
+```shell
+$ wolkenkit --version
+```
+
+:::hint-congrats
+> **Yay, congratulations!**
+>
+> You have successfully installed wolkenkit!
+:::
+
+To learn how to build and run your first application, have a look at [creating your first application](../../../guides/creating-your-first-application/setting-the-objective/) 😊!
