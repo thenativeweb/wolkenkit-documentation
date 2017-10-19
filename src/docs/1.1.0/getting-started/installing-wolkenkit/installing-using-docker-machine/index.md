@@ -75,7 +75,7 @@ $ nvm use <%= current.versions.node %>
 To download and install wolkenkit, run the following command:
 
 ```shell
-$ npm install -g wolkenkit
+$ npm install -g wolkenkit@<%= current.versions.cli %>
 ```
 
 Finally, verify that wolkenkit is installed correctly by running the following command:
