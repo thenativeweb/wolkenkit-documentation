@@ -60,47 +60,15 @@ By default, Hyper-V virtual machines are not accessible from the outside. To cha
 > From time to time Windows has problems with its routing tables after creating a new network switch. Hence it is recommended to restart Windows.
 :::
 
-## Installing the Windows Subsystem for Linux
-
-To run wolkenkit on Windows you need to install the Windows Subsystem for Linux. For this, run PowerShell using administrative privileges, then run the following command:
-
-```shell
-$ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-```
-
-:::hint-warning
-> **Restart Windows**
->
-> Don't forget to restart Windows once the command has been completed.
-:::
-
-To confirm that the installation of the Windows Subsystem for Linux succeeded run Bash on Ubuntu on Windows using administrative privileges. From here on, Bash on Ubuntu on Windows is simply called *the terminal*.
-
 ## Setting up Docker
 
 To run wolkenkit you need Docker <%= current.versions.docker %> or higher. To setup Docker using Docker Machine, [download and install Docker for Windows](https://docs.docker.com/docker-for-windows/install/).
-
-### Aliasing Docker commands
-
-To run Docker commands from within the terminal you need to setup some aliases in your `~/.bashrc` file. Open the terminal and run the following commands:
-
-```shell
-$ echo 'alias docker="/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker.exe"' >> ~/.bashrc
-$ echo 'alias docker-machine="/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker-machine.exe"' >> ~/.bashrc
-$ echo 'alias docker-compose="/mnt/c/Program\ Files/Docker/Docker/resources/bin/docker-compose.exe"' >> ~/.bashrc
-```
-
-:::hint-warning
-> **Restart Bash on Ubuntu on Windows**
->
-> After having edited the `~/.bashrc` file you need to restart Bash on Ubuntu on Windows.
-:::
 
 ### Creating a virtual machine
 
 Now you need to setup a virtual machine using Hyper-V and Docker Machine.
 
-Open the terminal and run the following command. Make sure that you provide the name of the Hyper-V network switch that you created a few steps ago:
+Open the terminal (`cmd.exe`) as administrator and run the following command. Make sure that you provide the name of the Hyper-V network switch that you created a few steps ago:
 
 ```shell
 $ docker-machine create --driver hyperv --hyperv-virtual-switch "..." wolkenkit
@@ -110,65 +78,36 @@ $ docker-machine create --driver hyperv --hyperv-virtual-switch "..." wolkenkit
 
 Finally, you need to setup the environment variables `DOCKER_HOST`, `DOCKER_TLS_VERIFY` and `DOCKER_CERT_PATH`.
 
-To have the environment variables set automatically each time you open a terminal, you need to add them to your `~/.bashrc` file. To do so, run:
+To do so, run:
 
 ```shell
-$ docker-machine env --shell bash wolkenkit >> ~/.bashrc
-```
-
-Please note that the `DOCKER_CERT_PATH` environment variables contains a wrong path, so you need to fix it manually: Open the `~/.bashrc` file and turn
-
-```
-export DOCKER_CERT_PATH="C:\Users\...\.docker\machine\machines\wolkenkit"
-```
-
-into:
-
-```
-export DOCKER_CERT_PATH="/mnt/c/Users/.../.docker/machine/machines/wolkenkit"
+$ @FOR /f "tokens=*" %i IN ('docker-machine env --shell cmd wolkenkit') DO @%i
 ```
 
 ## Setting up Node.js
 
-To run wolkenkit you need Node.js <%= current.versions.node %> or higher. We recommend installing Node.js using [nvm](https://github.com/creationix/nvm), which enables switching between different Node.js versions.
+While you don't need to have Node.js installed to run wolkenkit applications, it is definitely recommended for serious JavaScript development. We recommend to install [Node.js](https://nodejs.org/) <%= current.versions.node %> or higher using [nvm-windows](https://github.com/coreybutler/nvm-windows), which allows you to easily switch between different Node.js versions.
 
-First, install nvm using this command:
+To do so, [download and install nvm-windows](https://github.com/coreybutler/nvm-windows#installation--upgrades).
 
-```shell
-$ curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-```
-
-Then, restart your terminal and install Node.js using the following commands:
+Then, restart your terminal and install Node.js using the following command:
 
 ```shell
 $ nvm install <%= current.versions.node %>
-$ nvm alias default <%= current.versions.node %>
 $ nvm use <%= current.versions.node %>
 ```
 
 ## Setting up wolkenkit
 
-To download and install wolkenkit, run the following command:
+To download and install wolkenkit, open the terminal and run the following command:
 
 ```shell
-$ npm install -g wolkenkit@<%= current.versions.cli %>
+$ npm install wolkenkit -g
 ```
 
 ## Setting up local.wolkenkit.io
 
-When developing wolkenkit applications you will usually run them on the domain `local.wolkenkit.io`. This means that you need to set up this domain inside your `/etc/hosts` file and make it point to the Docker server running on your previously created virtual machine. For that, run the following command:
-
-```shell
-$ sudo sh -c -e "echo '$(docker-machine ip wolkenkit)\\tlocal.wolkenkit.io' >> /etc/hosts"
-```
-
-:::hint-warning
-> **Persisting data in /etc/hosts**
->
-> By default, Windows recreates the `/etc/hosts` file everytime you start Bash on Ubuntu on Windows. To ensure that your changes are actually persisted, remove the line that says that the file is *automatically generated by WSL*. Please note that you need administrative privileges to edit the `/etc/hosts` file.
-:::
-
-Additionally, you need to add the same line to your host's `C:\Windows\System32\drivers\etc\hosts` file. Open PowerShell using administrative privileges and run the following command:
+When developing wolkenkit applications you will usually run them on the domain `local.wolkenkit.io`. This means that you need to set up this domain inside your `C:\Windows\System32\drivers\etc\hosts` file and make it point to the Docker server running on your previously created virtual machine. For that, open PowerShell using administrative privileges and run the following command:
 
 ```shell
 $ Add-Content C:\Windows\System32\drivers\etc\hosts "$(docker-machine ip wolkenkit)`tlocal.wolkenkit.io"
@@ -179,19 +118,3 @@ $ Add-Content C:\Windows\System32\drivers\etc\hosts "$(docker-machine ip wolkenk
 >
 > Finally, restart Windows one last time.
 :::
-
-## Verifying the installation
-
-Verify that wolkenkit is installed correctly by running the following command:
-
-```shell
-$ wolkenkit --version
-```
-
-:::hint-congrats
-> **Yay, congratulations!**
->
-> You have successfully installed wolkenkit!
-:::
-
-To learn how to build and run your first application, have a look at [creating your first application](../../../guides/creating-your-first-application/setting-the-objective/) 😊!
