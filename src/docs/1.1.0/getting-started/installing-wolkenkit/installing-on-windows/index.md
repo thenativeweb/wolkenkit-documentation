@@ -62,13 +62,11 @@ By default, Hyper-V virtual machines are not accessible from the outside. To cha
 
 ## Setting up Docker
 
-To run wolkenkit you need Docker <%= current.versions.docker %> or higher. To setup Docker using Docker Machine, [download and install Docker for Windows](https://docs.docker.com/docker-for-windows/install/).
+To run wolkenkit you need Docker <%= current.versions.docker %> or higher. To setup Docker on Windows, [download and install Docker for Windows](https://docs.docker.com/docker-for-windows/install/).
 
 ### Creating a virtual machine
 
-Now you need to setup a virtual machine using Hyper-V and Docker Machine.
-
-Open the terminal (`cmd.exe`) as administrator and run the following command. Make sure that you provide the name of the Hyper-V network switch that you created a few steps ago:
+Now you need to setup a virtual machine using Hyper-V and Docker Machine. Make sure to provide the name of the Hyper-V network switch that you created a few steps ago:
 
 ```shell
 $ docker-machine create --driver hyperv --hyperv-virtual-switch "..." wolkenkit
@@ -78,33 +76,33 @@ $ docker-machine create --driver hyperv --hyperv-virtual-switch "..." wolkenkit
 
 Finally, you need to setup the environment variables `DOCKER_HOST`, `DOCKER_TLS_VERIFY` and `DOCKER_CERT_PATH`.
 
-To do so, run at first the following command to show the environment variable values:
+For that, first run the following command to get the values for the environment variables:
 
 ```shell
 $ docker-machine env --shell cmd wolkenkit
 ```
 
-After that, you have to set each environment variable manually:
+Then you have to set the environment variables using the appropriate values:
 
 ```shell
-$ setx DOCKER_TLS_VERIFY 1
-$ setx DOCKER_HOST "..."
-$ setx DOCKER_CERT_PATH "..."
+$ [Environment]::SetEnvironmentVariable("DOCKER_TLS_VERIFY", "1", "User")
+$ [Environment]::SetEnvironmentVariable("DOCKER_HOST", "...", "User")
+$ [Environment]::SetEnvironmentVariable("DOCKER_CERT_PATH", "...", "User")
 ```
 
 :::hint-warning
-> **Restart Terminal**
+> **Restart PowerShell**
 >
-> Since the environment variables are only available after a restart of the terminal.
+> Since the environment variables are only available after a restart of the shell, now close and reopen PowerShell again, still using administrative privileges.
 :::
 
 ## Setting up Node.js
 
-While you don't need to have Node.js installed to run wolkenkit applications, it is definitely recommended for serious JavaScript development. We recommend to install [Node.js](https://nodejs.org/) <%= current.versions.node %> or higher using [nvm-windows](https://github.com/coreybutler/nvm-windows), which allows you to easily switch between different Node.js versions.
+To run wolkenkit you need Node.js <%= current.versions.node %> or higher. We recommend to install Node.js using [nvm-windows](https://github.com/coreybutler/nvm-windows), which enables switching between different Node.js versions.
 
-To do so, [download and install nvm-windows](https://github.com/coreybutler/nvm-windows#installation--upgrades).
+So, [download and install nvm-windows](https://github.com/coreybutler/nvm-windows#installation--upgrades).
 
-Then, restart your terminal and install Node.js using the following command:
+Restart PowerShell and install Node.js using the following command:
 
 ```shell
 $ nvm install <%= current.versions.node %>
@@ -113,15 +111,15 @@ $ nvm use <%= current.versions.node %>
 
 ## Setting up wolkenkit
 
-To download and install wolkenkit, open the terminal and run the following command:
+To download and install wolkenkit, run the following command:
 
 ```shell
-$ npm install wolkenkit -g
+$ npm install -g wolkenkit@<%= current.versions.cli %>
 ```
 
 ## Setting up local.wolkenkit.io
 
-When developing wolkenkit applications you will usually run them on the domain `local.wolkenkit.io`. This means that you need to set up this domain inside your `C:\Windows\System32\drivers\etc\hosts` file and make it point to the Docker server running on your previously created virtual machine. For that, open PowerShell using administrative privileges and run the following command:
+When developing wolkenkit applications you will usually run them on the domain `local.wolkenkit.io`. This means that you need to set up this domain inside your `C:\Windows\System32\drivers\etc\hosts` file and make it point to the Docker server running on your previously created virtual machine. So, run the following command:
 
 ```shell
 $ Add-Content C:\Windows\System32\drivers\etc\hosts "$(docker-machine ip wolkenkit)`tlocal.wolkenkit.io"
