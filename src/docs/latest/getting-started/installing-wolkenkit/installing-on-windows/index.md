@@ -78,11 +78,25 @@ $ docker-machine create --driver hyperv --hyperv-virtual-switch "..." wolkenkit
 
 Finally, you need to setup the environment variables `DOCKER_HOST`, `DOCKER_TLS_VERIFY` and `DOCKER_CERT_PATH`.
 
-To do so, run:
+To do so, run at first the following command to show the environment variable values:
 
 ```shell
-$ @FOR /f "tokens=*" %i IN ('docker-machine env --shell cmd wolkenkit') DO @%i
+$ docker-machine env --shell cmd wolkenkit
 ```
+
+After that, you have to set each environment variable manually:
+
+```shell
+$ setx DOCKER_TLS_VERIFY 1
+$ setx DOCKER_HOST "..."
+$ setx DOCKER_CERT_PATH "..."
+```
+
+:::hint-warning
+> **Restart Terminal**
+>
+> Since the environment variables are only available after a restart of the terminal.
+:::
 
 ## Setting up Node.js
 
