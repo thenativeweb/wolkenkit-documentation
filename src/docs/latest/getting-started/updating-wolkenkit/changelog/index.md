@@ -8,6 +8,8 @@ The following significant changes have been made since wolkenkit `1.1.0`:
 
 - **Rewritten** wolkenkit CLI using Node.js
   - The wolkenkit CLI was rewritten using Node.js, so you can now install it using npm, either globally or into the local context of your application.
+- **Fixed** a bug in detecting expired OpenID Connect tokens
+  - When using the OpenID Connect authentication strategy, expired tokens were mistakenly regarded valid. This has been fixed.
 - **Contributions** by the community
   - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
