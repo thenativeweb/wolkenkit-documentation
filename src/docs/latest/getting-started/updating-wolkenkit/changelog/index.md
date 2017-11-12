@@ -6,10 +6,12 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `1.1.0`:
 
-- **Rewritten** wolkenkit CLI using Node.js
+- **Updated** wolkenkit to use Node.js `8.9.1`
+  - Now that Node.js 8.x has become the new LTS version, wolkenkit now runs on Node.js `8.9.1`.
+- **Rewritten** the wolkenkit CLI using Node.js
   - The wolkenkit CLI was rewritten using Node.js, so you can now install it using npm, either globally or into the local context of your application.
-- **Fixed** a bug in detecting expired OpenID Connect tokens
-  - When using the OpenID Connect authentication strategy, expired tokens were mistakenly regarded valid. This has been fixed.
+- **Fixed** a bug in detecting expired OpenID Connect tokens in the wolkenkit client SDK
+  - When using the OpenID Connect authentication strategy, expired tokens were sometimes mistakenly regarded as valid by the wolkenkit client SDK. This has been fixed.
 - **Contributions** by the community
   - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
@@ -24,7 +26,7 @@ The following significant changes have been made since wolkenkit `1.0.1`:
   - wolkenkit now runs on Windows 10 with Hyper-V and Docker Machine. The installation instructions can be found at [Installing on Windows](../../installing-wolkenkit/installing-on-windows/).
   - See [thenativeweb/wolkenkit#3](https://github.com/thenativeweb/wolkenkit/issues/3) for details.
 - **Updated** PostgreSQL to `9.6.4`
-  - There was a [security issue](https://www.postgresql.org/about/news/1772/) in PostgreSQL `9.6.2`. With wolkenkit <%= current.version %> PostgreSQL has been updated to `9.6.4`.
+  - There was a [security issue](https://www.postgresql.org/about/news/1772/) in PostgreSQL `9.6.2`. With wolkenkit `1.1.0` PostgreSQL has been updated to `9.6.4`.
 - **Fixed** compatibility with Docker `17.05` and above
   - With CLI `1.0.2`, wolkenkit is compatible with Docker backends running on Docker `17.05` and above.
   - See [thenativeweb/wolkenkit#5](https://github.com/thenativeweb/wolkenkit/issues/5) for details.

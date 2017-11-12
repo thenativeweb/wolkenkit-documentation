@@ -3,9 +3,9 @@
 const metadata = {};
 
 metadata.versions = {
-  cli: '1.1.0',
+  cli: '1.1.3',
   docker: '17.06',
-  node: '6.11.2',
+  node: '8.9.1',
 
   chrome: '60',
   firefox: '54',
