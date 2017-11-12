@@ -4,7 +4,7 @@ wolkenkit-documentation provides the documentation for wolkenkit application dev
 
 ## Installation
 
-```bash
+```shell
 $ npm install
 ```
 
@@ -12,7 +12,7 @@ $ npm install
 
 To build this module run the following command.
 
-```bash
+```shell
 $ bot
 ```
 
