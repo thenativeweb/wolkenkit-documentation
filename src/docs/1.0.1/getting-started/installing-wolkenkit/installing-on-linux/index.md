@@ -32,12 +32,6 @@ To download and install wolkenkit, run the following command:
 $ npm install -g wolkenkit@<%= current.versions.cli %>
 ```
 
-Finally, verify that wolkenkit is installed correctly by running the following command:
-
-```shell
-$ wolkenkit --version
-```
-
 ## Verifying the installation
 
 Verify that wolkenkit is installed correctly by running the following command:
