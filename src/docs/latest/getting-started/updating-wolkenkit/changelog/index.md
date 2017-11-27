@@ -4,6 +4,14 @@ Read what has changed in wolkenkit.
 
 ## <%= current.version %>
 
+The following significant changes have been made since wolkenkit `1.2.0`:
+
+- TBD
+
+For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
+
+## 1.2.0
+
 The following significant changes have been made since wolkenkit `1.1.0`:
 
 - **Updated** wolkenkit to use Node.js `8.9.1`
@@ -16,7 +24,7 @@ The following significant changes have been made since wolkenkit `1.1.0`:
   - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
 
-For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
+For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../1.2.0/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../1.2.0/getting-started/updating-wolkenkit/updating-an-application/).
 
 ## 1.1.0
 

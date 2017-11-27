@@ -6,6 +6,7 @@ const slugify = require('../services/slugify');
 
 const versions = [
   'latest',
+  '1.2.0',
   '1.1.0',
   '1.0.1',
   '1.0.0'
