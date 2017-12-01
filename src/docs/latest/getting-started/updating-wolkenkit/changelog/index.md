@@ -6,7 +6,10 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `1.2.0`:
 
-- TBD
+- **Updated** installation guide for Windows
+  - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [Installing on Windows](../../installing-wolkenkit/installing-on-windows/).
+- **Contributions** by the community
+  - [@colorizedmind](https://github.com/colorizedmind)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
