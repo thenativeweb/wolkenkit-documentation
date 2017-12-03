@@ -13,7 +13,7 @@ If the command takes any parameters, provide them using an options object.
 E.g., to send an `issue` command for an invoice and set its amount to `1000`, use the following code:
 
 ```javascript
-app.accounting.invoice().issue(
+app.accounting.invoice().issue({
   amount: 1000
 });
 ```
@@ -27,7 +27,7 @@ E.g., to send an `issue` command for an existing invoice, use the following code
 ```javascript
 const invoiceId = // ...
 
-app.accounting.invoice(invoiceId).issue(
+app.accounting.invoice(invoiceId).issue({
   // ...
 });
 ```
@@ -39,9 +39,9 @@ If an error happens you will probably want to handle it. For that add the `faile
 E.g., to handle errors that happen when sending the `issue` command, use the following code:
 
 ```javascript
-app.accounting.invoice().issue(
+app.accounting.invoice().issue({
   // ...
-).
+}).
   failed((err, command) => {
     // ...
   });
@@ -54,9 +54,9 @@ If you want to get notified once a command has been delivered to the wolkenkit a
 E.g., to get notified once the `issue` command has been delivered, use the following code:
 
 ```javascript
-app.accounting.invoice().issue(
+app.accounting.invoice().issue({
   // ...
-).
+}).
   delivered(command => {
     // ...
   });
