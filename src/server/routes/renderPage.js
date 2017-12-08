@@ -38,6 +38,7 @@ const renderPage = function () {
               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
               ga('create', 'UA-36681683-5', 'auto');
+              ga('set', 'anonymizeIp', true);
               ga('send', 'pageview');
             </script>`;
       }
