@@ -133,9 +133,14 @@ metadata.navigation = [
       { title: 'Events' }
     ]}
   ]},
-  { title: 'Downloads', children: [
-    { title: 'Brochure' },
-    { title: 'Cheatsheet' }
+  { title: 'Resources', children: [
+    { title: 'Downloads', children: [
+      { title: 'Brochure' },
+      { title: 'Cheatsheet' }
+    ]},
+    { title: 'Press coverage', children: [
+      { title: 'Blog posts' }
+    ]}
   ]},
   { title: 'Legal', children: [
     { title: 'Imprint' }

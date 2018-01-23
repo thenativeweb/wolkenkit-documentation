@@ -8,8 +8,10 @@ The following significant changes have been made since wolkenkit `1.2.0`:
 
 - **Added** the option to set environment variables
   - From time to time you want to configure an application at runtime, not at compile-time, e.g. to provide credentials to different environments. You can now [set environment variables](../../../../<%= current.version %>/reference/configuring-an-application/setting-environment-variables/) using an application's `package.json` file.
+- **Added** a curated list of blog posts
+  - When getting started with wolkenkit, you may be interested in the thoughts and experiences of other people. That's why there now is a [curated list of blog posts](../../../../<%= current.version %>/resources/press-coverage/blog-posts/) that deal with wolkenkit, DDD, event-sourcing and CQRS.
 - **Updated** installation guide for Windows
-  - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [Installing on Windows](../../installing-wolkenkit/installing-on-windows/).
+  - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [Installing on Windows](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-on-windows/).
 - **Fixed** OpenID Connect strict mode
   - The [OpenID Connect strict mode](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) didn't work, because there was a problem in verifying the JWT's nonce. This has been fixed.
 - **Contributions** by the community
