@@ -8,6 +8,8 @@ The following significant changes have been made since wolkenkit `1.2.0`:
 
 - **Updated** installation guide for Windows
   - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [Installing on Windows](../../installing-wolkenkit/installing-on-windows/).
+- **Fixed** OpenID Connect strict mode
+  - The [OpenID Connect strict mode](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) didn't work, because there was a problem in verifying the JWT's nonce. This has been fixed.
 - **Contributions** by the community
   - [@colorizedmind](https://github.com/colorizedmind)
 
