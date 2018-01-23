@@ -21,7 +21,7 @@ const PageFooter = function (props) {
       </div>
       <div className='copyright'>
         <p>
-          © Copyright 2016-2017 the native web GmbH. All rights reserved.
+          © Copyright 2016-2018 the native web GmbH. All rights reserved.
         </p>
         <p>
           <a href={ `/${version}/legal/imprint/` }>Imprint</a>
