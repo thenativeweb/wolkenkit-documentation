@@ -25,6 +25,17 @@ If you think that a blog post is missing, [contact the native web](mailto:hello@
 
 ## German
 
+- heise Developer
+  - [DDD & Co., Teil 1: Was an CRUD falsch ist](https://www.heise.de/developer/artikel/DDD-Co-Teil-1-Was-an-CRUD-falsch-ist-3756224.html)
+  - [DDD & Co., Teil 2: Semantik statt CRUD](https://www.heise.de/developer/artikel/DDD-Co-Teil-2-Semantik-statt-CRUD-3762025.html)
+  - [DDD & Co., Teil 3: Commands und Events](https://www.heise.de/developer/artikel/DDD-Co-Teil-3-Commands-und-Events-3767669.html)
+  - [DDD & Co., Teil 4: Aggregates](https://www.heise.de/developer/artikel/DDD-Co-Teil-4-Aggregates-3780746.html)
+  - [DDD & Co., Teil 5: Event Sourcing](https://www.heise.de/developer/artikel/DDD-Co-Teil-5-Event-Sourcing-3780773.html)
+  - [DDD & Co., Teil 6: Vom Modell zum Code](https://www.heise.de/developer/artikel/DDD-Co-Teil-6-Vom-Modell-zum-Code-3793666.html)
+  - [DDD & Co., Teil 7: CQRS](https://www.heise.de/developer/artikel/DDD-Co-Teil-7-CQRS-3798868.html)
+  - [DDD & Co., Teil 8: Eventual Consistency](https://www.heise.de/developer/artikel/DDD-Co-Teil-8-Eventual-Consistency-3808539.html)
+  - [DDD & Co., Teil 9: Code für das Read Model](https://www.heise.de/developer/artikel/DDD-Co-Teil-9-Code-fuer-das-Read-Model-3839908.html)
+  - [DDD & Co., Teil 10: Hallo wolkenkit](https://www.heise.de/developer/artikel/DDD-Co-Teil-10-Hallo-wolkenkit-3852123.html)
 - Maiborn-Wolff
   - [DDD, Event-Sourcing und CQRS, Teil 1: Theorie und Praxis](https://www.maibornwolff.de/blog/ddd-event-sourcing-und-cqrs)
   - [DDD, Event-Sourcing und CQRS, Teil 2: Ein praktisches Beispiel](https://www.maibornwolff.de/blog/ddd-event-sourcing-und-cqrs-teil-2)
