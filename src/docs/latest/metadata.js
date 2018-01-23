@@ -104,7 +104,8 @@ metadata.navigation = [
       { title: 'Enabling authentication' },
       { title: 'Assigning a Docker Machine' },
       { title: 'Using environments' },
-      { title: 'Setting the Node.js environment' }
+      { title: 'Setting the Node.js environment' },
+      { title: 'Setting environment variables' }
     ]},
     { title: 'Using the CLI', children: [
       { title: 'Controlling the lifecycle' },
