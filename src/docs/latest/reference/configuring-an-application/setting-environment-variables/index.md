@@ -1,6 +1,6 @@
 # Setting environment variables
 
-It may be necessary to set custom environment variables to make your code work as intended. For that, open the application's `package.json` file and set the `wolkenkit/environments/default/environmentVariables` object with key-value pairs that you want to use.
+From time to time, you may want to configure an application at runtime, e.g. to provide credentials depending on the environment. Therefore you can use environment variables. Open the application's `package.json` file and use the `wolkenkit/environments/default/environmentVariables` section.
 
 :::hint-warning
 > **Choose the right environment**
@@ -15,31 +15,32 @@ E.g., to set environment variables, use the following code:
   "environments": {
     "default": {
       "environmentVariables": {
-        "foo": 42,
-        "bar": "baz",
-        "fooBar": 3.1415
+        "username": "jane.doe@example.com",
+        "password": "secret",
+        "isAdministrator": true
       }
     }
   }  
 }
 ```
 
-:::hint-warning
-> **Accessing environment variables inside the application**
->
-> If you want to access an environment variable inside the application, make sure that each
-environment variable is prefixed with `WOLKENKIT_` and in snake and upper cased format.
-:::
+## Accessing environment variables
 
-Finally to access environment variables, use the following code:
+To access the previously set environment variables inside the application, use the `process.env` object:
 
 ```javascript
-process.env.WOLKENKIT_FOO
-// => 42
+process.env.WOLKENKIT_USERNAME
+// => 'jane.doe@example.com'
 
-process.env.WOLKENKIT_BAR
-// => "baz"
+process.env.WOLKENKIT_PASSWORD
+// => 'secret'
 
-process.env.WOLKENKIT_FOO_BAR
-// => 3.1415
+process.env.WOLKENKIT_IS_ADMINISTRATOR
+// => true
 ```
+
+:::hint-warning
+> **Watch the names**
+>
+> Note that the environment variables' names get transformed, as they are capitalized and prefixed with `WOLKENKIT_`. Any camel casing is replaced by the `_` character. This way `isAdministrator` becomes `WOLKENKIT_IS_ADMINISTRATOR`.
+:::

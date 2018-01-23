@@ -23,7 +23,6 @@ E.g., to allow access from `http://example.com`, use the following code:
   }
 }
 ```
-:::
 
 ## Using multiple protocols
 
