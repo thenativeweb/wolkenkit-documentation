@@ -133,13 +133,20 @@ metadata.navigation = [
       { title: 'Events' }
     ]}
   ]},
-  { title: 'Resources', children: [
+  { title: 'Media', children: [
     { title: 'Downloads', children: [
       { title: 'Brochure' },
       { title: 'Cheatsheet' }
     ]},
-    { title: 'Press coverage', children: [
+    { title: 'Online resources', children: [
       { title: 'Blog posts' }
+    ]},
+    { title: 'Sample applications', children: [
+      { title: 'wolkenkit-boards' },
+      { title: 'wolkenkit-geocaching' },
+      { title: 'wolkenkit-nevercompletedgame' },
+      { title: 'wolkenkit-template-chat' },
+      { title: 'wolkenkit-todomvc' }
     ]}
   ]},
   { title: 'Legal', children: [
