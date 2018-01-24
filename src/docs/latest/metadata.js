@@ -139,6 +139,7 @@ metadata.navigation = [
       { title: 'Cheatsheet' }
     ]},
     { title: 'Online resources', children: [
+      { title: 'Articles' },
       { title: 'Blog posts' }
     ]},
     { title: 'Sample applications', children: [
