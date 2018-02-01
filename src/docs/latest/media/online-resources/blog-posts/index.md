@@ -6,6 +6,8 @@ If you think that a blog post is missing, [contact the native web](mailto:hello@
 
 ## English
 
+- Auth0
+  - [Building real-time web applications using wolkenkit](https://auth0.com/blog/building-real-time-web-applications-using-wolkenkit/)
 - Intuity
   - [wolkenkit - the JavaScript backend designed to bridge the gap between domain and technology](https://www.intuity.de/wolkenkit-the-javascript-backend-designed-to-bridge-the-gap-between-domain-and-technology/)
   - [Boards in the clouds, part 1: Introduction](https://www.intuity.de/boards-in-the-clouds-part-1-introduction/)
