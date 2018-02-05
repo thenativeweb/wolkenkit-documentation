@@ -8,6 +8,9 @@ const createHistory = require('history').createBrowserHistory,
       ReactDom = require('react-dom');
 /* eslint-enable no-unused-vars */
 
+// Polyfill for Object.assign for IE11.
+require('es6-object-assign/auto');
+
 // Since cookieconsent returns an empty object, we have to require its built
 // file directly.
 require('cookieconsent/build/cookieconsent.min.js');
