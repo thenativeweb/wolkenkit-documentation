@@ -31,3 +31,9 @@ $ wolkenkit init --template git@github.com:<org>/<repository>.git#<branch-or-tag
 ```
 
 If you don't specify a branch or a tag explicitly, the CLI uses `master` as default.
+
+## Overwriting existing files
+
+By default, `wolkenkit init` will refuse to run in a non-empty directory, as this could lead to existing files being overwritten accidentally. However, sometimes it makes sense to disable this check and force the CLI to overwrite any existing files, e.g. when you have already created a repository.
+
+To disable this check and overwrite any existing files, add the `--force` flag.
