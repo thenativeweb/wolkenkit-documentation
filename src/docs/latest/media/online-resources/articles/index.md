@@ -14,5 +14,6 @@ If you think that an article is missing, [contact the native web](mailto:hello@t
   - [Jung trifft alt](https://www.dotnetpro.de/core/architektur/jung-trifft-alt-1432454.html) (subscribers only)
   - [Anwendungsentwicklung mit dem wolkenkit, Teil 1: Von der Idee zum Modell](https://www.dotnetpro.de/core/idee-modell-1450461.html) (subscribers only)
   - [Anwendungsentwicklung mit dem wolkenkit, Teil 2: Vom Modell zum Backend](https://www.dotnetpro.de/workout/cloud/modell-backend-1459876.html) (subscribers only)
+  - [Anwendungsentwicklung mit dem wolkenkit, Teil 3: In die Vergangenheit reisen](https://www.dotnetpro.de/workout/cloud/in-vergangenheit-reisen-1470420.html) (subscribers only)
 - heise Developer
   - [Domain-driven Design erklärt](https://www.heise.de/developer/artikel/Domain-driven-Design-erklaert-3130720.html)
