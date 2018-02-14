@@ -13,6 +13,8 @@ If you think that a blog post is missing, [contact the native web](mailto:hello@
   - [Boards in the clouds, part 1: Introduction](https://www.intuity.de/boards-in-the-clouds-part-1-introduction/)
   - [Boards in the clouds, part 2: Modelling with our team](https://www.intuity.de/boards-in-the-clouds-part-2-modelling-with-our-team/)
   - [Boards in the clouds, part 3: Building the realtime API](https://www.intuity.de/boards-in-the-clouds-part-3-building-the-realtime-api/)
+- RisingStack
+  - [Event sourcing vs CRUD](https://community.risingstack.com/event-sourcing-vs-crud/)
 - the native web
   - [DDD & co., part 1: What's wrong with CRUD](https://www.thenativeweb.io/blog/2017-10-25-09-46-ddd-and-co-part-1-whats-wrong-with-crud/)
   - [DDD & co., part 2: Semantics over CRUD](https://www.thenativeweb.io/blog/2017-11-01-11-13-ddd-and-co-part-2-semantics-over-crud/)
