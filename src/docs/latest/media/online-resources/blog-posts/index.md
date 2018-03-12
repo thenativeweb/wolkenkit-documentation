@@ -13,6 +13,7 @@ If you think that a blog post is missing, [contact the native web](mailto:hello@
   - [Boards in the clouds, part 1: Introduction](https://www.intuity.de/boards-in-the-clouds-part-1-introduction/)
   - [Boards in the clouds, part 2: Modelling with our team](https://www.intuity.de/boards-in-the-clouds-part-2-modelling-with-our-team/)
   - [Boards in the clouds, part 3: Building the realtime API](https://www.intuity.de/boards-in-the-clouds-part-3-building-the-realtime-api/)
+  - [wolkenkit: Working together to create a connected world](https://www.intuity.de/en/wolkenkit-die-vernetzte-welt-collaborativ-entwickeln/)
 - RisingStack
   - [Event sourcing vs CRUD](https://community.risingstack.com/event-sourcing-vs-crud/)
   - [When to use CQRS?!](https://community.risingstack.com/when-to-use-cqrs/)
@@ -41,6 +42,8 @@ If you think that a blog post is missing, [contact the native web](mailto:hello@
   - [DDD & Co., Teil 8: Eventual Consistency](https://www.heise.de/developer/artikel/DDD-Co-Teil-8-Eventual-Consistency-3808539.html)
   - [DDD & Co., Teil 9: Code für das Read Model](https://www.heise.de/developer/artikel/DDD-Co-Teil-9-Code-fuer-das-Read-Model-3839908.html)
   - [DDD & Co., Teil 10: Hallo wolkenkit](https://www.heise.de/developer/artikel/DDD-Co-Teil-10-Hallo-wolkenkit-3852123.html)
+- Intuity
+  - [wolkenkit: Die vernetzte Welt co-kreativ entwickeln](https://www.intuity.de/wolkenkit-die-vernetzte-welt-collaborativ-entwickeln/)
 - Maiborn-Wolff
   - [DDD, Event-Sourcing und CQRS, Teil 1: Theorie und Praxis](https://www.maibornwolff.de/blog/ddd-event-sourcing-und-cqrs)
   - [DDD, Event-Sourcing und CQRS, Teil 2: Ein praktisches Beispiel](https://www.maibornwolff.de/blog/ddd-event-sourcing-und-cqrs-teil-2)
