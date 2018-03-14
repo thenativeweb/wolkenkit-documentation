@@ -13,6 +13,7 @@ If you think that a blog post is missing, [contact the native web](mailto:hello@
   - [Boards in the clouds, part 1: Introduction](https://www.intuity.de/boards-in-the-clouds-part-1-introduction/)
   - [Boards in the clouds, part 2: Modelling with our team](https://www.intuity.de/boards-in-the-clouds-part-2-modelling-with-our-team/)
   - [Boards in the clouds, part 3: Building the realtime API](https://www.intuity.de/boards-in-the-clouds-part-3-building-the-realtime-api/)
+  - [Boards in the clouds, part 4: Building the client](https://www.intuity.de/en/boards-in-the-clouds-part-4-building-the-client/)
   - [wolkenkit: Working together to create a connected world](https://www.intuity.de/en/wolkenkit-die-vernetzte-welt-collaborativ-entwickeln/)
 - RisingStack
   - [Event sourcing vs CRUD](https://community.risingstack.com/event-sourcing-vs-crud/)
