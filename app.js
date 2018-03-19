@@ -2,13 +2,12 @@
 
 require('babel-register')();
 
-const path = require('path');
+const http = require('http'),
+      path = require('path');
 
 const compression = require('compression'),
       express = require('express'),
-      flaschenpost = require('flaschenpost'),
-      httpsOrHttp = require('https-or-http'),
-      processenv = require('processenv');
+      flaschenpost = require('flaschenpost');
 
 const compile = require('./compile'),
       routes = require('./src/server/routes');
@@ -16,9 +15,7 @@ const compile = require('./compile'),
 const logger = flaschenpost.getLogger();
 
 const app = express(),
-      certificateDirectory = path.join('/', 'keys', 'local.wolkenkit.io'),
-      portHttp = processenv('PORT_HTTP') || 8000,
-      portHttps = processenv('PORT_HTTPS') || 9000;
+      port = 8000;
 
 app.use(compression());
 app.use('/robots.txt', routes.renderRobots());
@@ -28,33 +25,17 @@ app.use('/', routes.serveClient());
 app.use('/', routes.serveContent());
 app.get('*', routes.renderPage());
 
-httpsOrHttp({
-  app,
-  certificateDirectory,
-  ports: {
-    http: portHttp,
-    https: portHttps
-  }
-}, (err, servers) => {
+compile(err => {
   if (err) {
-    logger.error(err.message, err);
-
-    return;
+    /* eslint-disable no-process-exit */
+    logger.error('Compilation failed.', { err });
+    process.exit(1);
+    /* eslint-enable no-process-exit */
   }
 
-  logger.info('Documentation server started.', { protocol: servers.app.protocol, port: servers.app.port });
+  const server = http.createServer(app);
 
-  if (servers.app.protocol === 'http') {
-    compile(errCompile => {
-      if (errCompile) {
-        /* eslint-disable no-process-exit */
-        process.exit(1);
-        /* eslint-enable no-process-exit */
-      }
-    });
-  }
-
-  if (servers.redirect) {
-    logger.info('Redirect server started.', { protocol: servers.redirect.protocol, port: servers.redirect.port });
-  }
+  server.listen(port, () => {
+    logger.info('Server started.');
+  });
 });

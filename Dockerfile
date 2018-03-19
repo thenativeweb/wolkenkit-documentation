@@ -5,8 +5,6 @@ ADD . /documentation/
 
 WORKDIR /documentation
 
-RUN npm install --production --silent && \
-    node ./helpers/build.js && \
-    rm -rf /tmp/* /root/.npm /root/.node-gyp
+RUN npm install --production --silent
 
 CMD [ "dumb-init", "node", "app.js" ]
