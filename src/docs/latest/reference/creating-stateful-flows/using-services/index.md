@@ -7,10 +7,20 @@ E.g., if you want to use services when a flow transitions from the `pristine` st
 ```javascript
 const when = {
   pristine: {
-    'awaiting-payment' (flow, event, services, mark) {
+    'awaiting-payment' (flow, event, services) {
       // ...
+    }
+  }  
+};
+```
 
-      mark.asDone();
+Since you do not usually need all services at the same time, it will make sense to request only the services you need. To do this, use destructuring to specify the services you need, e.g.:
+
+```javascript
+const when = {
+  pristine: {
+    'awaiting-payment' (flow, event, { app }) {
+      // ...
     }
   }  
 };
@@ -31,12 +41,8 @@ E.g., if you want to send an `awaitPayment` command to the invoice that caused a
 ```javascript
 const when = {
   pristine: {
-    'awaiting-payment' (flow, event, services, mark) {
-      const app = services.get('app');
-
+    'awaiting-payment' (flow, event, { app }) {
       app.accounting.invoice(event.aggregate.id).awaitPayment();
-
-      mark.asDone();
     }
   }  
 };
@@ -51,13 +57,9 @@ E.g., to log messages when a flow transitions from the `pristine` state to the `
 ```javascript
 const when = {
   pristine: {
-    'awaiting-payment' (flow, event, services, mark) {
-      const logger = services.get('logger');
-
+    'awaiting-payment' (flow, event, { logger }) {
       logger.info('Transitioning from pristine to awaiting payment...');
       // ...
-
-      mark.asDone();
     }
   }  
 };

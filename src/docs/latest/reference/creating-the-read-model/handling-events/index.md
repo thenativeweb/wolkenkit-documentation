@@ -1,16 +1,25 @@
 # Handling events
 
-To handle an event, add the fully-qualified name of the event to the `when` object and provide a function to handle the event. Like commands, this function takes three parameters: the list itself, the event, and a `mark` object.
+To handle an event, add the fully-qualified name of the event to the `when` object and provide a function to handle the event. Like commands, this function takes two parameters, the list itself and the event.
 
-Inside of the function, add code that updates the list according to the event. Once you are done, call the `mark.asDone` function.
+Inside of the function, add code that updates the list according to the event.
 
 E.g., to handle the `issued` event of an invoice, use the following code:
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (invoices, event, mark) {
+  'accounting.invoice.issued' (invoices, event) {
     // ...
-    mark.asDone();
+  }
+};
+```
+
+Some event handlers require asynchronous code. Therefore, you can use the keywords `async` and `await`. To be able do this, define the handler using the `async` keyword:
+
+```javascript
+const when = {
+  async 'accounting.invoice.issued' (invoices, event) {
+    // ...
   }
 };
 ```
@@ -29,12 +38,11 @@ E.g., to add an invoice to the list of invoices once an `issued` event is receiv
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (invoices, event, mark) {
+  'accounting.invoice.issued' (invoices, event) {
     invoices.add({
       amount: event.data.amount,
       participant: event.data.participant
     });
-    mark.asDone();
   }
 };
 ```
@@ -47,14 +55,13 @@ E.g., to update an invoice once a `sentAsLetterPost` event is received, use the 
 
 ```javascript
 const when = {
-  'accounting.invoice.sentAsLetterPost' (invoices, event, mark) {
+  'accounting.invoice.sentAsLetterPost' (invoices, event) {
     invoices.update({
       where: { id: event.aggregate.id },
       set: {
         sentAsLetterPost: true
       }
     });
-    mark.asDone();
   }
 };
 ```
@@ -67,11 +74,10 @@ E.g., to remove an invoice from the list of invoices once a `paid` event is rece
 
 ```javascript
 const when = {
-  'accounting.invoice.paid' (invoices, event, mark) {
+  'accounting.invoice.paid' (invoices, event) {
     invoices.remove({
       where: { id: event.aggregate.id }
     });
-    mark.asDone();
   }
 };
 ```

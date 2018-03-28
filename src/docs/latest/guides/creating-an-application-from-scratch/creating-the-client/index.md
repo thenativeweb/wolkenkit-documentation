@@ -30,7 +30,7 @@ chat
 :::hint-congrats
 > **Vanilla JavaScript**
 >
-> The client does not depend on a specific UI framework, so you do not need any special knowledge besides what you know about vanilla JavaScript anyway.
+> The client does not rely on a specific UI framework, so you do not need any special knowledge besides what you know about vanilla JavaScript anyway.
 :::
 
 ## Connecting the client to the backend

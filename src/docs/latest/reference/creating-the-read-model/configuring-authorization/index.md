@@ -19,11 +19,10 @@ Now, make the list of invoices handle this event and add a new item:
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (invoices, event, mark) {
+  'accounting.invoice.issued' (invoices, event) {
     invoices.add({
       amount: event.data.amount
     });
-    mark.asDone();
   }
 };
 ```

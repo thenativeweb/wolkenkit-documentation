@@ -45,19 +45,17 @@ For more details, see [defining fields](../../../reference/creating-the-read-mod
 
 The next question is how the list becomes filled with messages. For that you need to handle the events that have been published by the write model.
 
-Whenever a message has been sent, add it to the list of messages, and set the text and timestamp to the data that are provided by the event. Add a `communication.message.sent` function to the `when` object. It receives three parameters, the `messages` list itself, the actual `event`, and a `mark` object.
+Whenever a message has been sent, add it to the list of messages, and set the text and timestamp to the data that are provided by the event. Add a `communication.message.sent` function to the `when` object. It receives two parameters, the `messages` list itself and the actual `event`.
 
-Add the message to the list by calling its `add` function. You do not need to set the `id` field, as it gets automatically populated using the aggregate's id that is given in the event. Afterwards you need to mark the event as handled by calling the `mark.asDone` function:
+Add the message to the list by calling its `add` function. You do not need to set the `id` field, as it gets automatically populated using the aggregate's id that is given in the event:
 
 ```javascript
 const when = {
-  'communication.message.sent' (messages, event, mark) {
+  'communication.message.sent' (messages, event) {
     messages.add({
       text: event.data.text,
       timestamp: event.metadata.timestamp
     });
-
-    mark.asDone();
   }
 };
 ```
@@ -71,14 +69,13 @@ Handling the *liked* event is basically the same as handling the *sent* event. T
 ```javascript
 const when = {
   // ...
-  'communication.message.liked' (messages, event, mark) {
+  'communication.message.liked' (messages, event) {
     messages.update({
       where: { id: event.aggregate.id },
       set: {
         likes: event.data.likes
       }
     });
-    mark.asDone();
   }
 };
 ```
@@ -97,27 +94,26 @@ const fields = {
 };
 
 const when = {
-  'communication.message.sent' (messages, event, mark) {
+  'communication.message.sent' (messages, event) {
     messages.add({
       text: event.data.text,
       timestamp: event.metadata.timestamp
     });
-    mark.asDone();
   },
 
-  'communication.message.liked' (messages, event, mark) {
+  'communication.message.liked' (messages, event) {
     messages.update({
       where: { id: event.aggregate.id },
       set: {
         likes: event.data.likes
       }
     });
-    mark.asDone();
   }
 };
 
 module.exports = { fields, when };
 ```
+
 :::hint-congrats
 > **Yay, congratulations!**
 >
