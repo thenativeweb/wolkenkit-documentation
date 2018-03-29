@@ -18,7 +18,13 @@ const events = {
 };
 ```
 
-For a detailled list of an event's properties, see the [data structure of events](../../data-structures/events/).
+:::hint-warning
+> **Events are always asynchronous**
+>
+> Unlike commands, events are always synchronous. Therefore, you must not use the `async` keyword here. You should also be careful not to have any logic in an event, besides updating the state.
+:::
+
+For a detailed list of an event's properties, see the [data structure of events](../../data-structures/events/).
 
 :::hint-warning
 > **Reserved event names**

@@ -26,11 +26,15 @@ Some commands require asynchronous code. Therefore, you can use the keywords `as
 const commands = {
   async issue (invoice, command) {
     // ...
+
+    const result = await validateInvoice();
+
+    // ...
   }
 };
 ```
 
-For a detailled list of a command's properties, see the [data structure of commands](../../data-structures/commands/).
+For a detailed list of a command's properties, see the [data structure of commands](../../data-structures/commands/).
 
 :::hint-warning
 > **Reserved command names**

@@ -7,7 +7,7 @@ Read what has changed in wolkenkit.
 The following significant changes have been made since wolkenkit `1.2.0`:
 
 - **Added** support for `async` and `await`
-  - JavaScript code is often asynchronous. In the past, you had to use callbacks for this. Now wolkenkit supports the new `async` and `await` keywords, which allow you to write asynchronous code much more easily and legibly.
+  - JavaScript code is often asynchronous. In the past, you had to use callbacks for this. Now wolkenkit supports the new `async` and `await` keywords, which allow you to write asynchronous code much more easily and legibly. This primarily affects defining commands in the write model, handling events in the read model, and reacting to events in flows. Additionally this affects writing command middleware and using services in general. See [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/) for details.
 - **Added** the option to set environment variables
   - From time to time you want to configure an application at runtime, not at compile-time, e.g. to provide credentials to different environments. You can now [set environment variables](../../../../<%= current.version %>/reference/configuring-an-application/setting-environment-variables/) using an application's `package.json` file.
 - **Added** a curated list of blog posts

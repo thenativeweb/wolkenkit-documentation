@@ -60,7 +60,63 @@ const commands = {
 };
 ```
 
-Please note that you can omit the `async` keyword if you don't use asynchronous code in your command.
+Please note that you can omit the `async` keyword if you don't use asynchronous code in your command. For details see [defining commands](../../../reference/creating-the-write-model/defining-commands/).
+
+## Write model, using command middleware
+
+**Previous version (1.2.0)**
+
+```javascript
+const commands = {
+  send: [
+    (message, command, mark) => {
+      if (...) {
+        return mark.asRejected('Failed to validate message.');
+      }
+
+      // ...
+
+      mark.asReadyForNext();
+    },
+
+    (message, command, mark) => {
+     if (...) {
+       return mark.asRejected('Failed to send message.');
+     }
+
+     // ...
+
+     mark.asDone();
+   }
+  ]
+};
+```
+
+**Current version (<%= current.version %>)**
+
+```javascript
+const commands = {
+  send: [
+    async (message, command) => {
+      if (...) {
+        return command.reject('Failed to validate message.');
+      }
+
+      // ...
+    },
+
+    async (message, command) => {
+     if (...) {
+       return command.reject('Failed to send message.');
+     }
+
+     // ...
+   }
+  ]
+};
+```
+
+Please note that you can omit the `async` keyword if you don't use asynchronous code in your middleware. For details see [using command middleware](../../../reference/creating-the-write-model/using-command-middleware/).
 
 ## Write model, using services
 
@@ -88,6 +144,8 @@ const commands = {
 };
 ```
 
+For details see [using command services](../../../reference/creating-the-write-model/using-command-services/).
+
 ## Read model, handling events
 
 **Previous version (1.2.0)**
@@ -112,7 +170,7 @@ const when = {
 };
 ```
 
-Please note that you can omit the `async` keyword if you don't use asynchronous code in your handler.
+Please note that you can omit the `async` keyword if you don't use asynchronous code in your handler. For details see [handling events](../../../reference/creating-the-read-model/handling-events/).
 
 ## Read model, using services
 
@@ -140,6 +198,8 @@ const when = {
 };
 ```
 
+For details see [using services](../../../reference/creating-the-read-model/using-services/).
+
 ## Stateless flows, handling events
 
 **Previous version (1.2.0)**
@@ -164,7 +224,7 @@ const when = {
 };
 ```
 
-Please note that you can omit the `async` keyword if you don't use asynchronous code in your reaction.
+Please note that you can omit the `async` keyword if you don't use asynchronous code in your reaction. For details see [handling events](../../../reference/creating-stateless-flows/handling-events/).
 
 ## Stateless flows, using services
 
@@ -191,6 +251,8 @@ const when = {
   }
 };
 ```
+
+For details see [using services](../../../reference/creating-stateless-flows/using-services/).
 
 ## Stateful flows, handling events
 
@@ -220,7 +282,7 @@ const when = {
 };
 ```
 
-Please note that you can omit the `async` keyword if you don't use asynchronous code in your reaction.
+Please note that you can omit the `async` keyword if you don't use asynchronous code in your reaction. For details see [handling events](../../../reference/creating-stateful-flows/handling-events/).
 
 ## Stateful flows, using services
 
@@ -251,3 +313,5 @@ const when = {
   }
 };
 ```
+
+For details see [using services](../../../reference/creating-stateful-flows/using-services/).
