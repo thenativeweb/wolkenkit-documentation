@@ -60,8 +60,7 @@ const renderPage = function () {
             <script type="text/javascript" src="/wk-docs.js"></script>
             ${gaCode}
           </body>
-        </html>`
-      );
+        </html>`);
     });
   };
 };
