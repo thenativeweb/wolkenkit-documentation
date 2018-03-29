@@ -26,8 +26,7 @@ E.g., if you want to collect the information that an invoice was sent as letter 
 
 ```javascript
 const formats = require('formats'),
-      handle = require('wolkenkit-command-tools').handle,
-      only = require('wolkenkit-command-tools').only;
+      { handle, only } = require('wolkenkit-command-tools');
 
 // ...
 

@@ -6,9 +6,18 @@ E.g., if you want to use services from within the `accounting.invoice.issued` ev
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (invoices, event, services, mark) {
+  'accounting.invoice.issued' (invoices, event, services) {
     // ...
-    mark.asDone();
+  }
+};
+```
+
+Since you do not usually need all services at the same time, it will make sense to request only the services you need. To do this, use destructuring to specify the services you need, e.g.:
+
+```javascript
+const when = {
+  'accounting.invoice.issued' (invoices, event, { app }) {
+    // ...
   }
 };
 ```
@@ -21,19 +30,12 @@ E.g., if you want to read another invoice from the `accounting.invoice.issued` e
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (invoices, event, services, mark) {
-    const app = services.get('app');
-
-    app.lists.invoices.readOne({
+  async 'accounting.invoice.issued' (invoices, event, { app }) {
+    const otherInvoice = await app.lists.invoices.readOne({
       where: { id: '664745ac-808a-4c16-8420-f43d9deeee04' }
-    }).
-      failed(err => {
-        // ...
-      }).
-      finished(otherInvoice => {
-        // ...
-        mark.asDone();
-      });
+    });
+
+    // ...
   }
 };
 ```
@@ -46,13 +48,10 @@ E.g., to log messages from within the `accounting.invoice.issued` event handler,
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (invoices, event, services, mark) {
-    const logger = services.get('logger');
-
+  'accounting.invoice.issued' (invoices, event, { logger }) {
     logger.info('Handling an issued invoice...');
 
     // ...
-    mark.asDone();
   }
 };
 ```

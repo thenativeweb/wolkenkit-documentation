@@ -6,6 +6,8 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `1.2.0`:
 
+- **Added** support for `async` and `await`
+  - JavaScript code is often asynchronous. In the past, you had to use callbacks for this. Now wolkenkit supports the new `async` and `await` keywords, which allow you to write asynchronous code much more easily and legibly. This primarily affects defining commands in the write model, handling events in the read model, and reacting to events in flows. Additionally this affects writing command middleware and using services in general. See [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/) for details.
 - **Added** the option to set environment variables
   - From time to time you want to configure an application at runtime, not at compile-time, e.g. to provide credentials to different environments. You can now [set environment variables](../../../../<%= current.version %>/reference/configuring-an-application/setting-environment-variables/) using an application's `package.json` file.
 - **Added** a curated list of blog posts
@@ -14,12 +16,13 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - When getting started with wolkenkit, you may be interested in what IT magazines think and write about it. That's why there now is a [curated list of articles](../../../../<%= current.version %>/media/online-resources/articles/) that deal with wolkenkit, DDD, event-sourcing and CQRS.
 - **Updated** installation guide for Windows
   - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [Installing on Windows](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-on-windows/).
-- **Updated** wolkenkit init to work in non-empty directories
+- **Updated** `wolkenkit init` to work in non-empty directories
   - It was not yet possible to run the `wolkenkit init` command in a non-empty directory, as this could lead to existing files being overwritten accidentally. Now there is the `--force` flag to disable this check and [overwrite any existing files](../../../../<%= current.version %>/reference/initializing-an-application/using-a-template/#overwriting-existing-files).
 - **Fixed** OpenID Connect strict mode
   - The [OpenID Connect strict mode](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) didn't work, because there was a problem in verifying the JWT's nonce. This has been fixed.
 - **Contributions** by the community
   - [@colorizedmind](https://github.com/colorizedmind)
+  - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).

@@ -31,16 +31,6 @@ metadata.navigation = [
       { title: 'Installing on Linux' },
       { title: 'Installing using Docker Machine' }
     ]}
-
-    /*
-    * This section has been removed temporarily. It will be added
-    * again once the next public version is released.
-    */
-    // { title: 'Updating wolkenkit', children: [
-    //   { title: 'Changelog' },
-    //   { title: 'Updating the CLI' },
-    //   { title: 'Updating an application' }
-    // ]}
   ]},
   { title: 'Guides', children: [
     { title: 'Creating your first application', children: [

@@ -75,7 +75,7 @@ page.load({
     return;
   }
 
-  ReactDom.render(
+  ReactDom.hydrate(
     <Docs
       activePath={ activePath }
       history={ history }

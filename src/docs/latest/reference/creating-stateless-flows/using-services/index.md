@@ -6,9 +6,18 @@ E.g., if you want to use services from within the `accounting.invoice.issued` ev
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (event, services, mark) {
+  'accounting.invoice.issued' (event, services) {
     // ...
-    mark.asDone();
+  }
+};
+```
+
+Since you do not usually need all services at the same time, it will make sense to request only the services you need. To do this, use destructuring to specify the services you need, e.g.:
+
+```javascript
+const when = {
+  'accounting.invoice.issued' (event, { app }) {
+    // ...
   }
 };
 ```
@@ -27,12 +36,8 @@ E.g., if you want to send a `check` command from the `accounting.invoice.issued`
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (event, services, mark) {
-    const app = services.get('app');
-
+  'accounting.invoice.issued' (event, { app }) {
     app.accounting.invoice(event.aggregate.id).check();
-
-    mark.asDone();
   }
 };
 ```
@@ -45,13 +50,10 @@ E.g., to log messages from within the `accounting.invoice.issued` event handler,
 
 ```javascript
 const when = {
-  'accounting.invoice.issued' (event, services, mark) {
-    const logger = services.get('logger');
-
+  'accounting.invoice.issued' (event, { logger }) {
     logger.info('Handling an issued invoice...');
 
     // ...
-    mark.asDone();
   }
 };
 ```

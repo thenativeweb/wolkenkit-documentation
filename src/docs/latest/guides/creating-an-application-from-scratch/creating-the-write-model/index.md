@@ -141,18 +141,16 @@ For more details, see [defining the initial state](../../../reference/creating-t
 
 ## Implementing the send command
 
-Now let's create the *send* command by adding a `send` function to the `commands` object. It receives three parameters, the `message` itself, the actual `command`, and a `mark` object. For details on the structure of the `command` object, see the [data structure of commands](../../../reference/data-structures/commands/).
+Now let's create the *send* command by adding a `send` function to the `commands` object. It receives two parameters, the `message` itself and the actual `command`. For details on the structure of the `command` object, see the [data structure of commands](../../../reference/data-structures/commands/).
 
-Inside of this function you need to figure out whether the command is valid, and if so, publish an event. Afterwards you need to mark the command as handled by calling the `mark.asDone` function. In the simplest case your code looks like this:
+Inside of this function you need to figure out whether the command is valid, and if so, publish an event. In the simplest case your code looks like this:
 
 ```javascript
 const commands = {
-  send (message, command, mark) {
+  send (message, command) {
     message.events.publish('sent', {
       text: command.data.text
     });
-
-    mark.asDone();
   }  
 };
 ```
@@ -162,9 +160,9 @@ Please note that you need to add the text that is contained within the command t
 Although this is going to work, it has one major drawback. The code also publishes the `sent` event for empty messages, as there is no validation. To add this, check the command's `data` property and reject the command if the text is missing:
 
 ```javascript
-send (message, command, mark) {
+send (message, command) {
   if (!command.data.text) {
-    return mark.asRejected('Text is missing.');
+    return command.reject('Text is missing.');
   }
 
   // ...
@@ -198,10 +196,8 @@ Implementing the *like* command is basically the same as implementing the *send*
 ```javascript
 const commands = {
   // ...
-  like (message, command, mark) {
+  like (message, command) {
     message.events.publish('liked');
-
-    mark.asDone();
   }  
 };
 ```
@@ -276,24 +272,20 @@ const initialState = {
 };
 
 const commands = {
-  send (message, command, mark) {
+  send (message, command) {
     if (!command.data.text) {
-      return mark.asRejected('Text is missing.');
+      return command.reject('Text is missing.');
     }
 
     message.events.publish('sent', {
       text: command.data.text
     });
-
-    mark.asDone();
   },
 
-  like (message, command, mark) {
+  like (message, command) {
     message.events.publish('liked', {
       likes: message.state.likes + 1
     });
-
-    mark.asDone();
   }
 };
 

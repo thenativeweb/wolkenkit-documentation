@@ -6,9 +6,18 @@ E.g., if you want to use services from within the `issue` command, use the follo
 
 ```javascript
 const commands = {
-  issue (invoice, command, services, mark) {
+  issue (invoice, command, services) {
     // ...
-    mark.asDone();
+  }
+};
+```
+
+Since you do not usually need all services at the same time, it will make sense to request only the services you need. To do this, use destructuring to specify the services you need, e.g.:
+
+```javascript
+const commands = {
+  issue (invoice, command, { app }) {
+    // ...
   }
 };
 ```
@@ -21,15 +30,10 @@ E.g., if you want to read another invoice from the `issue` command, use the foll
 
 ```javascript
 const commands = {
-  issue (invoice, command, services, mark) {
-    const app = services.get('app');
+  async issue (invoice, command, { app }) {
+    const otherInvoice = await app.accounting.invoice(otherInvoiceId).read();
 
-    const otherInvoiceId = // ...
-
-    app.accounting.invoice(otherInvoiceId).read((err, otherInvoice) => {
-      // ...
-      mark.asDone();
-    });
+    // ...
   }
 };
 ```
@@ -42,13 +46,10 @@ E.g., to log message from within the `issue` command, use the following code:
 
 ```javascript
 const commands = {
-  issue (invoice, command, services, mark) {
-    const logger = services.get('logger');
-
+  issue (invoice, command, { logger }) {
     logger.info('Issuing an invoice...');
 
     // ...
-    mark.asDone();
   }
 };
 ```
