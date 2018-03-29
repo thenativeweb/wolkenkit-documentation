@@ -2,8 +2,9 @@
 
 const path = require('path');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin'),
-      flaschenpost = require('flaschenpost'),
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const flaschenpost = require('flaschenpost'),
       processenv = require('processenv'),
       webpack = require('webpack');
 
@@ -13,7 +14,7 @@ const isProductionMode = processenv('NODE_ENV') === 'production';
 
 const webpackConfiguration = {
   bail: true,
-  devtool: isProductionMode ? undefined : 'eval',
+  mode: isProductionMode ? 'production' : 'development',
   context: path.join(__dirname, 'src'),
   entry: [
     './client/index.jsx',
@@ -21,7 +22,9 @@ const webpackConfiguration = {
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'wk-docs.js'
+    filename: 'wk-docs.js',
+    chunkFilename: '[name].bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -36,26 +39,20 @@ const webpackConfiguration = {
         }
       },
       {
-        test: /\.json$/,
-        use: {
-          loader: 'json-loader'
-        }
-      },
-      {
         test: /\.less$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            'css-loader',
-            'postcss-loader',
-            'less-loader'
-          ],
-          fallback: 'style-loader'
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { minimize: true }},
+          'postcss-loader',
+          'less-loader'
+        ]
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('wk-docs.css')
+    new MiniCssExtractPlugin({
+      filename: 'wk-docs.css'
+    })
   ]
 };
 
@@ -67,7 +64,6 @@ const environmentConfig = {
 
 if (isProductionMode) {
   environmentConfig['process.env'].NODE_ENV = JSON.stringify('production');
-  webpackConfiguration.plugins.push(new webpack.optimize.UglifyJsPlugin());
 }
 
 webpackConfiguration.plugins.push(new webpack.DefinePlugin(environmentConfig));
