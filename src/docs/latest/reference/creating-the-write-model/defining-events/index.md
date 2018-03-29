@@ -6,6 +6,12 @@ To define an event add an appropriately named function to the `events` object of
 
 Inside of the function, add code that modifies the aggregate state. For that use the `setState` function of the aggregate.
 
+:::hint-warning
+> **Always handle events synchronously**
+>
+> You should be careful not to have any logic in an event, besides updating the state. That's why, unlike commands, events are always synchronous. Therefore, you must not use the `async` keyword here.
+:::
+
 E.g., to handle an `issued` event and set the `isIssued` property to `true`, use the following code:
 
 ```javascript
@@ -17,12 +23,6 @@ const events = {
   }
 };
 ```
-
-:::hint-warning
-> **Events are always asynchronous**
->
-> Unlike commands, events are always synchronous. Therefore, you must not use the `async` keyword here. You should also be careful not to have any logic in an event, besides updating the state.
-:::
 
 For a detailed list of an event's properties, see the [data structure of events](../../data-structures/events/).
 
