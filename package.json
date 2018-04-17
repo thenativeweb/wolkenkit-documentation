@@ -80,9 +80,12 @@
   "devDependencies": {
     "broken-link-checker": "0.7.8",
     "knockat": "1.0.4",
-    "roboter": "0.16.0",
-    "roboter-server": "0.16.0",
+    "roboter": "1.0.1",
     "runfork": "1.0.3"
+  },
+  "scripts": {
+    "build": "docker build -t thenativeweb/wolkenkit-documentation .",
+    "links": "FLASCHENPOST_FORMATTER=human FORCE_COLOR=true node ./helpers/check-links.js"
   },
   "repository": {
     "type": "git",

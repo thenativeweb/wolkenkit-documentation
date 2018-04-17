@@ -15,7 +15,7 @@ const isProductionMode = processenv('NODE_ENV') === 'production';
 const webpackConfiguration = {
   bail: true,
   mode: isProductionMode ? 'production' : 'development',
-  context: path.join(__dirname, 'src'),
+  context: path.join(__dirname, 'lib'),
   entry: [
     './client/index.jsx',
     './theme/wk-docs.less'
@@ -31,7 +31,7 @@ const webpackConfiguration = {
       {
         test: /\.jsx?$/,
         include: [
-          path.join(__dirname, 'src'),
+          path.join(__dirname, 'lib'),
           path.join(__dirname, 'node_modules', 'markdown-it-anchor')
         ],
         use: {

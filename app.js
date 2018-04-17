@@ -10,7 +10,7 @@ const compression = require('compression'),
       flaschenpost = require('flaschenpost');
 
 const compile = require('./compile'),
-      routes = require('./src/server/routes');
+      routes = require('./lib/server/routes');
 
 const logger = flaschenpost.getLogger();
 

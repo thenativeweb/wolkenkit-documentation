@@ -7,7 +7,7 @@ const blc = require('broken-link-checker'),
       knock = require('knockat'),
       runfork = require('runfork');
 
-const metadata = require('../src/docs/metadata');
+const metadata = require('../lib/docs/metadata');
 
 (async () => {
   const logger = flaschenpost.getLogger();

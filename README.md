@@ -13,7 +13,7 @@ $ npm install
 To build this module run the following command.
 
 ```shell
-$ bot
+$ npx roboter
 ```
 
 ## License
