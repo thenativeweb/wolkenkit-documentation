@@ -10,6 +10,8 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - JavaScript code is often asynchronous. In the past, you had to use callbacks for this. Now wolkenkit supports the new `async` and `await` keywords, which allow you to write asynchronous code much more easily and legibly. This primarily affects defining commands in the write model, handling events in the read model, and reacting to events in flows. Additionally this affects writing command middleware and using services in general. See [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/) for details.
 - **[BREAKING] Updated** the wording of the APIs for read models and flows
   - In the past, you had to provide a `when` block in read models and in flows. Unfortunately, the distinction was not very clear, and the behavior of these blocks was not consistent. In read models these blocks are now called `projections`, in flows they are called `reactions`. This better describes what is actually happening. See [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/) for details.
+- **Added** support for installing wolkenkit using Vagrant
+  - So far, you had to setup Docker and Node.js before installing wolkenkit. Now there are ready-made virtual machines, available for VirtualBox and VMware, that you can run by [Installing using Vagrant](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-using-vagrant/).
 - **Added** the option to set environment variables
   - From time to time you want to configure an application at runtime, not at compile-time, e.g. to provide credentials to different environments. You can now [set environment variables](../../../../<%= current.version %>/reference/configuring-an-application/setting-environment-variables/) using an application's `package.json` file.
 - **Added** a curated list of blog posts
@@ -23,6 +25,7 @@ The following significant changes have been made since wolkenkit `1.2.0`:
 - **Fixed** OpenID Connect strict mode
   - The [OpenID Connect strict mode](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) didn't work, because there was a problem in verifying the JWT's nonce. This has been fixed.
 - **Contributions** by the community
+  - [@claudiobianco](https://github.com/claudiobianco)
   - [@colorizedmind](https://github.com/colorizedmind)
   - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
