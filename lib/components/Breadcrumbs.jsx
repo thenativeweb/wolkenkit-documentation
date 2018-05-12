@@ -10,11 +10,12 @@ const renderItems = function (items) {
   }
 
   return items.map(breadcrumb =>
-    <span className='wk-breadcrumbs__item' key={ breadcrumb }>
-      <Icon name='breadcrumb-separator' />
-      <span>{ breadcrumb }</span>
-    </span>
-  );
+    (
+      <span className='wk-breadcrumbs__item' key={ breadcrumb }>
+        <Icon name='breadcrumb-separator' />
+        <span>{ breadcrumb }</span>
+      </span>
+    ));
 };
 
 const Breadcrumbs = function (props) {

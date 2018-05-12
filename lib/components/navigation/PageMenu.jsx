@@ -72,7 +72,8 @@ class PageMenu extends React.Component {
           path={ [ activeVersion, section.slug ] }
           onClick={ this.handleItemClicked }
         />
-      ));
+      )
+    );
   }
 
   renderSecondLevel (navigation) {
