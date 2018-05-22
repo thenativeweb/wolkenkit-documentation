@@ -12,10 +12,6 @@ const createHistory = require('history').createBrowserHistory,
 require('es6-object-assign/auto');
 require('array.prototype.find').shim();
 
-// Since cookieconsent returns an empty object, we have to require its built
-// file directly.
-require('cookieconsent/build/cookieconsent.min.js');
-
 const metadata = require('../docs/metadata'),
       page = require('../services/page');
 
@@ -24,38 +20,6 @@ const Docs = require('../components/Docs.jsx');
 const dom = {
   nav: window.document.querySelector('.wk-navigation')
 };
-
-const handle = {
-  windowLoaded () {
-    window.cookieconsent.initialise({});
-  },
-
-  navClicked (event) {
-    const target = event.target;
-
-    if (target.tagName.toLowerCase() === 'a') {
-      handle.navLinkClicked(event);
-    }
-  },
-
-  navLinkClicked (event) {
-    if (!window.ga) {
-      return;
-    }
-
-    window.ga('send', {
-      hitType: 'event',
-      eventCategory: 'Navigation',
-      eventAction: 'click',
-      eventLabel: event.target.href,
-      transport: 'beacon'
-    });
-  }
-};
-
-window.addEventListener('load', handle.windowLoaded);
-
-dom.nav.addEventListener('click', handle.navClicked);
 
 const history = createHistory();
 

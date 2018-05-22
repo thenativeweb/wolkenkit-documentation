@@ -23,3 +23,5 @@ German VAT no. DE 287 040 877
 Registered office is Riegel am Kaiserstuhl, Germany
 
 Responsible for content in accordance with § 55 section 2 RStV is the native web GmbH, address as above
+
+Read our [privacy policy](https://www.thenativeweb.io/privacy)
