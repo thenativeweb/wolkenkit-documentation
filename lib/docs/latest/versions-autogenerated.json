@@ -1,0 +1,15 @@
+{
+  "cli": "1.2.4",
+  "docker": "18.03",
+  "node": "8.11.1",
+  "vagrant": "2.0.4",
+
+  "chrome": "62",
+  "firefox": "57",
+  "safari": "10.1",
+  "opera": "44.0",
+  "edge": "14",
+  "ie": "11",
+
+  "clientSdkJs": "1.2.0"
+}
