@@ -1,7 +1,5 @@
 'use strict';
 
-/* globals window */
-
 /* eslint-disable no-unused-vars */
 const createHistory = require('history').createBrowserHistory,
       React = require('react'),
@@ -16,10 +14,6 @@ const metadata = require('../docs/metadata'),
       page = require('../services/page');
 
 const Docs = require('../components/Docs.jsx');
-
-const dom = {
-  nav: window.document.querySelector('.wk-navigation')
-};
 
 const history = createHistory();
 

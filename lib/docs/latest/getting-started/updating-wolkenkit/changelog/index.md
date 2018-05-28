@@ -46,7 +46,7 @@ The following significant changes have been made since wolkenkit `1.1.0`:
   - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
 
-For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../1.2.0/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../1.2.0/getting-started/updating-wolkenkit/updating-an-application/).
+For details on how to update to version `1.2.0` see [updating the CLI](../../../../1.2.0/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../1.2.0/getting-started/updating-wolkenkit/updating-an-application/).
 
 ## 1.1.0
 
