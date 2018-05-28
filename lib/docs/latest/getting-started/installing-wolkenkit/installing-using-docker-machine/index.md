@@ -4,7 +4,7 @@ To run wolkenkit using Docker Machine you need to setup a few things.
 
 ## Setting up Docker
 
-To run wolkenkit you need Docker <%= current.versions.docker %> or higher. To setup Docker using Docker Machine, [download and install Docker Toolbox](https://www.docker.com/products/docker-toolbox).
+To run wolkenkit you need Docker <%= current.versions.docker %> or higher. To setup Docker using Docker Machine, [download and install Docker Toolbox](https://docs.docker.com/toolbox/overview/).
 
 Additionally, setup a virtualization engine such as VMware Fusion or VirtualBox. You can find the complete list of supported virtualization engines in the [Docker documentation](https://docs.docker.com/machine/drivers/).
 
