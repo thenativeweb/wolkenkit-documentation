@@ -24,6 +24,8 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - It was not yet possible to run the `wolkenkit init` command in a non-empty directory, as this could lead to existing files being overwritten accidentally. Now there is the `--force` flag to disable this check and [overwrite any existing files](../../../../<%= current.version %>/reference/initializing-an-application/using-a-template/#overwriting-existing-files).
 - **Fixed** OpenID Connect strict mode
   - The [OpenID Connect strict mode](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) didn't work, because there was a problem in verifying the JWT's nonce. This has been fixed.
+- **Fixed** `transferOwnership` and `authorize` commands
+  - So far, it was possible to use the commands `transferOwnership` and `authorize` as constructor commands, i.e. to create new aggregates, although this didn't make sense. This has been fixed.
 - **Contributions** by the community
   - [@claudiobianco](https://github.com/claudiobianco)
   - [@colorizedmind](https://github.com/colorizedmind)
