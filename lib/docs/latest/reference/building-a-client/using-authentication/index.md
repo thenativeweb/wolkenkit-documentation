@@ -4,7 +4,7 @@ If your wolkenkit application is [using authentication](../../configuring-an-app
 
 ## Using OpenID Connect
 
-Currently, only OpenID Connect is supported, which is used by various identity services such as [Auth0](https://auth0.com/).
+Currently, OpenID Connect is the only supported authentication strategy for web clients. Using this authentication strategy, you can integrate your application with various identity services such as [Auth0](https://auth0.com/).
 
 :::hint-warning
 > **Browsers only**
@@ -70,6 +70,31 @@ wolkenkit.connect({
 > ```
 :::
 
+## Using Local
+
+The Local authentication strategy is currently the only supported authentication strategy for services written in Node.js. Using this authentication strategy, you can issue your own tokens.
+
+:::hint-warning
+> **Node.js only**
+>
+> Please note that the Local authentication strategy is only available in Node.js and primarily meant for testing purposes.
+:::
+
+To use Local, create an instance of the `wolkenkit.authentication.Local` strategy and provide it using the `authentication` property. Additionally you must provide an identity provider name and a certificate as well as a private key in `.pem` format:
+
+```javascript
+wolkenkit.connect({
+  host: 'local.wolkenkit.io',
+  authentication: new wolkenkit.authentication.Local({
+    identityProviderName: 'https://...',
+    certificate: '...',
+    privateKey: '...'
+  })
+}).
+  then(app => /* ... */).
+  catch(err => /* ... */);
+```
+
 ## Managing the authentication lifecycle
 
 No matter which authentication strategy you use, the application provides an `auth` property that allows you to manage the authentication lifecycle.
@@ -88,7 +113,7 @@ if (app.auth.isLoggedIn()) {
 }
 ```
 
-To login a user manually, call the `app.auth.login` function:
+To login a user manually, call the `app.auth.login` function. How this works in detail depends on the configured authentication strategy. If you are using OpenID Connect, all you need to do is call the function:
 
 ```javascript
 app.auth.login();
@@ -99,6 +124,20 @@ app.auth.login();
 >
 > Depending on the authentication strategy calling the `login` and `logout` functions may result in redirects, so ensure to store your application state appropriately if needed.
 :::
+
+If you are using the Local authentication strategy, you need to provide the `sub` claim as parameter:
+
+```javascript
+app.auth.login('Jane Doe');
+```
+
+Additionally, you may specify custom claims that shall be included in the token:
+
+```javascript
+app.auth.login('Jane Doe', {
+  'https://.../roles': [ 'administrator' ]
+});
+```
 
 To logout a user, call the `app.auth.logout` function:
 

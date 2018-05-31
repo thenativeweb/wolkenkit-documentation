@@ -18,6 +18,8 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - When getting started with wolkenkit, you may be interested in the thoughts and experiences of other people. That's why there now is a [curated list of blog posts](../../../../<%= current.version %>/media/online-resources/blog-posts/) that deal with wolkenkit, DDD, event-sourcing and CQRS.
 - **Added** a curated list of articles
   - When getting started with wolkenkit, you may be interested in what IT magazines think and write about it. That's why there now is a [curated list of articles](../../../../<%= current.version %>/media/online-resources/articles/) that deal with wolkenkit, DDD, event-sourcing and CQRS.
+- **Added** a `Local` authentication strategy for testing
+  - Additionally to the [OpenID Connect authentication strategy](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) there is now a [`Local` authentication strategy](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#using-local) that you can use in tests as a custom identity provider. This way you can easily test with multiple identities.
 - **Updated** installation guide for Windows
   - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [Installing on Windows](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-on-windows/).
 - **Updated** `wolkenkit init` to work in non-empty directories
@@ -31,6 +33,7 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - [@colorizedmind](https://github.com/colorizedmind)
   - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
+  - [@schmuto](https://github.com/schmuto)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
