@@ -28,6 +28,8 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - The [OpenID Connect strict mode](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) didn't work, because there was a problem in verifying the JWT's nonce. This has been fixed.
 - **Fixed** `transferOwnership` and `authorize` commands
   - So far, it was possible to use the commands `transferOwnership` and `authorize` as constructor commands, i.e. to create new aggregates, although this didn't make sense. This has been fixed.
+- **Fixed** replaying incompatible aggregates
+  - If you tried to replay an existing aggregate, but with the wrong aggregate type, the application crashed in an uncontrolled way. This has been fixed.
 - **Contributions** by the community
   - [@claudiobianco](https://github.com/claudiobianco)
   - [@colorizedmind](https://github.com/colorizedmind)
