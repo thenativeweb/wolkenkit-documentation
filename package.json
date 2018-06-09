@@ -60,6 +60,7 @@
     "less": "3.0.4",
     "less-loader": "4.1.0",
     "lodash": "4.17.10",
+    "lunr": "2.2.1",
     "markdown-it": "8.4.1",
     "markdown-it-anchor": "4.0.0",
     "markdown-it-container": "2.0.0",

@@ -24,7 +24,6 @@ const Navigation = function (props) {
       <div className='wk-navigation__content'>
         <Header
           activePath={ activePath }
-          history={ history }
           showLogo={ showLogo }
           versions={ Object.keys(metadata.navigation) }
           onLogoClick={ onLogoClick }

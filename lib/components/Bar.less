@@ -27,25 +27,22 @@
     margin-right: @grid-size;
   }
 
-  .wk-bar__back {
+  .wk-bar__back,
+  .wk-bar__close,
+  .wk-bar__search {
     display: flex;
-    flex: 1 1 100%;
 
     a {
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-left: 5px;
-      margin-right: 5px;
+
 
       .wk-icon {
         flex: 0 0 auto;
         width: @grid-size;
         height: @grid-size;
         fill: rgba(255, 255, 255, 0.65);
-        margin-left: 5px;
-        margin-right: 5px;
-        transform: rotate(180deg);
         transform-origin: 50% 50%;
       }
     }
@@ -53,6 +50,21 @@
     a:hover {
       .wk-icon {
         fill: @color-brand-blue-highlight;
+      }
+    }
+  }
+
+  .wk-bar__back{
+    flex: 1 1 100%;
+
+    a {
+      margin-left: 5px;
+      margin-right: 5px;
+
+      .wk-icon {
+        margin-left: 5px;
+        margin-right: 5px;
+        transform: rotate(180deg);
       }
     }
   }

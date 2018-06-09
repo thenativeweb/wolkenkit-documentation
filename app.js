@@ -19,6 +19,7 @@ const app = express(),
 
 app.use(compression());
 app.use('/robots.txt', routes.renderRobots());
+app.use('/search', routes.search());
 app.use('/sitemap.txt', routes.renderSitemap());
 app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/', routes.serveClient());

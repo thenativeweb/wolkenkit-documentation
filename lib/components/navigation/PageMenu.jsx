@@ -127,6 +127,7 @@ class PageMenu extends React.Component {
 
   render () {
     const {
+      history,
       metadata
     } = this.props;
 
@@ -150,6 +151,7 @@ class PageMenu extends React.Component {
       <div className='wk-page-menu'>
         <MenuBar
           expandedPath={ expandedPath }
+          history={ history }
           onBackClick={ this.handleBackClicked }
         />
         <div className='wk-menu__levels-container' ref={ this.handleMenuLevelChanged }>
