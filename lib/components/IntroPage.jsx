@@ -14,7 +14,7 @@ const IntroPage = function (props) {
   }
 
   /* eslint-disable no-process-env */
-  const newsUrl = process.env.NEWS_URL || 'https://www.wolkenkit.io/news.json';
+  const newsUrl = process.env.NEWS_URL || 'https://docs.wolkenkit.io/news.json';
   /* eslint-enable no-process-env */
 
   return (
