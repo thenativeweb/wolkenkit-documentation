@@ -33,6 +33,7 @@ The following significant changes have been made since wolkenkit `1.2.0`:
 - **Contributions** by the community
   - [@claudiobianco](https://github.com/claudiobianco)
   - [@colorizedmind](https://github.com/colorizedmind)
+  - [@marcusstenbeck](https://github.com/marcusstenbeck)
   - [@revrng](https://github.com/revrng)
   - [@scherermichael](https://github.com/scherermichael)
   - [@schmuto](https://github.com/schmuto)

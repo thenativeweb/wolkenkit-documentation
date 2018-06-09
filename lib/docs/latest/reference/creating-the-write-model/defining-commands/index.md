@@ -84,10 +84,22 @@ If an event does not have any data, you can omit the second parameter:
 invoice.events.publish('issued');
 ```
 
-:::hint-warning
-> **Does your event create or edit an aggregate?**
+## Verifying whether an aggregate exists
+
+Some commands are intended to initialize new aggregates. Other commands, though, are supposed to change the state of existing aggregates. To ensure that commands are only executed if they are to be executed, you may need to determine whether you are dealing with a new or an existing aggregate. That's what the `exists` function is for. Depending on the state of the aggregate, this function returns either `true` or `false`.
+
+E.g., to verify whether an invoice aggregate already exists, use the following code:
+
+```javascript
+if (invoice.exists()) {
+  // ...
+}
+```
+
+:::hint-tip
+> **Middlewares simplify things**
 >
-> Events you publish will either create a new aggregate or add to an existing aggregate's history. If your event is meant to edit an aggregate rather than create a new one then you have to verify that the aggregate exists before publishing any events.
+> Instead of calling the `exists` function manually, you can alternatively use a [middleware](../using-command-middleware/) such as [wolkenkit-command-tools](https://github.com/thenativeweb/wolkenkit-command-tools).
 >
-> In the example above you can check this by calling `invoice.exists()` before publishing your event.
+> The two functions [`only.ifExists`](../using-command-middleware/#onlyifexists) and [`only.ifNotExists`](../using-command-middleware/#onlyifnotexists) serve the same purpose, but can be integrated more elegantly.
 :::
