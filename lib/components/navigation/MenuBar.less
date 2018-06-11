@@ -7,9 +7,10 @@
 
     .wk-menu-bar__search-input {
       width: 100%;
-      padding: 5px 10px 5px 10px;
+      padding: 5px 10px 5px 15px;
       font-family: @font-family-default;
-      font-size: @font-size-default;
+      font-size: 15px;
+      font-weight: 500;
       border-radius: none;
       outline: none;
       border: 1px solid '#eee';
@@ -34,13 +35,17 @@
       font-size: @font-size-default;
       list-style-type: none;
       margin: 0px;
+      border-bottom: 1px solid rgba(255,255,255, 0.1);
+      line-height: 1.1;
+      color: #fff;
+      font-weight: 400;
 
       a,
       a:visited {
         color: #fff;
         position: relative;
         display: block;
-        padding: 6px @grid-size 6px 32px;
+        padding: 15px @grid-size 15px 20px;
         opacity: 0.5;
       }
     }
