@@ -6,11 +6,13 @@ For JavaScript, there is a client SDK that internally uses this HTTP API, but ad
 
 ## Downloading the client blueprint
 
-To make things easy we have prepared a sample client for you that you are going to extend. [Download the client](./client.tar.gz) into your `chat` directory and, from within this directory, run the following commands:
+To make things easy we have prepared a sample client for you that you are going to extend. [Download the client](https://github.com/thenativeweb/wolkenkit-client-template-spa-vanilla-js/archive/<%= current.version === 'latest' ? 'master' : current.version %>.zip) into your `chat` directory and, from within this directory, run the following commands:
 
 ```shell
-$ tar -xvzf client.tar.gz
-$ rm client.tar.gz
+$ export CLIENT_TEMPLATE="wolkenkit-client-template-spa-vanilla-js-<%= current.version === 'latest' ? 'master' : current.version %>"
+$ unzip ${CLIENT_TEMPLATE}.zip
+$ rm ${CLIENT_TEMPLATE}.zip
+$ mv ${CLIENT_TEMPLATE} client
 ```
 
 As a result, your directory structure should look like this:
@@ -18,11 +20,12 @@ As a result, your directory structure should look like this:
 ```
 chat
   client
-    index.css
-    index.html
-    index.js
-    lib
-      ...
+    package.json
+    webpack.config.js
+    src
+      index.html
+      index.js
+    ...
   server
     ...
 ```
@@ -33,24 +36,47 @@ chat
 > The client does not rely on a specific UI framework, so you do not need any special knowledge besides what you know about vanilla JavaScript anyway.
 :::
 
-## Connecting the client to the backend
+## Installing the client's dependencies
 
-First, you need to reference the client SDK from within the `index.html` file. For that, open the file and add the following line:
+Before you start to implement the client, you have to install its dependencies. Therefore, run the following commands to switch to the `client` directory and install the client's dependencies:
 
-```html
-<script src="/lib/wolkenkit-client.browser.min.js"></script>
+```shell
+$ cd client
+$ npm install
 ```
 
-Then, you need to connect to the backend. For this, open the `index.js` file and add the following lines:
+## Getting an overview
+
+Now open the `src/index.js` file. As you can see, the wolkenkit SDK is already being loaded by the following line:
 
 ```javascript
-wolkenkit.connect({ host: 'local.wolkenkit.io', port: 3000 }).
-  then(chat => {
-    console.log('Yay, you are connected!');
-  }).
-  catch(err => {
-    console.error(err);
-  });
+const wolkenkit = require('wolkenkit-client');
+```
+
+Additionally, the file contains a ready-made `view` object which takes care of handling the UI. It provides a `render` function to update the UI as well as access to the list of messages (`messages`), the input field for new messages (`newMessage`), and the send message form (`sendMessageForm`).
+
+Finally, it contains a `run` function which is the main entry point of your client. Inside of that function you will find a comment where to put your code:
+
+```javascript
+const run = async function () {
+  try {
+
+    // Add your code here...
+
+  } catch (ex) {
+    console.error(ex);
+  }
+};
+```
+
+## Connecting the client to the backend
+
+Once you have an idea of how the file is organized, you can use the wolkenkit SDK to connect your client to the backend. So, replace the previously mentioned comment with the following lines:
+
+```javascript
+const chat = await wolkenkit.connect({ host: 'local.wolkenkit.io', port: 3000 });
+
+console.log('Yay, you are connected!');
 ```
 
 For more details, see [connecting to an application](../../../reference/building-a-client/connecting-to-an-application/).
@@ -63,16 +89,10 @@ Now, start your wolkenkit backend by running the following command from inside t
 $ wolkenkit start
 ```
 
-wolkenkit only takes care of the server part of your application and does not run the client for you automatically. Hence you need to install an HTTP server and run the client manually. We are using [http-server](https://www.npmjs.com/package/http-server) that can easily be installed by using the following command:
+wolkenkit only takes care of the server part of your application and does not automatically run the client for you. To do so, run the following command from inside the `client` directory. This will also launch a browser and open the client:
 
 ```shell
-$ npm install -g http-server
-```
-
-Once you have done that run the client using the following command. This will automatically launch a browser and open the client:
-
-```shell
-$ http-server ./client/ -o
+$ npm run serve
 ```
 
 Have a look at the browser's development console to verify that you actually see the success message:
@@ -84,10 +104,10 @@ Have a look at the browser's development console to verify that you actually see
 To send a message, you must add an event handler to the `submit` event of the client's send message form. Inside of this handler, you can then run the `send` command of the `message` aggregate, that you can access using the `communication` context of the `chat` application:
 
 ```javascript
-document.querySelector('.send-message-form').addEventListener('submit', event => {
+view.sendMessageForm.addEventListener('submit', event => {
   event.preventDefault();
 
-  const text = document.querySelector('.new-message').value;
+  const text = view.newMessage.value;
 
   chat.communication.message().send({ text });
 });
@@ -99,19 +119,19 @@ To get notified when something goes wrong, add the `failed` callback to the comm
 chat.communication.message().send({ text }).
   failed(err => console.error(err)).
   delivered(() => {
-    document.querySelector('.new-message').value = '';
-    document.querySelector('.new-message').focus();
+    view.newMessage.value = '';
+    view.newMessage.focus();
   });
 ```
 
-To ensure that the text box is automatically focused when the client is opened, add another line in the end:
+To ensure that the text box is automatically focused when the client is opened, add another line at the end:
 
 ```javascript
-document.querySelector('.send-message-form').addEventListener('submit', event => {
+view.sendMessageForm.addEventListener('submit', event => {
   // ...
 });
 
-document.querySelector('.new-message').focus();
+view.newMessage.focus();
 ```
 
 For more details, see [sending commands](../../../reference/building-a-client/sending-commands/).
@@ -123,19 +143,13 @@ Although you are now able to send messages, your client will not receive any of 
 ```javascript
 // ...
 
-document.querySelector('.new-message').focus();
+view.newMessage.focus();
 
 chat.lists.messages.readAndObserve().
   failed(err => console.error(err)).
-  started(render).
-  updated(render);
+  started(view.render).
+  updated(view.render);
 ```
-
-:::hint-question
-> **What is render?**
->
-> The `render` function does not belong to wolkenkit. Instead it is a ready-made function of the client blueprint that makes it easy to update its UI. If you are interested in how this works, feel free to have a look at the source code.
-:::
 
 In a chat it makes sense to have the newest messages at the top of the client, so we will order the messages reversed by their timestamp. Also, you probably do not want to receive all messages that have ever been written, so let's limit their number to `50`:
 
@@ -145,8 +159,8 @@ chat.lists.messages.readAndObserve({
   take: 50
 }).
   failed(err => console.error(err)).
-  started(render).
-  updated(render);
+  started(view.render).
+  updated(view.render);
 ```
 
 You are now able to send and receive messages, so you already have a working chat.
@@ -163,7 +177,7 @@ Finally, you can run the `like` command for the message of your choice:
 chat.lists.messages.readAndObserve().
   // ...
 
-document.querySelector('.messages').addEventListener('click', event => {
+view.messages.addEventListener('click', event => {
   if (!event.target.classList.contains('likes')) {
     return;
   }

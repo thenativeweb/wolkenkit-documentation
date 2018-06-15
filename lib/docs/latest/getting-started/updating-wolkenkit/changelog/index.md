@@ -10,8 +10,10 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - JavaScript code is often asynchronous. In the past, you had to use callbacks for this. Now wolkenkit supports the new `async` and `await` keywords, which allow you to write asynchronous code much more easily and legibly. This primarily affects defining commands in the write model, handling events in the read model, and reacting to events in flows. Additionally this affects writing command middleware and using services in general. See [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/) for details.
 - **[BREAKING] Updated** the wording of the APIs for read models and flows
   - In the past, you had to provide a `when` block in read models and in flows. Unfortunately, the distinction was not very clear, and the behavior of these blocks was not consistent. In read models these blocks are now called `projections`, in flows they are called `reactions`. This better describes what is actually happening. See [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/) for details.
+- **[BREAKING] Removed** `<script>` tag support for the wolkenkit SDK
+  - In older wolkenkit versions, you were able to integrate the wolkenkit SDK using either a `<script>` tag in an HTML file, or by using the `require` function. From now on, wolkenkit only supports the second option. While this works on Node.js out of the box, you have to use a bundler such as webpack when building an application for the browser. See [connecting to an application](../../../../<%= current.version %>/reference/building-a-client/connecting-to-an-application/#) for details.
 - **Added** support for installing wolkenkit using Vagrant
-  - So far, you had to setup Docker and Node.js before installing wolkenkit. Now there are ready-made virtual machines, available for VirtualBox and VMware, that you can run by [Installing using Vagrant](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-using-vagrant/).
+  - So far, you had to setup Docker and Node.js before installing wolkenkit. Now there are ready-made virtual machines, available for VirtualBox and VMware, that you can run by [installing using Vagrant](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-using-vagrant/).
 - **Added** the option to set environment variables
   - From time to time you want to configure an application at runtime, not at compile-time, e.g. to provide credentials to different environments. You can now [set environment variables](../../../../<%= current.version %>/reference/configuring-an-application/setting-environment-variables/) using an application's `package.json` file.
 - **Added** a curated list of blog posts
@@ -21,9 +23,11 @@ The following significant changes have been made since wolkenkit `1.2.0`:
 - **Added** a `Local` authentication strategy for testing
   - Additionally to the [OpenID Connect authentication strategy](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) there is now a [`Local` authentication strategy](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#using-local) that you can use in tests as a custom identity provider. This way you can easily test with multiple identities.
 - **Updated** installation guide for Windows
-  - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [Installing on Windows](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-on-windows/).
+  - So far, you had to use Hyper-V and Docker Machine to setup wolkenkit on Windows. Now you only need Hyper-V which makes installing on Windows much easier. The installation instructions can be found at [installing on Windows](../../../../<%= current.version %>/getting-started/installing-wolkenkit/installing-on-windows/).
 - **Updated** `wolkenkit init` to work in non-empty directories
   - It was not yet possible to run the `wolkenkit init` command in a non-empty directory, as this could lead to existing files being overwritten accidentally. Now there is the `--force` flag to disable this check and [overwrite any existing files](../../../../<%= current.version %>/reference/initializing-an-application/using-a-template/#overwriting-existing-files).
+- **Improved** compatibility with Internet Explorer 11
+  - The wolkenkit SDK now supports Internet Explorer 11 without requiring additional polyfills.
 - **Fixed** OpenID Connect strict mode
   - The [OpenID Connect strict mode](../../../../<%= current.version %>/reference/building-a-client/using-authentication/#configuring-openid-connect) didn't work, because there was a problem in verifying the JWT's nonce. This has been fixed.
 - **Fixed** `transferOwnership` and `authorize` commands
@@ -61,7 +65,7 @@ For details on how to update to version `1.2.0` see [updating the CLI](../../../
 The following significant changes have been made since wolkenkit `1.0.1`:
 
 - **Added** support for wolkenkit on Windows
-  - wolkenkit now runs on Windows 10 with Hyper-V and Docker Machine. The installation instructions can be found at [Installing on Windows](../../installing-wolkenkit/installing-on-windows/).
+  - wolkenkit now runs on Windows 10 with Hyper-V and Docker Machine. The installation instructions can be found at [installing on Windows](../../installing-wolkenkit/installing-on-windows/).
   - See [thenativeweb/wolkenkit#3](https://github.com/thenativeweb/wolkenkit/issues/3) for details.
 - **Updated** PostgreSQL to `9.6.4`
   - There was a [security issue](https://www.postgresql.org/about/news/1772/) in PostgreSQL `9.6.2`. With wolkenkit `1.1.0` PostgreSQL has been updated to `9.6.4`.

@@ -111,7 +111,7 @@ const projections = {
   }
 };
 
-module.exports = { fields, when };
+module.exports = { fields, projections };
 ```
 
 :::hint-congrats

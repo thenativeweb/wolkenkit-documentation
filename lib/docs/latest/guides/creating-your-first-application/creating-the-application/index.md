@@ -24,16 +24,17 @@ $ wolkenkit start
 
 ## Running the client
 
-To run the client for your application, you first need to install an HTTP server. We are using [http-server](https://www.npmjs.com/package/http-server) that can easily be installed by using the following command:
+To run the client for your application, you first have to set it up. Therefore, run the following commands to switch to the `client` directory and install the client's dependencies:
 
 ```shell
-$ npm install -g http-server
+$ cd client
+$ npm install
 ```
 
-Once you have done that run the client using the following command. This will automatically launch a browser and open the client:
+Once you have done that run the client using the following command from inside the `client` directory. This will automatically launch a browser and open the client:
 
 ```shell
-$ http-server ./client/ -o
+$ npm run serve
 ```
 
 ## Lets's chat!

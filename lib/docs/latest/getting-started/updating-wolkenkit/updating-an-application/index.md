@@ -315,3 +315,15 @@ const reactions = {
 ```
 
 For details see [using services](../../../reference/creating-stateful-flows/using-services/).
+
+## Client
+
+Up to wolkenkit 1.2.0, instead of loading the wolkenkit SDK by using the `require` function, you could use a `<script>` tag in your `index.html` file. wolkenkit <%= current.version %> does not support loading the SDK using a `<script>` tag any more.
+
+So now you must use the `require` function to load the wolkenkit SDK, no matter whether you are on Node.js or you are writing an application for the browser:
+
+```javascript
+const wolkenkit = require('wolkenkit-client');
+```
+
+This means that when developing for the browser you have to use a bundler such as [webpack](https://webpack.js.org/). For details see [connecting to an application](../../../reference/building-a-client/connecting-to-an-application/#in-the-browser).
