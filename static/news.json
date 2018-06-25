@@ -3,6 +3,15 @@
     "date": {
       "year": 2018,
       "month": 6,
+      "day": 25
+    },
+    "title": "Published MNUG talk on DDD and wolkenkit 🎉",
+    "content": "About two weeks ago, Golo Roden was giving a talk on DDD and wolkenkit at the Munich Node.js user group (MNUG). The recordings of this talk have now been published. For details see the [videos](https://docs.wolkenkit.io/latest/media/online-resources/videos/) section."
+  },
+  {
+    "date": {
+      "year": 2018,
+      "month": 6,
       "day": 21
     },
     "title": "Released wolkenkit 2.0.0 🦄",
