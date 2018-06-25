@@ -7,5 +7,5 @@ If you think that a video is missing, [contact the native web](mailto:hello@then
 ## English
 
 - Munich Node.js user group
-  - [Domain-Driven Design](https://www.youtube.com/watch?v=B5uoLWZv0AA)
+  - [Domain-driven design](https://www.youtube.com/watch?v=B5uoLWZv0AA)
   - [wolkenkit](https://www.youtube.com/watch?v=yAnzic2yGaQ)
