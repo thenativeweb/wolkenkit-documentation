@@ -4,6 +4,7 @@ const PropTypes = require('prop-types'),
       React = require('react');
 
 const Icon = require('../Icon.jsx'),
+      LoadingIndicator = require('../LoadingIndicator.jsx'),
       page = require('../../services/page'),
       search = require('../../services/search');
 
@@ -14,6 +15,7 @@ class MenuBar extends React.PureComponent {
     this.state = {
       showSearch: false,
       searchQuery: '',
+      isSearching: false,
       searchResult: undefined
     };
 
@@ -68,11 +70,13 @@ class MenuBar extends React.PureComponent {
       search.query({ query: this.state.searchQuery }, (err, result) => {
         if (err) {
           this.setState({
+            isSearching: false,
             searchResult: 'Error while searching'
           });
         }
 
         this.setState({
+          isSearching: false,
           searchResult: result
         });
       });
@@ -130,10 +134,32 @@ class MenuBar extends React.PureComponent {
   }
 
   renderSearchResults () {
-    const { searchResult } = this.state;
+    const { isSearching, searchResult } = this.state;
+
+    if (isSearching) {
+      return (
+        <div className='wk-menu-bar__search-results'>
+          <div className='wk-menu-bar__search-results__loading-indicator'>
+            <LoadingIndicator />
+          </div>
+        </div>
+      );
+    }
 
     if (!searchResult) {
-      return;
+      return null;
+    }
+
+    if (searchResult.length === 0) {
+      return (
+        <div className='wk-menu-bar__search-results'>
+          <div
+            className='wk-menu-bar__search-results__no-results'
+          >
+            No pages found…
+          </div>
+        </div>
+      );
     }
 
     return (
