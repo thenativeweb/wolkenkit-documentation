@@ -22,6 +22,8 @@ const SearchResults = ({ results, onResultClick, query }) => {
     );
   }
 
+  const searchWords = query.split(' ').filter(word => word !== '');
+
   return (
     <div className='wk-search-results'>
       {results.map(result => (
@@ -40,7 +42,7 @@ const SearchResults = ({ results, onResultClick, query }) => {
               data-path={ result.path }
               href={ `/${result.path}` }
             >
-              <Highlighter highlightClassName='wk-search-results__result__highlight' searchWords={ [ query ] } textToHighlight={ result.title } />
+              <Highlighter highlightClassName='wk-search-results__result__highlight' searchWords={ searchWords } textToHighlight={ result.title } />
             </a>
           </div>
         </div>
