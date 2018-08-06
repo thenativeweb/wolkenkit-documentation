@@ -76,6 +76,7 @@
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-helmet": "5.2.0",
+    "react-highlight-words": "0.12.0",
     "require-dir": "1.0.0",
     "semver": "5.5.0",
     "style-loader": "0.21.0",

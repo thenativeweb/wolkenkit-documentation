@@ -20,42 +20,4 @@
   .wk-menu-bar__search-input:focus {
     border: 1px solid '#666';
   }
-
-  .wk-menu-bar__search-results {
-    position: absolute;
-    left: 0;
-    top: 48px;
-    width: 100%;
-    height: calc(100vh - 96px);
-    background-color: @color-brand-gray-dark;
-    z-index: @z-index-dropdown;
-    overflow: scroll;
-
-    .wk-menu-bar__search-results__loading-indicator {
-      padding: 0 20px;
-    }
-
-    .wk-menu-bar__search-results__no-results {
-      padding: 15px @grid-size 15px 20px;
-    }
-
-    .wk-menu-bar__search-results__result {
-      font-size: @font-size-default;
-      list-style-type: none;
-      margin: 0px;
-      border-bottom: 1px solid rgba(255,255,255, 0.1);
-      line-height: 1.1;
-      color: #fff;
-      font-weight: 400;
-
-      a,
-      a:visited {
-        color: #fff;
-        position: relative;
-        display: block;
-        padding: 15px @grid-size 15px 20px;
-        opacity: 0.5;
-      }
-    }
-  }
 }

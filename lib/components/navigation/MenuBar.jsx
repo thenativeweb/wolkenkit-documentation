@@ -4,9 +4,9 @@ const PropTypes = require('prop-types'),
       React = require('react');
 
 const Icon = require('../Icon.jsx'),
-      LoadingIndicator = require('../LoadingIndicator.jsx'),
       page = require('../../services/page'),
-      search = require('../../services/search');
+      pages = require('../../services/pages'),
+      SearchResults = require('./SearchResults.jsx');
 
 class MenuBar extends React.PureComponent {
   constructor (props) {
@@ -23,8 +23,6 @@ class MenuBar extends React.PureComponent {
     this.handleSearchClicked = this.handleSearchClicked.bind(this);
     this.handleSearchCloseClicked = this.handleSearchCloseClicked.bind(this);
     this.handleSearchInputChanged = this.handleSearchInputChanged.bind(this);
-    this.handleSearchInputKeyPressed = this.handleSearchInputKeyPressed.bind(this);
-    this.handleSearchResultClicked = this.handleSearchResultClicked.bind(this);
   }
 
   handleSearchClicked (event) {
@@ -41,8 +39,7 @@ class MenuBar extends React.PureComponent {
     event.preventDefault();
 
     this.setState({
-      showSearch: false,
-      searchResult: undefined
+      showSearch: false
     });
   }
 
@@ -56,44 +53,22 @@ class MenuBar extends React.PureComponent {
   }
 
   handleSearchInputChanged (event) {
-    this.setState({
-      searchQuery: event.target.value
-    });
-  }
+    const { version } = this.props;
+    const searchQuery = event.target.value;
 
-  handleSearchInputKeyPressed (event) {
-    if (event.key === 'Enter') {
+    if (searchQuery.length > 1) {
+      const results = pages.search({ query: searchQuery, version });
+
       this.setState({
-        isSearching: true
+        searchQuery,
+        searchResult: results
       });
 
-      search.query({ query: this.state.searchQuery }, (err, result) => {
-        if (err) {
-          this.setState({
-            isSearching: false,
-            searchResult: 'Error while searching'
-          });
-        }
-
-        this.setState({
-          isSearching: false,
-          searchResult: result
-        });
-      });
+      return;
     }
-  }
-
-  handleSearchResultClicked (event) {
-    event.stopPropagation();
-    event.preventDefault();
-
-    const { history } = this.props;
-    const slug = event.target.getAttribute('data-slug');
-
-    history.push(`/${slug}`);
 
     this.setState({
-      showSearch: false,
+      searchQuery,
       searchResult: undefined
     });
   }
@@ -133,57 +108,8 @@ class MenuBar extends React.PureComponent {
     );
   }
 
-  renderSearchResults () {
-    const { isSearching, searchResult } = this.state;
-
-    if (isSearching) {
-      return (
-        <div className='wk-menu-bar__search-results'>
-          <div className='wk-menu-bar__search-results__loading-indicator'>
-            <LoadingIndicator />
-          </div>
-        </div>
-      );
-    }
-
-    if (!searchResult) {
-      return null;
-    }
-
-    if (searchResult.length === 0) {
-      return (
-        <div className='wk-menu-bar__search-results'>
-          <div
-            className='wk-menu-bar__search-results__no-results'
-          >
-            No pages found…
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className='wk-menu-bar__search-results'>
-        {searchResult.map(result => (
-          <div
-            className='wk-menu-bar__search-results__result'
-            key={ result.ref }
-          >
-            <a
-              onClick={ this.handleSearchResultClicked }
-              data-slug={ result.ref.replace('index.md', '') }
-              href={ `/${result.ref.replace('index.md', '')}` }
-            >
-              { result.ref }
-            </a>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
   render () {
-    const { showSearch, searchQuery } = this.state;
+    const { showSearch, isSearching, searchResult, searchQuery } = this.state;
 
     if (showSearch) {
       return (
@@ -204,7 +130,7 @@ class MenuBar extends React.PureComponent {
               <Icon name='close' size='small' />
             </a>
           </div>
-          {this.renderSearchResults()}
+          <SearchResults isVisible={ isSearching } query={ searchQuery } results={ searchResult } />
         </div>
       );
     }
@@ -220,6 +146,7 @@ class MenuBar extends React.PureComponent {
 
 MenuBar.propTypes = {
   expandedPath: PropTypes.array.isRequired,
+  version: PropTypes.string.isRequired,
   onBackClick: PropTypes.func.isRequired
 };
 

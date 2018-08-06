@@ -153,6 +153,7 @@ class PageMenu extends React.Component {
           expandedPath={ expandedPath }
           history={ history }
           onBackClick={ this.handleBackClicked }
+          version={ version }
         />
         <div className='wk-menu__levels-container' ref={ this.handleMenuLevelChanged }>
           <div className='wk-menu-levels' style={ levelsStyle }>
