@@ -3,20 +3,9 @@
 const Highlighter = require('react-highlight-words'),
       React = require('react');
 
-const Icon = require('../Icon.jsx'),
-      LoadingIndicator = require('../LoadingIndicator.jsx');
+const Icon = require('../Icon.jsx');
 
-const SearchResults = ({ isVisible, results, onResultClick, query }) => {
-  if (isVisible) {
-    return (
-      <div className='wk-search-results'>
-        <div className='wk-search-results__loading-indicator'>
-          <LoadingIndicator />
-        </div>
-      </div>
-    );
-  }
-
+const SearchResults = ({ results, onResultClick, query }) => {
   if (!results) {
     return null;
   }

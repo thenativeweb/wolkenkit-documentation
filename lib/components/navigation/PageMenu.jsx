@@ -4,7 +4,8 @@ const isEqual = require('lodash/isEqual'),
       PropTypes = require('prop-types'),
       React = require('react');
 
-const Chapter = require('./Chapter.jsx'),
+const BarBottom = require('../BarBottom.jsx'),
+      Chapter = require('./Chapter.jsx'),
       Icon = require('../Icon.jsx'),
       MenuBar = require('./MenuBar.jsx'),
       Page = require('./Page.jsx'),
@@ -165,11 +166,11 @@ class PageMenu extends React.Component {
             </div>
           </div>
         </div>
-        <div className='wk-menu__social-bar wk-bar wk-bar--bottom wk-bar--centered'>
+        <BarBottom className='wk-menu__social-bar'>
           <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='github' /></a>
           <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'><Icon name='slack' /></a>
           <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='stackoverflow' /></a>
-        </div>
+        </BarBottom>
       </div>
     );
   }

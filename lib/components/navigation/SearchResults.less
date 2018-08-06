@@ -1,27 +1,22 @@
 .wk-search-results {
   position: absolute;
   left: 0;
-  top: 48px;
+  top: @bar-height;
   width: 100%;
-  height: calc(100vh - 96px);
+  height: calc(100vh - @bar-height*2);
   background-color: @color-brand-gray-dark;
-  z-index: @z-index-dropdown;
+  z-index: @z-index-search;
   overflow: scroll;
 
-  .wk-search-results__loading-indicator {
-    padding: 0 20px;
-  }
-
   .wk-search-results__no-results {
-    padding: 15px @grid-size 15px 20px;
+    padding: @grid-size;
   }
 
   .wk-search-results__result {
-    font-size: @font-size-default;
-    list-style-type: none;
     margin: 0px;
+    padding: @grid-size;
     border-bottom: 1px solid rgba(255,255,255, 0.1);
-    padding: @grid-size @grid-size @grid-size @grid-size;
+    font-size: @font-size-default;
 
     .wk-search-results__result__path {
       color: #fff;

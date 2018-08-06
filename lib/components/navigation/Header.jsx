@@ -3,7 +3,8 @@
 const PropTypes = require('prop-types'),
       React = require('react');
 
-const Dropdown = require('../Dropdown.jsx');
+const Bar = require('../Bar.jsx'),
+      Dropdown = require('../Dropdown.jsx');
 
 const page = require('../../services/page');
 
@@ -56,18 +57,18 @@ class NavigationHeader extends React.PureComponent {
     }
 
     return (
-      <div className='wk-bar'>
-        <div className='wk-bar__left'>
+      <Bar>
+        <Bar.Left>
           {this.renderLogo()}
-        </div>
-        <div className='wk-bar__right'>
+        </Bar.Left>
+        <Bar.Right>
           <Dropdown
             options={ versions }
             selected={ page.getVersion(activePath) }
             onChange={ this.handleVersionChanged }
           />
-        </div>
-      </div>
+        </Bar.Right>
+      </Bar>
     );
   }
 }
