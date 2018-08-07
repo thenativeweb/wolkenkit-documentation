@@ -1,11 +1,32 @@
 'use strict';
 
 const Highlighter = require('react-highlight-words'),
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const Icon = require('../Icon.jsx');
 
-const SearchResults = ({ results, onResultClick, query }) => {
+const renderKeywords = ({ keywords, searchWords }) => {
+  if (!keywords) {
+    return null;
+  }
+
+  return (
+    <div className='wk-search-results__result__keywords'>
+
+      { keywords.
+        split(' ').
+        filter(keyword => keyword !== '').
+        map(keyword => (
+          <span key={ keyword } className='wk-search-results__result__keywords__keyword'>
+            <Highlighter highlightClassName='wk-search-results__result__highlight' searchWords={ searchWords } textToHighlight={ keyword } />
+          </span>
+        ))}
+    </div>
+  );
+};
+
+const SearchResults = ({ results, query }) => {
   if (!results) {
     return null;
   }
@@ -36,19 +57,23 @@ const SearchResults = ({ results, onResultClick, query }) => {
             <div className='wk-search-results__result__separator'><Icon name='chevron' size='small' /></div>
             <div className='wk-search-results__result__chapter'>{ result.parent.title }</div>
           </div>
-          <div className='wk-search-results__result__page'>
-            <a
-              onClick={ onResultClick }
-              data-path={ result.path }
-              href={ `/${result.path}` }
-            >
-              <Highlighter highlightClassName='wk-search-results__result__highlight' searchWords={ searchWords } textToHighlight={ result.title } />
-            </a>
-          </div>
+          <a
+            className='wk-search-results__result__page'
+            data-path={ result.path }
+            href={ `/${result.path}` }
+          >
+            <Highlighter highlightClassName='wk-search-results__result__highlight' searchWords={ searchWords } textToHighlight={ result.title } />
+          </a>
+          { renderKeywords({ keywords: result.keywords, searchWords }) }
         </div>
       ))}
     </div>
   );
+};
+
+SearchResults.propTypes = {
+  query: PropTypes.string.isRequired,
+  results: PropTypes.array.isRequired
 };
 
 module.exports = SearchResults;
