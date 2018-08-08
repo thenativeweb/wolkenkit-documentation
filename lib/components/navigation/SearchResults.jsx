@@ -1,30 +1,11 @@
 'use strict';
 
-const Highlighter = require('react-highlight-words'),
-      PropTypes = require('prop-types'),
+const PropTypes = require('prop-types'),
       React = require('react');
 
-const Icon = require('../Icon.jsx');
-
-const renderKeywords = ({ keywords, searchWords }) => {
-  if (!keywords) {
-    return null;
-  }
-
-  return (
-    <div className='wk-search-results__result__keywords'>
-
-      { keywords.
-        split(' ').
-        filter(keyword => keyword !== '').
-        map(keyword => (
-          <span key={ keyword } className='wk-search-results__result__keywords__keyword'>
-            <Highlighter highlightClassName='wk-search-results__result__highlight' searchWords={ searchWords } textToHighlight={ keyword } />
-          </span>
-        ))}
-    </div>
-  );
-};
+const HighlightText = require('../HighlightText.jsx'),
+      Icon = require('../Icon.jsx'),
+      Keywords = require('../Keywords.jsx');
 
 const SearchResults = ({ results, query }) => {
   if (!results) {
@@ -35,9 +16,18 @@ const SearchResults = ({ results, query }) => {
     return (
       <div className='wk-search-results'>
         <div
-          className='wk-search-results__no-results'
+          className='wk-search-results__error'
         >
-          No pages found…
+          <div className='wk-search-results__error__cause'>Sorry, no pages found.</div>
+          <div className='wk-search-results__error__tip'>
+            Try searching for something else!
+          </div>
+          <div className='wk-search-results__error__help'>
+            <p>Or get help from the community…</p>
+            <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'><Icon name='slack' /></a>
+            <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='stackoverflow' /></a>
+            <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='github' /></a>
+          </div>
         </div>
       </div>
     );
@@ -53,18 +43,28 @@ const SearchResults = ({ results, query }) => {
           key={ result.path }
         >
           <div className='wk-search-results__result__path'>
-            <div className='wk-search-results__result__section'>{ result.section.title }</div>
-            <div className='wk-search-results__result__separator'><Icon name='chevron' size='small' /></div>
-            <div className='wk-search-results__result__chapter'>{ result.parent.title }</div>
+            <div className='wk-search-results__result__section'>{ result.section && result.section.title }</div>
+            { result.chapter ? (
+              <React.Fragment>
+                <div className='wk-search-results__result__separator'><Icon name='chevron' size='small' /></div>
+                <div className='wk-search-results__result__chapter'>
+                  <HighlightText searchWords={ searchWords }>
+                    { result.chapter.title }
+                  </HighlightText>
+                </div>
+              </React.Fragment>) :
+              null }
           </div>
           <a
             className='wk-search-results__result__page'
             data-path={ result.path }
             href={ `/${result.path}` }
           >
-            <Highlighter highlightClassName='wk-search-results__result__highlight' searchWords={ searchWords } textToHighlight={ result.title } />
+            <HighlightText searchWords={ searchWords }>
+              { result.title }
+            </HighlightText>
           </a>
-          { renderKeywords({ keywords: result.keywords, searchWords }) }
+          <Keywords keywords={ result.keywords } searchWords={ searchWords } />
         </div>
       ))}
     </div>
@@ -73,7 +73,7 @@ const SearchResults = ({ results, query }) => {
 
 SearchResults.propTypes = {
   query: PropTypes.string.isRequired,
-  results: PropTypes.array.isRequired
+  results: PropTypes.array
 };
 
 module.exports = SearchResults;

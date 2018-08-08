@@ -7,9 +7,42 @@
   background-color: @color-brand-gray-dark;
   z-index: @z-index-search;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 
-  .wk-search-results__no-results {
+  .wk-search-results__error {
+    margin-top: @grid-size*2;
     padding: @grid-size;
+    text-align: center;
+
+    .wk-search-results__error__cause {
+      font-size: 18px;
+    }
+
+    .wk-search-results__error__tip {
+      margin-top: 20px;
+      font-weight: 400;
+
+      p {
+        margin: 0 0 4px 0;
+      }
+    }
+
+    .wk-search-results__error__help {
+      margin-top: @grid-size;
+      font-weight: 400;
+
+      p {
+        margin-bottom: @grid-size*2;
+      }
+
+      a {
+        margin-right: @grid-size;
+      }
+
+      a:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   .wk-search-results__result {
@@ -19,10 +52,9 @@
     font-size: @font-size-default;
 
     .wk-search-results__result__path {
-      color: #fff;
       font-weight: 400;
       font-size: 14px;
-      opacity: 0.25;
+      color: #66686d;
       padding-bottom: 5px;
       display: flex;
       flex-wrap: wrap;
@@ -39,7 +71,7 @@
       height: 16px;
 
       .wk-icon {
-        fill: #fff;
+        fill: #66686d;
         opacity: 0.75;
       }
     }
@@ -49,7 +81,7 @@
     }
 
     .wk-search-results__result__page {
-      color: #fff;
+      color: @color-brand-white;
       font-weight: 600;
       display: block;
 
@@ -57,32 +89,7 @@
         color: @color-brand-blue-highlight;
         opacity: 1;
         background: transparent;
-
       }
-    }
-
-    .wk-search-results__result__keywords {
-      padding-top: 10px;
-      font-size: 12px;
-
-      label {
-        display: inline-block;
-        margin-right: 4px;
-      }
-
-      .wk-search-results__result__keywords__keyword {
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        padding: 0px 7px 1px 7px;
-        margin-right: 8px;
-        color: @color-brand-gray-dark;
-      }
-    }
-
-    .wk-search-results__result__highlight {
-      background: fade(#66D0FD, 85%);
-      padding: 1px 0 2px 0;
     }
   }
 }
