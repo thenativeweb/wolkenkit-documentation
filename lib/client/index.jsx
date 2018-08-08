@@ -13,7 +13,7 @@ require('array.prototype.find').shim();
 const metadata = require('../docs/metadata'),
       page = require('../services/page');
 
-const Docs = require('../components/Docs.jsx');
+const Docs = require('../screens/Docs.jsx');
 
 const history = createHistory();
 
@@ -36,6 +36,7 @@ page.load({
   ReactDom.hydrate(
     <Docs
       activePath={ activePath }
+      activeVersion={ activeVersion }
       history={ history }
       pageContent={ loadedPage.content }
       pageInfo={ loadedPage.info }

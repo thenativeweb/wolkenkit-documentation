@@ -1,19 +1,29 @@
 .wk-search {
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: @bar-height;
+  width: 100%;
+  z-index: @z-index-search;
+  display: flex;
+  flex-direction: column;
 
-  .wk-search__query {
-    width: 100%;
-    margin-right: @grid-size;
-
-    .wk-search__query__input {
+  .wk-search__bar {
+    background-color: @color-brand-gray-dark;
+    
+    .wk-search__query {
       width: 100%;
-      padding: 5px 10px 5px 15px;
-      font-family: @font-family-default;
-      font-size: 15px;
-      font-weight: 500;
-      border: 1px solid @color-brand-gray-dark;
-      border-radius: 0;
-      outline: 0;
+      margin-right: @grid-size;
+
+      .wk-search__query__input {
+        width: 100%;
+        padding: 5px 10px 5px 15px;
+        font-family: @font-family-default;
+        font-size: 15px;
+        font-weight: 500;
+        border: 1px solid @color-brand-gray-dark;
+        border-radius: 0;
+        outline: 0;
+      }
     }
   }
 }
@@ -21,12 +31,14 @@
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 768px) {
   .wk-search {
-    .wk-search__query {
-      /*
-      * Prevent iOs Safari to zoom when focusing input field.
-      */
-      .wk-search__query__input {
-        font-size: 16px;
+    .wk-search__bar {
+      .wk-search__query {
+        /*
+        * Prevent iOs Safari to zoom when focusing input field.
+        */
+        .wk-search__query__input {
+          font-size: 16px;
+        }
       }
     }
   }

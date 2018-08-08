@@ -35,21 +35,18 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-
+      color: rgba(255, 255, 255, 0.65);
 
       .wk-icon {
         flex: 0 0 auto;
         width: @grid-size;
         height: @grid-size;
-        fill: rgba(255, 255, 255, 0.65);
         transform-origin: 50% 50%;
       }
     }
 
     a:hover {
-      .wk-icon {
-        fill: @color-brand-blue-highlight;
-      }
+      color: @color-brand-blue-highlight;
     }
   }
 

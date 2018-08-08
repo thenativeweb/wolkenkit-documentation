@@ -45,23 +45,24 @@ class Search extends React.PureComponent {
     const { onClose } = this.props;
 
     return (
-      <Bar className='wk-search'>
-        <Bar.Left className='wk-search__query'>
-          <input
-            value={ query }
-            type='search'
-            autoFocus={ true }
-            placeholder='Search…'
-            className='wk-search__query__input'
-            onChange={ this.handleSearchInputChanged }
-            onKeyPress={ this.handleSearchInputKeyPressed }
-          />
-        </Bar.Left>
+      <div className='wk-search'>
+        <Bar className='wk-search__bar'>
+          <Bar.Left className='wk-search__query'>
+            <input
+              value={ query }
+              type='search'
+              autoFocus={ true }
+              placeholder='Search…'
+              className='wk-search__query__input'
+              onChange={ this.handleSearchInputChanged }
+              onKeyPress={ this.handleSearchInputKeyPressed }
+            />
+          </Bar.Left>
 
-        <Bar.Action icon='close' onClick={ onClose } />
-
+          <Bar.Action icon='close' onClick={ onClose } />
+        </Bar>
         <SearchResults query={ query } results={ results } />
-      </Bar>
+      </div>
     );
   }
 }

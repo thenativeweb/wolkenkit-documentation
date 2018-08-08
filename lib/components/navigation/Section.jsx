@@ -1,29 +1,15 @@
 'use strict';
 
-const isEqual = require('lodash/isEqual'),
-      PropTypes = require('prop-types'),
+const PropTypes = require('prop-types'),
       React = require('react');
 
-const Icon = require('../Icon.jsx'),
-      page = require('../../services/page');
+const Icon = require('../Icon.jsx');
 
 class Section extends React.PureComponent {
   constructor (props) {
     super(props);
 
     this.handleItemClicked = this.handleItemClicked.bind(this);
-  }
-
-  componentWillUpdate (nextProps) {
-    const { activePath, path } = this.props;
-
-    if (isEqual(nextProps.activePath, activePath)) {
-      return;
-    }
-
-    this.setState({
-      isActive: page.getSection(activePath) === page.getSection(path)
-    });
   }
 
   handleItemClicked (event) {
@@ -36,8 +22,7 @@ class Section extends React.PureComponent {
   }
 
   render () {
-    const { activePath, title, path } = this.props;
-    const isActive = page.getSection(activePath) === page.getSection(path);
+    const { isActive, title } = this.props;
 
     let sectionClasses = 'wk-section';
 
@@ -57,7 +42,7 @@ class Section extends React.PureComponent {
 }
 
 Section.propTypes = {
-  activePath: PropTypes.array.isRequired,
+  isActive: PropTypes.bool.isRequired,
   path: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired

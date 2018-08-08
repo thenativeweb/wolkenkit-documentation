@@ -1,18 +1,15 @@
 .wk-search-results {
-  position: absolute;
-  left: 0;
-  top: @bar-height;
-  width: 100%;
   height: calc(100vh - @bar-height*2);
   background-color: @color-brand-gray-dark;
-  z-index: @z-index-search;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 
   .wk-search-results__error {
+    pointer-events: all;
     margin-top: @grid-size*2;
     padding: @grid-size;
     text-align: center;
+    color: rgba(255, 255, 255, 0.65);
 
     .wk-search-results__error__cause {
       font-size: 18px;
@@ -30,22 +27,29 @@
     .wk-search-results__error__help {
       margin-top: @grid-size;
       font-weight: 400;
+      color: rgba(255, 255, 255, 0.65);
 
       p {
         margin-bottom: @grid-size*2;
       }
 
       a {
-        margin-right: @grid-size;
+        margin-right: @grid-size*1.5;
+        color: rgba(255, 255, 255, 0.65);
       }
 
       a:last-child {
         margin-right: 0;
       }
+
+      a:hover {
+        color: @color-brand-blue-highlight;
+      }
     }
   }
 
   .wk-search-results__result {
+    pointer-events: all;
     margin: 0px;
     padding: @grid-size;
     border-bottom: 1px solid rgba(255,255,255, 0.1);

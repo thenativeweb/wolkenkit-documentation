@@ -20,9 +20,9 @@ class Page extends React.PureComponent {
   }
 
   render () {
-    const { activePath, title, path } = this.props;
-    const url = `${path.join('/')}`;
-    const isActive = activePath.join('/') === url;
+    const { isActive, title, path } = this.props;
+    const url = path.join('/');
+
     let pageClasses = 'wk-page';
 
     if (isActive) {
@@ -36,7 +36,7 @@ class Page extends React.PureComponent {
 }
 
 Page.propTypes = {
-  activePath: PropTypes.array.isRequired,
+  isActive: PropTypes.bool.isRequired,
   path: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired

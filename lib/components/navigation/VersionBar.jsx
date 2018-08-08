@@ -6,9 +6,7 @@ const PropTypes = require('prop-types'),
 const Bar = require('../Bar.jsx'),
       Dropdown = require('../Dropdown.jsx');
 
-const page = require('../../services/page');
-
-class NavigationHeader extends React.PureComponent {
+class VersionBar extends React.PureComponent {
   constructor (props) {
     super(props);
 
@@ -32,7 +30,7 @@ class NavigationHeader extends React.PureComponent {
   }
 
   renderLogo () {
-    const { activePath, showLogo } = this.props;
+    const { activeVersion, showLogo } = this.props;
 
     if (!showLogo) {
       return null;
@@ -41,7 +39,7 @@ class NavigationHeader extends React.PureComponent {
     return (
       <a
         onClick={ this.handleLogoClicked }
-        href={ `/${page.getVersion(activePath)}/` }
+        href={ `/${activeVersion}/` }
         className='wk-brand-typo'
       >
         <span>wolken</span>kit
@@ -50,11 +48,7 @@ class NavigationHeader extends React.PureComponent {
   }
 
   render () {
-    const { activePath, versions } = this.props;
-
-    if (activePath.length === 0) {
-      return null;
-    }
+    const { activeVersion, versions } = this.props;
 
     return (
       <Bar>
@@ -64,7 +58,7 @@ class NavigationHeader extends React.PureComponent {
         <Bar.Right>
           <Dropdown
             options={ versions }
-            selected={ page.getVersion(activePath) }
+            selected={ activeVersion }
             onChange={ this.handleVersionChanged }
           />
         </Bar.Right>
@@ -73,11 +67,11 @@ class NavigationHeader extends React.PureComponent {
   }
 }
 
-NavigationHeader.propTypes = {
-  activePath: PropTypes.array.isRequired,
+VersionBar.propTypes = {
+  activeVersion: PropTypes.string.isRequired,
   versions: PropTypes.array.isRequired,
   onLogoClick: PropTypes.func.isRequired,
   onVersionChange: PropTypes.func.isRequired
 };
 
-module.exports = NavigationHeader;
+module.exports = VersionBar;

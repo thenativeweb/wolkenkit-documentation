@@ -9,7 +9,7 @@ const createHistory = require('history').createMemoryHistory,
 const metadata = require('../docs/metadata'),
       page = require('../services/page');
 
-const Docs = require('../components/Docs.jsx');
+const Docs = require('../screens/Docs.jsx');
 
 const index = function (options) {
   const { pageContent, url } = options;
@@ -32,6 +32,7 @@ const index = function (options) {
   return ReactDOM.renderToString(
     <Docs
       activePath={ activePath }
+      activeVersion={ activeVersion }
       history={ history }
       pageInfo={ pageInfo }
       pageContent={ pageContent }

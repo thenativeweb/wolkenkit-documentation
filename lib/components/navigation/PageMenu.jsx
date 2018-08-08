@@ -1,88 +1,49 @@
 'use strict';
 
-const isEqual = require('lodash/isEqual'),
-      PropTypes = require('prop-types'),
+const PropTypes = require('prop-types'),
       React = require('react');
 
-const BarBottom = require('../BarBottom.jsx'),
-      Chapter = require('./Chapter.jsx'),
-      Icon = require('../Icon.jsx'),
-      MenuBar = require('./MenuBar.jsx'),
+const Chapter = require('./Chapter.jsx'),
       Page = require('./Page.jsx'),
       Section = require('./Section.jsx');
 
 const page = require('../../services/page');
 
 class PageMenu extends React.Component {
-  constructor (props) {
-    super(props);
-
-    this.handleItemClicked = this.handleItemClicked.bind(this);
-    this.handleBackClicked = this.handleBackClicked.bind(this);
-    this.handlePageClicked = this.handlePageClicked.bind(this);
-
-    this.state = {
-      activePath: props.activePath,
-      expandedPath: props.activePath
-    };
-  }
-
-  componentWillUpdate (nextProps) {
-    if (!isEqual(nextProps.activePath, this.props.activePath)) {
-      this.setState({
-        activePath: nextProps.activePath,
-        expandedPath: nextProps.activePath
-      });
-    }
-  }
-
-  handleItemClicked (newPath) {
-    this.setState({
-      expandedPath: newPath
-    });
-  }
-
-  handleBackClicked () {
-    const { activePath } = this.props;
-
-    this.setState({
-      expandedPath: [ page.getVersion(activePath) ]
-    });
-  }
-
-  handlePageClicked (path) {
-    const { onNavigated } = this.props;
-
-    onNavigated(path);
-  }
-
   renderTopLevel (navigation) {
     if (!navigation) {
       return null;
     }
 
-    const { activePath } = this.props;
-    const activeVersion = page.getVersion(activePath);
+    const { activePath, activeVersion, onNavItemClick } = this.props;
 
     return navigation.map(
-      section => (
-        <Section
-          key={ section.slug }
-          activePath={ activePath }
-          title={ section.title }
-          path={ [ activeVersion, section.slug ] }
-          onClick={ this.handleItemClicked }
-        />
-      )
+      section => {
+        const sectionPath = [ activeVersion, section.slug ];
+
+        return (
+          <Section
+            key={ section.slug }
+            isActive={ page.getSection(activePath) === page.getSection(sectionPath) }
+            title={ section.title }
+            path={ sectionPath }
+            onClick={ onNavItemClick }
+          />
+        );
+      }
     );
   }
 
   renderSecondLevel (navigation) {
-    const { history } = this.props;
-    const { activePath, expandedPath } = this.state;
+    const {
+      activeVersion,
+      activePath,
+      expandedPath,
+      onNavItemClick,
+      onPageClick
+    } = this.props;
 
     if (expandedPath.length >= 2) {
-      const activeVersion = page.getVersion(activePath);
       const expandedSectionSlug = page.getSection(expandedPath);
       const expandedChapterSlug = page.getChapter(expandedPath);
       const expandedSection = navigation.find(item => item.slug === expandedSectionSlug);
@@ -93,15 +54,16 @@ class PageMenu extends React.Component {
 
       return expandedSection.children.map(
         chapter => {
+          const itemPath = [ activeVersion, expandedSectionSlug, chapter.slug ];
+
           if (!chapter.children) {
             return (
               <Page
                 key={ chapter.slug }
-                activePath={ activePath }
-                history={ history }
+                isActive={ activePath.join('/') === itemPath.join('/') }
                 title={ chapter.title }
-                path={ [ activeVersion, expandedSectionSlug, chapter.slug ] }
-                onClick={ this.handlePageClicked }
+                path={ itemPath }
+                onClick={ onPageClick }
               />
             );
           }
@@ -110,13 +72,13 @@ class PageMenu extends React.Component {
             <Chapter
               key={ chapter.slug }
               activePath={ activePath }
-              history={ history }
               isExpanded={ expandedChapterSlug === chapter.slug }
-              path={ [ activeVersion, expandedSectionSlug, chapter.slug ] }
+              isActive={ activePath.join('/').startsWith(itemPath.join('/')) }
+              path={ itemPath }
               title={ chapter.title }
               pages={ chapter.children }
-              onClick={ this.handleItemClicked }
-              onPageClick={ this.handlePageClicked }
+              onClick={ onNavItemClick }
+              onPageClick={ onPageClick }
             />
           );
         }
@@ -127,16 +89,9 @@ class PageMenu extends React.Component {
   }
 
   render () {
-    const {
-      history,
-      metadata
-    } = this.props;
+    const { activeVersion, expandedPath, metadata } = this.props;
 
-    const { expandedPath } = this.state;
-
-    const version = page.getVersion(expandedPath);
-
-    const navigation = metadata.navigation[version];
+    const navigation = metadata.navigation[activeVersion];
 
     let levelsStyle = {
       transform: `translate(0, 0)`
@@ -150,13 +105,7 @@ class PageMenu extends React.Component {
 
     return (
       <div className='wk-page-menu'>
-        <MenuBar
-          expandedPath={ expandedPath }
-          history={ history }
-          onBackClick={ this.handleBackClicked }
-          version={ version }
-        />
-        <div className='wk-menu__levels-container' ref={ this.handleMenuLevelChanged }>
+        <div className='wk-menu__levels-container'>
           <div className='wk-menu-levels' style={ levelsStyle }>
             <div className='wk-menu-level wk-menu-level--top'>
               { this.renderTopLevel(navigation) }
@@ -166,11 +115,6 @@ class PageMenu extends React.Component {
             </div>
           </div>
         </div>
-        <BarBottom className='wk-menu__social-bar'>
-          <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='github' /></a>
-          <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'><Icon name='slack' /></a>
-          <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='stackoverflow' /></a>
-        </BarBottom>
       </div>
     );
   }
@@ -178,9 +122,11 @@ class PageMenu extends React.Component {
 
 PageMenu.propTypes = {
   activePath: PropTypes.array.isRequired,
-  history: PropTypes.object.isRequired,
+  activeVersion: PropTypes.string.isRequired,
+  expandedPath: PropTypes.array.isRequired,
   metadata: PropTypes.object.isRequired,
-  onNavigated: PropTypes.func.isRequired
+  onNavItemClick: PropTypes.func.isRequired,
+  onPageClick: PropTypes.func.isRequired
 };
 
 module.exports = PageMenu;
