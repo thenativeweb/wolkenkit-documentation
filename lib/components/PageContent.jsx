@@ -15,6 +15,18 @@ class PageContent extends React.Component {
     this.saveContainerRef = this.saveContainerRef.bind(this);
   }
 
+  componentDidMount () {
+    const anchor = global.location.hash;
+
+    if (anchor) {
+      const anchorElement = global.document.querySelector(anchor);
+
+      if (anchorElement && this.container) {
+        this.container.scrollTop = anchorElement.offsetTop;
+      }
+    }
+  }
+
   componentDidUpdate (prevProps) {
     if (prevProps.content !== this.props.content && this.container) {
       this.container.scrollTop = 0;
