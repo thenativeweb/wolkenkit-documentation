@@ -39,7 +39,7 @@ The following significant changes have been made since wolkenkit `1.2.0`:
   - [@colorizedmind](https://github.com/colorizedmind)
   - [@lorenzleutgeb](https://github.com/lorenzleutgeb)
   - [@marcusstenbeck](https://github.com/marcusstenbeck)
-  - [@revrng](https://github.com/revrng)
+  - [@reneviering](https://github.com/reneviering)
   - [@scherermichael](https://github.com/scherermichael)
   - [@schmuto](https://github.com/schmuto)
 
@@ -56,7 +56,7 @@ The following significant changes have been made since wolkenkit `1.1.0`:
 - **Fixed** a bug in detecting expired OpenID Connect tokens in the wolkenkit client SDK
   - When using the OpenID Connect authentication strategy, expired tokens were sometimes mistakenly regarded as valid by the wolkenkit client SDK. This has been fixed.
 - **Contributions** by the community
-  - [@revrng](https://github.com/revrng)
+  - [@reneviering](https://github.com/reneviering)
   - [@scherermichael](https://github.com/scherermichael)
 
 For details on how to update to version `1.2.0` see [updating the CLI](../../../../1.2.0/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../1.2.0/getting-started/updating-wolkenkit/updating-an-application/).
@@ -82,7 +82,7 @@ The following significant changes have been made since wolkenkit `1.0.1`:
   - [@coderbyheart](https://github.com/coderbyheart)
   - [@czosel](https://github.com/czosel)
   - [@Pandaros](https://github.com/Pandaros)
-  - [@revrng](https://github.com/revrng)
+  - [@reneviering](https://github.com/reneviering)
 
 For details on how to update to version `1.1.0` see [updating the CLI](../../../../1.1.0/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../1.1.0/getting-started/updating-wolkenkit/updating-an-application/).
 

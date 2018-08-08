@@ -23,7 +23,7 @@ The following significant changes have been made since wolkenkit `1.0.1`:
   - [@coderbyheart](https://github.com/coderbyheart)
   - [@czosel](https://github.com/czosel)
   - [@Pandaros](https://github.com/Pandaros)
-  - [@revrng](https://github.com/revrng)
+  - [@reneviering](https://github.com/reneviering)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
