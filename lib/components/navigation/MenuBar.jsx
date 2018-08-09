@@ -3,62 +3,23 @@
 const PropTypes = require('prop-types'),
       React = require('react');
 
-const Icon = require('../Icon.jsx'),
-      page = require('../../services/page');
+const Bar = require('../Bar.jsx');
 
-class MenuBar extends React.PureComponent {
-  constructor (props) {
-    super(props);
-
-    this.handleBackClicked = this.handleBackClicked.bind(this);
-  }
-
-  handleBackClicked (event) {
-    const { onBackClick } = this.props;
-
-    event.stopPropagation();
-    event.preventDefault();
-
-    onBackClick();
-  }
-
-  renderBackButton () {
-    const {
-      expandedPath
-    } = this.props;
-
-    if (expandedPath.length === 0) {
-      return <div className='wk-bar__left'>Table of contents</div>;
+const MenuBar = ({ backLabel, onBack, onShowSearch }) => (
+  <Bar>
+    {
+      backLabel ?
+        <Bar.BackAction onClick={ onBack }>{ backLabel }</Bar.BackAction> :
+        <Bar.Left>Table of contents</Bar.Left>
     }
-
-    const pageInfo = page.getInfo(expandedPath);
-
-    if (!pageInfo.breadcrumbs) {
-      return <div className='wk-bar__left'>Table of contents</div>;
-    }
-
-    return (
-      <div className='wk-bar__back'>
-        <a onClick={ this.handleBackClicked } href='#back'>
-          <Icon name='back' />
-          <span className='label'>{pageInfo.breadcrumbs[0]}</span>
-        </a>
-      </div>
-    );
-  }
-
-  render () {
-    return (
-      <div className='wk-bar'>
-        {this.renderBackButton()}
-      </div>
-    );
-  }
-}
+    <Bar.Action onClick={ onShowSearch } icon='search' />
+  </Bar>
+);
 
 MenuBar.propTypes = {
-  expandedPath: PropTypes.array.isRequired,
-  onBackClick: PropTypes.func.isRequired
+  onBack: PropTypes.func.isRequired,
+  onShowSearch: PropTypes.func.isRequired,
+  backLabel: PropTypes.string
 };
 
 module.exports = MenuBar;

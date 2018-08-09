@@ -3,11 +3,10 @@
 const PropTypes = require('prop-types'),
       React = require('react');
 
-const Dropdown = require('../Dropdown.jsx');
+const Bar = require('../Bar.jsx'),
+      Dropdown = require('../Dropdown.jsx');
 
-const page = require('../../services/page');
-
-class NavigationHeader extends React.PureComponent {
+class VersionBar extends React.PureComponent {
   constructor (props) {
     super(props);
 
@@ -31,7 +30,7 @@ class NavigationHeader extends React.PureComponent {
   }
 
   renderLogo () {
-    const { activePath, showLogo } = this.props;
+    const { activeVersion, showLogo } = this.props;
 
     if (!showLogo) {
       return null;
@@ -40,7 +39,7 @@ class NavigationHeader extends React.PureComponent {
     return (
       <a
         onClick={ this.handleLogoClicked }
-        href={ `/${page.getVersion(activePath)}/` }
+        href={ `/${activeVersion}/` }
         className='wk-brand-typo'
       >
         <span>wolken</span>kit
@@ -49,34 +48,30 @@ class NavigationHeader extends React.PureComponent {
   }
 
   render () {
-    const { activePath, versions } = this.props;
-
-    if (activePath.length === 0) {
-      return null;
-    }
+    const { activeVersion, versions } = this.props;
 
     return (
-      <div className='wk-bar'>
-        <div className='wk-bar__left'>
+      <Bar>
+        <Bar.Left>
           {this.renderLogo()}
-        </div>
-        <div className='wk-bar__right'>
+        </Bar.Left>
+        <Bar.Right>
           <Dropdown
             options={ versions }
-            selected={ page.getVersion(activePath) }
+            selected={ activeVersion }
             onChange={ this.handleVersionChanged }
           />
-        </div>
-      </div>
+        </Bar.Right>
+      </Bar>
     );
   }
 }
 
-NavigationHeader.propTypes = {
-  activePath: PropTypes.array.isRequired,
+VersionBar.propTypes = {
+  activeVersion: PropTypes.string.isRequired,
   versions: PropTypes.array.isRequired,
   onLogoClick: PropTypes.func.isRequired,
   onVersionChange: PropTypes.func.isRequired
 };
 
-module.exports = NavigationHeader;
+module.exports = VersionBar;

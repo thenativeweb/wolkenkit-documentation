@@ -11,7 +11,6 @@ class Chapter extends React.PureComponent {
     super(props);
 
     this.handleChapterClicked = this.handleChapterClicked.bind(this);
-    this.handlePageClicked = this.handlePageClicked.bind(this);
   }
 
   handleChapterClicked (event) {
@@ -27,14 +26,8 @@ class Chapter extends React.PureComponent {
     }
   }
 
-  handlePageClicked (pagePath) {
-    const { onPageClick } = this.props;
-
-    onPageClick(pagePath);
-  }
-
   renderPages () {
-    const { activePath, history, isExpanded, pages, path } = this.props;
+    const { activePath, isExpanded, pages, path, onPageClick } = this.props;
 
     if (!isExpanded) {
       return null;
@@ -52,11 +45,10 @@ class Chapter extends React.PureComponent {
               return (
                 <Page
                   key={ page.slug }
-                  activePath={ activePath }
-                  history={ history }
+                  isActive={ activePath.join('/') === pagePath.join('/') }
                   title={ page.title }
                   path={ pagePath }
-                  onClick={ this.handlePageClicked }
+                  onClick={ onPageClick }
                 />
               );
             }
@@ -67,8 +59,7 @@ class Chapter extends React.PureComponent {
   }
 
   render () {
-    const { activePath, isExpanded, pages, path, title } = this.props;
-    const isActive = activePath.join('/').startsWith(path.join('/'));
+    const { isActive, isExpanded, pages, title } = this.props;
 
     let chapterClasses = 'wk-chapter';
 
@@ -96,7 +87,7 @@ class Chapter extends React.PureComponent {
 
 Chapter.propTypes = {
   activePath: PropTypes.array.isRequired,
-  history: PropTypes.object.isRequired,
+  isActive: PropTypes.bool.isRequired,
   isExpanded: PropTypes.bool.isRequired,
   pages: PropTypes.array.isRequired,
   path: PropTypes.array.isRequired,

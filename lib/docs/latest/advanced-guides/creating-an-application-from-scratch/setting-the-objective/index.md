@@ -4,7 +4,7 @@ In this guide you will create an application from scratch. The objective is to i
 
 ## Defining the application
 
-Your application will be a chat that allows sending and receiving messages in order to talk to other users. Additionally, users are able to like messages. In contrast to [creating your first application](../../creating-your-first-application/setting-the-objective/), you will now create the entire application from scratch by yourself.
+Your application will be a chat that allows sending and receiving messages in order to talk to other users. Additionally, users are able to like messages. In contrast to [creating your first application](../../../getting-started/creating-your-first-application/setting-the-objective/), you will now create the entire application from scratch by yourself.
 
 ![The chat application](chat.png)
 

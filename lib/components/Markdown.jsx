@@ -4,6 +4,7 @@ const hljs = require('highlight.js'),
       markdownIt = require('markdown-it'),
       markdownItAnchor = require('markdown-it-anchor'),
       markdownItContainer = require('markdown-it-container'),
+      memoize = require('lodash/memoize'),
       PropTypes = require('prop-types'),
       React = require('react');
 
@@ -32,38 +33,11 @@ const markdown = markdownIt({
   use(markdownItContainer, 'hint-warning').
   use(markdownItContainer, 'hint-wisdom');
 
-class Markdown extends React.PureComponent {
-  constructor (props) {
-    super(props);
+const renderMarkdown = memoize(content => markdown.render(content));
 
-    const { content } = props;
-
-    let renderedMarkdown = '';
-
-    if (content) {
-      renderedMarkdown = markdown.render(props.content);
-    }
-
-    this.state = {
-      renderedMarkdown
-    };
-  }
-
-  componentWillUpdate (nextProps) {
-    if (nextProps.content !== this.props.content) {
-      this.setState({
-        renderedMarkdown: markdown.render(nextProps.content)
-      });
-    }
-  }
-
-  render () {
-    const { component } = this.props;
-    const { renderedMarkdown } = this.state;
-
-    return React.createElement(component, { dangerouslySetInnerHTML: { __html: renderedMarkdown }});
-  }
-}
+const Markdown = function ({ component, content }) {
+  return React.createElement(component, { dangerouslySetInnerHTML: { __html: renderMarkdown(content) }});
+};
 
 Markdown.propTypes = {
   component: PropTypes.string,

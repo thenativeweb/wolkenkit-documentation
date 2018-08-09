@@ -3,7 +3,8 @@
 const PropTypes = require('prop-types'),
       React = require('react');
 
-const FeedFallback = require('./FeedFallback.jsx'),
+const Bar = require('./Bar.jsx'),
+      FeedFallback = require('./FeedFallback.jsx'),
       FeedItem = require('./FeedItem.jsx'),
       LoadingIndicator = require('./LoadingIndicator.jsx'),
       news = require('../services/news');
@@ -54,8 +55,8 @@ class Feed extends React.PureComponent {
   render () {
     return (
       <div className={ 'wk-feed' }>
-        <div className='wk-bar' />
-        <div className='wk-bar'>News</div>
+        <Bar />
+        <Bar>News</Bar>
         <div className='wk-feed__items'>
           {this.renderContent()}
         </div>

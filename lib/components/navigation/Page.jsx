@@ -10,19 +10,22 @@ class Page extends React.PureComponent {
     this.handlePageClicked = this.handlePageClicked.bind(this);
   }
 
+  getUrl () {
+    return `/${this.props.path.join('/')}/`;
+  }
+
   handlePageClicked (event) {
     event.preventDefault();
     event.stopPropagation();
 
-    const { path, onClick } = this.props;
+    const { onClick } = this.props;
 
-    onClick(`/${path.join('/')}/`);
+    onClick(this.getUrl());
   }
 
   render () {
-    const { activePath, title, path } = this.props;
-    const url = `${path.join('/')}`;
-    const isActive = activePath.join('/') === url;
+    const { isActive, title } = this.props;
+
     let pageClasses = 'wk-page';
 
     if (isActive) {
@@ -30,13 +33,13 @@ class Page extends React.PureComponent {
     }
 
     return (
-      <li className={ pageClasses }><a onClick={ this.handlePageClicked } href={ `/${url}/` }>{ title }</a></li>
+      <li className={ pageClasses }><a onClick={ this.handlePageClicked } href={ this.getUrl() }>{ title }</a></li>
     );
   }
 }
 
 Page.propTypes = {
-  activePath: PropTypes.array.isRequired,
+  isActive: PropTypes.bool.isRequired,
   path: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
