@@ -43,7 +43,11 @@ const SearchResults = ({ results, query }) => {
           key={ result.path }
         >
           <div className='wk-search-results__result__path'>
-            <div className='wk-search-results__result__section'>{ result.section && result.section.title }</div>
+            <div className='wk-search-results__result__section'>
+              <HighlightText searchWords={ searchWords }>
+                { result.section.title }
+              </HighlightText>
+            </div>
             { result.chapter ? (
               <React.Fragment>
                 <div className='wk-search-results__result__separator'><Icon name='chevron' size='small' /></div>

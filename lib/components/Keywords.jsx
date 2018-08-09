@@ -11,7 +11,7 @@ const Keywords = ({ className, keywords, searchWords }) => {
 
   return (
     <div className={ `wk-keywords ${className}` }>
-      { keywords.map(keyword => (
+      { keywords.sort((left, right) => left.localeCompare(right)).map(keyword => (
         <span key={ keyword } className='wk-keywords__keyword'>
           <HighlightText searchWords={ searchWords }>{ keyword }</HighlightText>
         </span>

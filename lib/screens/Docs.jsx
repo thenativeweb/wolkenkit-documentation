@@ -17,9 +17,9 @@ class Docs extends React.Component {
     super(props);
 
     this.handlePageClick = this.handlePageClick.bind(this);
-    this.handleLogoClicked = this.handleLogoClicked.bind(this);
-    this.handleMobileNavClicked = this.handleMobileNavClicked.bind(this);
-    this.handleVersionChanged = this.handleVersionChanged.bind(this);
+    this.handleLogoClick = this.handleLogoClick.bind(this);
+    this.handleMobileNavigationClick = this.handleMobileNavigationClick.bind(this);
+    this.handleVersionChange = this.handleVersionChange.bind(this);
 
     this.state = {
       activePath: props.activePath,
@@ -33,19 +33,19 @@ class Docs extends React.Component {
     const { history } = this.props;
 
     this.destroyHistory = history.listen(location => {
-      const activePath = location.pathname.split('/').filter(item => item);
-      const activeVersion = page.getVersion(activePath);
+      const newPath = location.pathname.split('/').filter(item => item);
+      const newVersion = page.getVersion(newPath);
 
       page.load({
-        path: activePath
+        path: newPath
       }, (err, loadedPage) => {
         if (err) {
           return;
         }
 
         this.setState({
-          activePath,
-          activeVersion,
+          activePath: newPath,
+          activeVersion: newVersion,
           pageContent: loadedPage.content,
           pageInfo: loadedPage.info
         });
@@ -69,7 +69,7 @@ class Docs extends React.Component {
     history.push(path);
   }
 
-  handleLogoClicked () {
+  handleLogoClick () {
     const { history } = this.props;
     const { activeVersion } = this.state;
 
@@ -80,13 +80,13 @@ class Docs extends React.Component {
     history.push(`/${activeVersion}/`);
   }
 
-  handleVersionChanged (newVersion) {
+  handleVersionChange (newVersion) {
     const { history } = this.props;
 
     history.push(`/${newVersion}/`);
   }
 
-  handleMobileNavClicked () {
+  handleMobileNavigationClick () {
     const { mobileNavVisible } = this.state;
 
     this.setState({
@@ -96,7 +96,6 @@ class Docs extends React.Component {
 
   render () {
     const {
-      history,
       metadata
     } = this.props;
 
@@ -108,9 +107,7 @@ class Docs extends React.Component {
       pageInfo
     } = this.state;
 
-    const isIntroPage = activePath.length <= 1;
-
-    const version = page.getVersion(activePath);
+    const isRootPath = activePath.length <= 1;
 
     let classes = 'wk-docs';
 
@@ -127,30 +124,30 @@ class Docs extends React.Component {
         <Symbols />
 
         <IntroPage
-          isCollapsed={ !isIntroPage }
+          isCollapsed={ !isRootPath }
         />
 
         <Navigation
-          showLogo={ !isIntroPage }
+          showLogo={ !isRootPath }
           activePath={ activePath }
           metadata={ metadata }
           activeVersion={ activeVersion }
-          onLogoClick={ this.handleLogoClicked }
+          onLogoClick={ this.handleLogoClick }
           onPageClick={ this.handlePageClick }
-          onVersionChange={ this.handleVersionChanged }
+          onVersionChange={ this.handleVersionChange }
         />
 
         <PageContent
+          activePath={ activePath }
+          activeVersion={ activeVersion }
           content={ pageContent }
-          history={ history }
-          isCollapsed={ isIntroPage }
+          isCollapsed={ isRootPath }
           info={ pageInfo }
           metadata={ metadata }
-          version={ version }
         />
 
         <MobileNavigation
-          onClick={ this.handleMobileNavClicked }
+          onClick={ this.handleMobileNavigationClick }
         />
       </div>
     );

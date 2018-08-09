@@ -37,4 +37,4 @@ $ wolkenkit --version
 > You have successfully installed wolkenkit!
 :::
 
-To learn how to build and run your first application, have a look at [creating your first application](../../../guides/creating-your-first-application/setting-the-objective/) 😊!
+To learn how to build and run your first application, have a look at [creating your first application](../../creating-your-first-application/setting-the-objective/) 😊!

@@ -34,23 +34,24 @@ class Navigation extends React.Component {
       showSearch: false
     };
 
-    this.handleNavItemClicked = this.handleNavItemClicked.bind(this);
+    this.handleNavigate = this.handleNavigate.bind(this);
     this.handleBack = this.handleBack.bind(this);
     this.handleShowSearch = this.handleShowSearch.bind(this);
-    this.handleSearchClosed = this.handleSearchClosed.bind(this);
+    this.handleSearchClose = this.handleSearchClose.bind(this);
+    this.handleVersionChange = this.handleVersionChange.bind(this);
   }
 
-  handleNavItemClicked (newPath) {
+  handleNavigate (newPath) {
     this.setState({
       expandedPath: newPath
     });
   }
 
   handleBack () {
-    const { activePath } = this.props;
+    const { activeVersion } = this.state;
 
     this.setState({
-      expandedPath: [ page.getVersion(activePath) ]
+      expandedPath: [ activeVersion ]
     });
   }
 
@@ -60,10 +61,20 @@ class Navigation extends React.Component {
     });
   }
 
-  handleSearchClosed () {
+  handleSearchClose () {
     this.setState({
       showSearch: false
     });
+  }
+
+  handleVersionChange (newVersion) {
+    const { onVersionChange } = this.props;
+
+    this.setState({
+      showSearch: false
+    });
+
+    onVersionChange(newVersion);
   }
 
   render () {
@@ -73,8 +84,7 @@ class Navigation extends React.Component {
       metadata,
       showLogo,
       onPageClick,
-      onLogoClick,
-      onVersionChange
+      onLogoClick
     } = this.props;
 
     const {
@@ -94,7 +104,7 @@ class Navigation extends React.Component {
             showLogo={ showLogo }
             versions={ Object.keys(metadata.navigation) }
             onLogoClick={ onLogoClick }
-            onVersionChange={ onVersionChange }
+            onVersionChange={ this.handleVersionChange }
           />
 
           <MenuBar
@@ -109,7 +119,7 @@ class Navigation extends React.Component {
             expandedPath={ expandedPath }
             metadata={ metadata }
             onPageClick={ onPageClick }
-            onNavItemClick={ this.handleNavItemClicked }
+            onNavigate={ this.handleNavigate }
           />
 
           <BarBottom className='wk-navigation__social-bar'>
@@ -118,7 +128,7 @@ class Navigation extends React.Component {
             <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='stackoverflow' /></a>
           </BarBottom>
 
-          { showSearch ? <Search version={ activeVersion } onClose={ this.handleSearchClosed } /> : null }
+          { showSearch ? <Search version={ activeVersion } onClose={ this.handleSearchClose } /> : null }
         </div>
       </div>
     );

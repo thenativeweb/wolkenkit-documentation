@@ -38,7 +38,14 @@ class PageContent extends React.Component {
   }
 
   render () {
-    const { content, history, isCollapsed, info, metadata, version } = this.props;
+    const {
+      activePath,
+      activeVersion,
+      content,
+      isCollapsed,
+      info,
+      metadata
+    } = this.props;
 
     let pageContentClasses = 'wk-page-content',
         pageTitle = metadata.name;
@@ -59,18 +66,23 @@ class PageContent extends React.Component {
 
         <Breadcrumbs breadcrumbs={ info.breadcrumbs } />
 
-        <Markdown content={ content } />
+        <Markdown
+          content={ content }
+        />
 
-        <PageFooter history={ history } version={ version } />
+        <PageFooter
+          activePath={ activePath }
+          activeVersion={ activeVersion }
+        />
       </div>
     );
   }
 }
 
 PageContent.propTypes = {
-  history: PropTypes.object.isRequired,
+  activePath: PropTypes.array.isRequired,
+  activeVersion: PropTypes.string.isRequired,
   metadata: PropTypes.object.isRequired,
-  version: PropTypes.string.isRequired,
   content: PropTypes.string,
   info: PropTypes.oneOfType([
     PropTypes.string,

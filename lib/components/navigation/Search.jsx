@@ -16,10 +16,10 @@ class Search extends React.PureComponent {
       results: undefined
     };
 
-    this.handleSearchInputChanged = this.handleSearchInputChanged.bind(this);
+    this.handleSearchInputChange = this.handleSearchInputChange.bind(this);
   }
 
-  handleSearchInputChanged (event) {
+  handleSearchInputChange (event) {
     const { version } = this.props;
     const query = event.target.value;
 
@@ -54,8 +54,7 @@ class Search extends React.PureComponent {
               autoFocus={ true }
               placeholder='Search…'
               className='wk-search__query__input'
-              onChange={ this.handleSearchInputChanged }
-              onKeyPress={ this.handleSearchInputKeyPressed }
+              onChange={ this.handleSearchInputChange }
             />
           </Bar.Left>
 

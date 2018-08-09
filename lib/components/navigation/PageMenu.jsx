@@ -10,12 +10,10 @@ const Chapter = require('./Chapter.jsx'),
 const page = require('../../services/page');
 
 class PageMenu extends React.Component {
-  renderTopLevel (navigation) {
+  static renderTopLevel ({ activePath, activeVersion, navigation, onNavigate }) {
     if (!navigation) {
       return null;
     }
-
-    const { activePath, activeVersion, onNavItemClick } = this.props;
 
     return navigation.map(
       section => {
@@ -27,69 +25,68 @@ class PageMenu extends React.Component {
             isActive={ page.getSection(activePath) === page.getSection(sectionPath) }
             title={ section.title }
             path={ sectionPath }
-            onClick={ onNavItemClick }
+            onClick={ onNavigate }
           />
         );
       }
     );
   }
 
-  renderSecondLevel (navigation) {
-    const {
-      activeVersion,
-      activePath,
-      expandedPath,
-      onNavItemClick,
-      onPageClick
-    } = this.props;
+  static renderSecondLevel ({ activeVersion, activePath, expandedPath, navigation, onNavigate, onPageClick }) {
+    if (expandedPath.length < 2) {
+      return null;
+    }
 
-    if (expandedPath.length >= 2) {
-      const expandedSectionSlug = page.getSection(expandedPath);
-      const expandedChapterSlug = page.getChapter(expandedPath);
-      const expandedSection = navigation.find(item => item.slug === expandedSectionSlug);
+    const expandedSectionSlug = page.getSection(expandedPath);
+    const expandedChapterSlug = page.getChapter(expandedPath);
+    const expandedSection = navigation.find(item => item.slug === expandedSectionSlug);
 
-      if (!expandedSection || !expandedSection.children) {
-        return null;
-      }
+    if (!expandedSection || !expandedSection.children) {
+      return null;
+    }
 
-      return expandedSection.children.map(
-        chapter => {
-          const itemPath = [ activeVersion, expandedSectionSlug, chapter.slug ];
+    return expandedSection.children.map(
+      chapter => {
+        const itemPath = [ activeVersion, expandedSectionSlug, chapter.slug ];
 
-          if (!chapter.children) {
-            return (
-              <Page
-                key={ chapter.slug }
-                isActive={ activePath.join('/') === itemPath.join('/') }
-                title={ chapter.title }
-                path={ itemPath }
-                onClick={ onPageClick }
-              />
-            );
-          }
-
+        if (!chapter.children) {
           return (
-            <Chapter
+            <Page
               key={ chapter.slug }
-              activePath={ activePath }
-              isExpanded={ expandedChapterSlug === chapter.slug }
-              isActive={ activePath.join('/').startsWith(itemPath.join('/')) }
-              path={ itemPath }
+              isActive={ activePath.join('/') === itemPath.join('/') }
               title={ chapter.title }
-              pages={ chapter.children }
-              onClick={ onNavItemClick }
-              onPageClick={ onPageClick }
+              path={ itemPath }
+              onClick={ onPageClick }
             />
           );
         }
-      );
-    }
 
-    return null;
+        return (
+          <Chapter
+            key={ chapter.slug }
+            activePath={ activePath }
+            isExpanded={ expandedChapterSlug === chapter.slug }
+            isActive={ activePath.join('/').startsWith(itemPath.join('/')) }
+            path={ itemPath }
+            title={ chapter.title }
+            pages={ chapter.children }
+            onClick={ onNavigate }
+            onPageClick={ onPageClick }
+          />
+        );
+      }
+    );
   }
 
   render () {
-    const { activeVersion, expandedPath, metadata } = this.props;
+    const {
+      activePath,
+      activeVersion,
+      expandedPath,
+      metadata,
+      onNavigate,
+      onPageClick
+    } = this.props;
 
     const navigation = metadata.navigation[activeVersion];
 
@@ -108,10 +105,26 @@ class PageMenu extends React.Component {
         <div className='wk-menu__levels-container'>
           <div className='wk-menu-levels' style={ levelsStyle }>
             <div className='wk-menu-level wk-menu-level--top'>
-              { this.renderTopLevel(navigation) }
+              {
+                PageMenu.renderTopLevel({
+                  activePath,
+                  activeVersion,
+                  navigation,
+                  onNavigate
+                })
+              }
             </div>
             <div className='wk-menu-level wk-menu-level--second'>
-              { this.renderSecondLevel(navigation) }
+              {
+                PageMenu.renderSecondLevel({
+                  activeVersion,
+                  activePath,
+                  expandedPath,
+                  navigation,
+                  onNavigate,
+                  onPageClick
+                })
+              }
             </div>
           </div>
         </div>
@@ -125,7 +138,7 @@ PageMenu.propTypes = {
   activeVersion: PropTypes.string.isRequired,
   expandedPath: PropTypes.array.isRequired,
   metadata: PropTypes.object.isRequired,
-  onNavItemClick: PropTypes.func.isRequired,
+  onNavigate: PropTypes.func.isRequired,
   onPageClick: PropTypes.func.isRequired
 };
 

@@ -10,18 +10,21 @@ class Page extends React.PureComponent {
     this.handlePageClicked = this.handlePageClicked.bind(this);
   }
 
+  getUrl () {
+    return `/${this.props.path.join('/')}/`;
+  }
+
   handlePageClicked (event) {
     event.preventDefault();
     event.stopPropagation();
 
-    const { path, onClick } = this.props;
+    const { onClick } = this.props;
 
-    onClick(`/${path.join('/')}/`);
+    onClick(this.getUrl());
   }
 
   render () {
-    const { isActive, title, path } = this.props;
-    const url = path.join('/');
+    const { isActive, title } = this.props;
 
     let pageClasses = 'wk-page';
 
@@ -30,7 +33,7 @@ class Page extends React.PureComponent {
     }
 
     return (
-      <li className={ pageClasses }><a onClick={ this.handlePageClicked } href={ `/${url}/` }>{ title }</a></li>
+      <li className={ pageClasses }><a onClick={ this.handlePageClicked } href={ this.getUrl() }>{ title }</a></li>
     );
   }
 }

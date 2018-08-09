@@ -5,9 +5,8 @@ const PropTypes = require('prop-types'),
 
 const Icon = require('./Icon.jsx');
 
-const PageFooter = function (props) {
-  const { version } = props;
-  const editThisPageUrl = `https://github.com/thenativeweb/wolkenkit-documentation/edit/master/lib/docs/${props.history.location.pathname.substr(1)}index.md`;
+const PageFooter = function ({ activePath, activeVersion }) {
+  const editThisPageUrl = `https://github.com/thenativeweb/wolkenkit-documentation/edit/master/lib/docs/${activePath.join('/')}/index.md`;
 
   return (
     <footer className='wk-page-footer'>
@@ -24,7 +23,7 @@ const PageFooter = function (props) {
           © Copyright 2016-2018 the native web GmbH. All rights reserved.
         </p>
         <p>
-          <a href={ `/${version}/legal/imprint/` }>Imprint</a>
+          <a href={ `/${activeVersion}/legal/imprint/` }>Imprint</a>
         </p>
       </div>
     </footer>
@@ -32,8 +31,8 @@ const PageFooter = function (props) {
 };
 
 PageFooter.propTypes = {
-  history: PropTypes.object.isRequired,
-  version: PropTypes.string.isRequired
+  activePath: PropTypes.array.isRequired,
+  activeVersion: PropTypes.string.isRequired
 };
 
 module.exports = PageFooter;
