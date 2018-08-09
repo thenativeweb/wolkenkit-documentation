@@ -23,7 +23,7 @@ const SearchResults = ({ results, query }) => {
             Try searching for something else!
           </div>
           <div className='wk-search-results__error__help'>
-            <p>Or get help from the community…</p>
+            <p>Or get help from the community:</p>
             <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'><Icon name='slack' /></a>
             <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='stackoverflow' /></a>
             <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='github' /></a>
