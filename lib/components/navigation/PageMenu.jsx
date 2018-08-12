@@ -1,6 +1,7 @@
 'use strict';
 
-const PropTypes = require('prop-types'),
+const injectSheet = require('react-jss').default,
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const Chapter = require('./Chapter.jsx'),
@@ -8,6 +9,42 @@ const Chapter = require('./Chapter.jsx'),
       Section = require('./Section.jsx');
 
 const page = require('../../services/page');
+
+const styles = theme => ({
+  PageMenu: {
+    flex: '1 1 100%',
+    display: 'flex',
+    'flex-direction': 'column',
+    overflow: 'hidden',
+    position: 'relative'
+  },
+
+  Levels: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    display: 'flex',
+    'flex-direction': 'row',
+    transform: 'translate(0, 0)',
+    transition: 'transform 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000)',
+    'will-change': 'transform'
+  },
+
+  Level: {
+    flex: '0 0 auto',
+    height: '100%',
+    overflow: 'auto',
+    '-webkit-overflow-scrolling': 'touch',
+    width: theme.sidebarWidth
+  },
+
+  [theme.device.small]: {
+    Level: {
+      width: theme.sidebarWidthMobile
+    }
+  }
+});
 
 class PageMenu extends React.Component {
   static renderTopLevel ({ activePath, activeVersion, navigation, onNavigate }) {
@@ -82,6 +119,7 @@ class PageMenu extends React.Component {
     const {
       activePath,
       activeVersion,
+      classes,
       expandedPath,
       metadata,
       onNavigate,
@@ -101,31 +139,29 @@ class PageMenu extends React.Component {
     }
 
     return (
-      <div className='wk-page-menu'>
-        <div className='wk-menu__levels-container'>
-          <div className='wk-menu-levels' style={ levelsStyle }>
-            <div className='wk-menu-level wk-menu-level--top'>
-              {
-                PageMenu.renderTopLevel({
-                  activePath,
-                  activeVersion,
-                  navigation,
-                  onNavigate
-                })
-              }
-            </div>
-            <div className='wk-menu-level wk-menu-level--second'>
-              {
-                PageMenu.renderSecondLevel({
-                  activeVersion,
-                  activePath,
-                  expandedPath,
-                  navigation,
-                  onNavigate,
-                  onPageClick
-                })
-              }
-            </div>
+      <div className={ classes.PageMenu }>
+        <div className={ classes.Levels } style={ levelsStyle }>
+          <div className={ classes.Level }>
+            {
+              PageMenu.renderTopLevel({
+                activePath,
+                activeVersion,
+                navigation,
+                onNavigate
+              })
+            }
+          </div>
+          <div className={ classes.Level }>
+            {
+              PageMenu.renderSecondLevel({
+                activeVersion,
+                activePath,
+                expandedPath,
+                navigation,
+                onNavigate,
+                onPageClick
+              })
+            }
           </div>
         </div>
       </div>
@@ -142,4 +178,4 @@ PageMenu.propTypes = {
   onPageClick: PropTypes.func.isRequired
 };
 
-module.exports = PageMenu;
+module.exports = injectSheet(styles)(PageMenu);

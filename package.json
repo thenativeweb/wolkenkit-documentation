@@ -52,6 +52,7 @@
     "babel-preset-env": "1.7.0",
     "babel-preset-react": "6.24.1",
     "babel-register": "6.26.0",
+    "color": "3.0.0",
     "compression": "1.7.3",
     "css-loader": "1.0.0",
     "date-fns": "1.29.0",
@@ -79,6 +80,7 @@
     "semver": "5.5.0",
     "style-loader": "0.22.0",
     "superagent": "3.8.3",
+    "thenativeweb-ux": "0.6.2",
     "webpack": "4.16.5"
   },
   "devDependencies": {

@@ -1,12 +1,15 @@
 'use strict';
 
-const { Helmet } = require('react-helmet'),
+const classNames = require('classnames'),
+      injectSheet = require('react-jss').default,
+      { Helmet } = require('react-helmet'),
       PropTypes = require('prop-types'),
       React = require('react');
 
-const Breadcrumbs = require('./Breadcrumbs.jsx'),
-      Markdown = require('./Markdown.jsx'),
-      PageFooter = require('./PageFooter.jsx');
+const Breadcrumbs = require('../Breadcrumbs.jsx'),
+      Markdown = require('../Markdown.jsx'),
+      PageFooter = require('../PageFooter.jsx'),
+      styles = require('./styles');
 
 class PageContent extends React.Component {
   constructor (props) {
@@ -41,25 +44,25 @@ class PageContent extends React.Component {
     const {
       activePath,
       activeVersion,
+      classes,
       content,
       isCollapsed,
       info,
       metadata
     } = this.props;
 
-    let pageContentClasses = 'wk-page-content',
-        pageTitle = metadata.name;
-
-    if (isCollapsed) {
-      pageContentClasses += ' wk-page-content--collapsed';
-    }
+    let pageTitle = metadata.name;
 
     if (info.title) {
       pageTitle = `${info.title} | ${metadata.name}`;
     }
 
+    const componentClasses = classNames(classes.PageContent, {
+      [classes.IsCollapsed]: isCollapsed
+    });
+
     return (
-      <div ref={ this.saveContainerRef } className={ pageContentClasses }>
+      <div ref={ this.saveContainerRef } className={ componentClasses }>
         <Helmet>
           <title>{ pageTitle }</title>
         </Helmet>
@@ -67,6 +70,7 @@ class PageContent extends React.Component {
         <Breadcrumbs breadcrumbs={ info.breadcrumbs } />
 
         <Markdown
+          className={ classes.Page }
           content={ content }
         />
 
@@ -90,4 +94,4 @@ PageContent.propTypes = {
   ])
 };
 
-module.exports = PageContent;
+module.exports = injectSheet(styles)(PageContent);

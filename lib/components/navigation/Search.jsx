@@ -1,11 +1,50 @@
 'use strict';
 
-const PropTypes = require('prop-types'),
+const injectSheet = require('react-jss').default,
+      PropTypes = require('prop-types'),
       React = require('react');
 
 const Bar = require('../Bar.jsx'),
       pages = require('../../services/pages'),
       SearchResults = require('./SearchResults.jsx');
+
+const styles = theme => ({
+  Search: {
+    position: 'absolute',
+    left: 0,
+    top: theme.barHeight,
+    width: '100%',
+    'z-index': theme.zIndex.overlay,
+    display: 'flex',
+    'flex-direction': 'column'
+  },
+
+  SearchBar: {
+    'background-color': theme.color.brand.dark
+  },
+
+  Query: {
+    width: '100%',
+    'margin-right': theme.grid.stepSize * 1.5
+  },
+
+  QueryInput: {
+    width: '100%',
+    padding: [ theme.grid.stepSize * 0.5, theme.grid.stepSize, theme.grid.stepSize * 0.5, theme.grid.stepSize * 1.5 ],
+    'font-family': theme.font.family.default,
+    'font-size': theme.font.size.default,
+    'font-weight': 500,
+    border: `1px solid ${theme.color.brand.dark}`,
+    'border-radius': 0,
+    outline: 0
+  },
+
+  [theme.device.small]: {
+    QueryInput: {
+      'font-size': 16
+    }
+  }
+});
 
 class Search extends React.PureComponent {
   constructor (props) {
@@ -41,19 +80,19 @@ class Search extends React.PureComponent {
   }
 
   render () {
+    const { classes, onClose } = this.props;
     const { results, query } = this.state;
-    const { onClose } = this.props;
 
     return (
-      <div className='wk-search'>
-        <Bar className='wk-search__bar'>
-          <Bar.Left className='wk-search__query'>
+      <div className={ classes.Search }>
+        <Bar className={ classes.SearchBar }>
+          <Bar.Left className={ classes.Query }>
             <input
               value={ query }
               type='search'
               autoFocus={ true }
               placeholder='Search…'
-              className='wk-search__query__input'
+              className={ classes.QueryInput }
               onChange={ this.handleSearchInputChange }
             />
           </Bar.Left>
@@ -71,4 +110,4 @@ Search.propTypes = {
   onClose: PropTypes.func.isRequired
 };
 
-module.exports = Search;
+module.exports = injectSheet(styles)(Search);

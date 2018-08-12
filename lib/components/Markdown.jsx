@@ -35,11 +35,12 @@ const markdown = markdownIt({
 
 const renderMarkdown = memoize(content => markdown.render(content));
 
-const Markdown = function ({ component, content }) {
-  return React.createElement(component, { dangerouslySetInnerHTML: { __html: renderMarkdown(content) }});
+const Markdown = function ({ component, className, content }) {
+  return React.createElement(component, { className, dangerouslySetInnerHTML: { __html: renderMarkdown(content) }});
 };
 
 Markdown.propTypes = {
+  className: PropTypes.string,
   component: PropTypes.string,
   content: PropTypes.string
 };
