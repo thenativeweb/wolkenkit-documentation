@@ -34,7 +34,7 @@ page.load({
     return;
   }
 
-  ReactDom.render(
+  ReactDom.hydrate(
     <ThemeProvider theme={ theme }>
       <Docs
         suppressHydrationWarning={ true }

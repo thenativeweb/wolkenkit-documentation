@@ -8,7 +8,8 @@ const createHistory = require('history').createMemoryHistory,
 /* eslint-enable no-unused-vars */
 
 const metadata = require('../docs/metadata'),
-      page = require('../services/page');
+      page = require('../services/page'),
+      theme = require('../theme/docs');
 
 const Docs = require('../screens/Docs.jsx');
 
@@ -32,7 +33,7 @@ const index = function (options) {
 
   const html = ReactDOM.renderToString(
     <StyleCollector>
-      <ThemeProvider theme='wolkenkit'>
+      <ThemeProvider theme={ theme }>
         <Docs
           activePath={ activePath }
           activeVersion={ activeVersion }
