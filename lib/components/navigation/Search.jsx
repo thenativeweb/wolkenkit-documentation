@@ -4,7 +4,7 @@ const injectSheet = require('react-jss').default,
       PropTypes = require('prop-types'),
       React = require('react');
 
-const Bar = require('../Bar.jsx'),
+const Bar = require('../Bar/index.jsx'),
       pages = require('../../services/pages'),
       SearchResults = require('./SearchResults.jsx');
 

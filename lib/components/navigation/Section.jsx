@@ -22,7 +22,7 @@ const styles = theme => ({
       'justify-content': 'space-between',
       'align-items': 'center',
       'text-decoration': 'none',
-      padding: [ theme.grid.stepSize, theme.grid.stepSize * 2 ],
+      padding: [ theme.grid.stepSize, theme.grid.stepSize * 1.5 ],
       color: theme.color.brand.white
     },
 

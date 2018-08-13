@@ -3,7 +3,7 @@
 const PropTypes = require('prop-types'),
       React = require('react');
 
-const Bar = require('../Bar.jsx'),
+const Bar = require('../Bar/index.jsx'),
       Dropdown = require('../Dropdown.jsx');
 
 class VersionBar extends React.PureComponent {
