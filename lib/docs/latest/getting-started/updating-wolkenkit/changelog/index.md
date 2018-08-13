@@ -8,6 +8,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
+- **Improved** error handling in the CLI `start` and `restart` commands
+  - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
 - **Contributions** by the community
   - [@nelreina](https://github.com/nelreina)
   - [@reneviering](https://github.com/reneviering)
