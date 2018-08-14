@@ -38,7 +38,7 @@ const styles = theme => ({
     FeedItem: {
       padding: 0,
       margin: [ theme.grid.stepSize / 2, 0 ],
-      width: '100%',
+      width: '100vw',
 
       '& p': {
         margin: [ 0, theme.grid.stepSize * 1.5 ],

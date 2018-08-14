@@ -46,7 +46,6 @@
   ],
   "dependencies": {
     "array.prototype.find": "2.0.4",
-    "autoprefixer": "9.1.0",
     "babel-core": " 6.26.3",
     "babel-loader": "7.1.5",
     "babel-preset-env": "1.7.0",
@@ -67,7 +66,6 @@
     "markdown-it-anchor": "5.0.2",
     "markdown-it-container": "2.0.0",
     "mini-css-extract-plugin": "0.4.1",
-    "postcss-loader": "2.1.6",
     "processenv": "1.1.0",
     "prop-types": "15.6.2",
     "react": "16.4.2",
