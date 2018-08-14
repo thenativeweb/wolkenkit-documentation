@@ -32,7 +32,7 @@ const styles = theme => ({
     display: 'flex',
     flex: '1 1 100%',
     'flex-direction': 'column',
-    'z-index': theme.zIndex.navigation + +1,
+    'z-index': theme.zIndex.navigation + 1,
     position: 'relative'
   },
 

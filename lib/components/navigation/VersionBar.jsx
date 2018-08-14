@@ -1,7 +1,8 @@
 'use strict';
 
 const PropTypes = require('prop-types'),
-      React = require('react');
+      React = require('react'),
+      { Product } = require('thenativeweb-ux');
 
 const Bar = require('../Bar/index.jsx'),
       Dropdown = require('../Dropdown.jsx');
@@ -40,9 +41,8 @@ class VersionBar extends React.PureComponent {
       <a
         onClick={ this.handleLogoClicked }
         href={ `/${activeVersion}/` }
-        className='wk-brand-typo'
       >
-        <span>wolken</span>kit
+        <Product name='wolkenkit' type='typo-only' size='l' />
       </a>
     );
   }

@@ -48,7 +48,7 @@ const styles = theme => ({
     },
 
     '& a': {
-      'margin-right': theme.grid.stepSize * 1.5,
+      'margin-right': theme.grid.stepSize * 3,
       color: 'inherit'
     },
 
@@ -59,6 +59,10 @@ const styles = theme => ({
     '& a:hover': {
       color: theme.color.brand.highlight
     }
+  },
+
+  SocialIcon: {
+    fill: 'currentColor'
   },
 
   SearchResult: {
@@ -124,15 +128,21 @@ const SearchResults = ({ classes, results, query }) => {
         <div
           className={ classes.Errors }
         >
-          <div className={ classes.ErrorTitle }>Sorry, no pages found.</div>
+          <div className={ classes.ErrorCause }>Sorry, no pages found.</div>
           <div className={ classes.ErrorTip }>
             Try searching for something else!
           </div>
           <div className={ classes.ErrorHelp }>
             <p>Or get help from the community:</p>
-            <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'><Icon name='slack' /></a>
-            <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='stackoverflow' /></a>
-            <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'><Icon name='github' /></a>
+            <a href='http://slackin.wolkenkit.io' target='_blank' rel='noopener noreferrer'>
+              <Icon className={ classes.SocialIcon } size='m' name='slack' />
+            </a>
+            <a href='http://stackoverflow.com/questions/tagged/wolkenkit' target='_blank' rel='noopener noreferrer'>
+              <Icon className={ classes.SocialIcon } size='m' name='stackoverflow' />
+            </a>
+            <a href='https://github.com/thenativeweb/wolkenkit' target='_blank' rel='noopener noreferrer'>
+              <Icon className={ classes.SocialIcon } size='m' name='github' />
+            </a>
           </div>
         </div>
       </div>

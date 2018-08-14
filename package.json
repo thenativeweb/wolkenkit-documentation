@@ -62,8 +62,6 @@
     "flaschenpost": "1.1.1",
     "highlight.js": "9.12.0",
     "history": "4.7.2",
-    "less": "3.8.1",
-    "less-loader": "4.1.0",
     "lodash": "4.17.10",
     "markdown-it": "8.4.2",
     "markdown-it-anchor": "5.0.2",
@@ -78,7 +76,6 @@
     "react-highlight-words": "0.12.0",
     "require-dir": "1.0.0",
     "semver": "5.5.0",
-    "style-loader": "0.22.0",
     "superagent": "3.8.3",
     "thenativeweb-ux": "0.6.2",
     "webpack": "4.16.5"

@@ -11,6 +11,7 @@ const styles = theme => ({
     'min-height': theme.barHeight,
     padding: [ 0, theme.grid.stepSize * 5 ],
     'font-size': theme.font.size.default,
+    'line-height': theme.font.size.default,
     'border-bottom': `1px solid ${theme.color.content.border}`,
     color: '#666',
     overflow: 'auto',
@@ -20,12 +21,20 @@ const styles = theme => ({
 
   SeparatorIcon: {
     fill: '#aaa',
-    margin: [ 2, theme.grid.stepSize / 2, 0, theme.grid.stepSize / 2 ]
+    margin: [ 1, theme.grid.stepSize / 2, 0, theme.grid.stepSize / 2 ]
   },
 
   Item: {
     display: 'flex',
     'align-items': 'center'
+  },
+
+  [theme.device.small]: {
+    Item: {
+      '&:last-child': {
+        'padding-right': theme.grid.stepSize * 3
+      }
+    }
   }
 });
 

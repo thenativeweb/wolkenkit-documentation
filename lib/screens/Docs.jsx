@@ -11,19 +11,10 @@ const IntroPage = require('../components/IntroPage.jsx'),
       MobileNavigation = require('../components/MobileNavigation.jsx'),
       Navigation = require('../components/navigation/Navigation.jsx'),
       PageContent = require('../components/PageContent/index.jsx'),
+      styles = require('./styles'),
       Symbols = require('../components/Symbols.jsx');
 
 const page = require('../services/page');
-
-const styles = {
-  Docs: {
-    position: 'absolute !important',
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0
-  }
-};
 
 class Docs extends React.Component {
   constructor (props) {
@@ -164,6 +155,7 @@ class Docs extends React.Component {
 
         <MobileNavigation
           onClick={ this.handleMobileNavigationClick }
+          isVisible={ showMobileNav }
         />
       </View>
     );
