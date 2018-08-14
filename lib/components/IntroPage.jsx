@@ -18,10 +18,17 @@ const styles = theme => ({
 
   IsCollapsed: {
     flex: '0 0 auto',
-    width: '0px'
+    width: '0px',
+
+    '& $Brand': {
+      opacity: 0
+    }
   },
 
-  Brand: {},
+  Brand: {
+    transition: 'opacity 400ms',
+    'will-change': 'opacity'
+  },
 
   Title: {
     'font-size': theme.font.size.large,

@@ -5,7 +5,7 @@ const classNames = require('classnames'),
       injectSheet = require('react-jss').default,
       PropTypes = require('prop-types'),
       React = require('react'),
-      { View } = require('thenativeweb-ux');
+      { Application, View } = require('thenativeweb-ux');
 
 const IntroPage = require('../components/IntroPage.jsx'),
       MobileNavigation = require('../components/MobileNavigation.jsx'),
@@ -130,6 +130,8 @@ class Docs extends React.Component {
 
     return (
       <View orientation='horizontal' className={ componentClasses }>
+        <Application.Services />
+
         <Helmet>
           <title>{ metadata.name }</title>
         </Helmet>

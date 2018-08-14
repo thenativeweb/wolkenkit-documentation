@@ -11,6 +11,7 @@ const styles = theme => ({
     padding: '20px 0 22px 0',
     margin: 0,
     'border-bottom': '1px solid rgba(255,255,255, 0.1)',
+    width: '37.5vw',
 
     '& p': {
       padding: [ 0, theme.grid.stepSize * 3 ],
@@ -37,6 +38,7 @@ const styles = theme => ({
     FeedItem: {
       padding: 0,
       margin: [ theme.grid.stepSize / 2, 0 ],
+      width: '100%',
 
       '& p': {
         margin: [ 0, theme.grid.stepSize * 1.5 ],

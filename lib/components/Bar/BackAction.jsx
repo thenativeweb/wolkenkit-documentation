@@ -26,7 +26,7 @@ const styles = theme => ({
 const BackAction = ({ children, classes, className = '', style, onClick }) => (
   <Action
     className={ classNames(classes.BackAction, className) }
-    icon={ <Icon className={ classes.Icon } name='back' size='s' /> }
+    icon={ <Icon className={ classes.Icon } name='chevron' size='s' /> }
     style={ style }
     onClick={ onClick }
   >

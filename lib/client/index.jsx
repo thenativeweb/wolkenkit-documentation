@@ -34,10 +34,11 @@ page.load({
     return;
   }
 
-  ReactDom.hydrate(
+  global.document.querySelector('#root').innerHTML = '';
+
+  ReactDom.render(
     <ThemeProvider theme={ theme }>
       <Docs
-        suppressHydrationWarning={ true }
         activePath={ activePath }
         activeVersion={ activeVersion }
         history={ history }
