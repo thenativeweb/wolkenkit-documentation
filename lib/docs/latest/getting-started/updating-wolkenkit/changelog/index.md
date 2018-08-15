@@ -10,7 +10,10 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
 - **Improved** error handling in the CLI `start` and `restart` commands
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
+- **Fixed** handling commands when no read model is defined
+  - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
+  - [@marcusstenbeck](https://github.com/marcusstenbeck)
   - [@nelreina](https://github.com/nelreina)
   - [@reneviering](https://github.com/reneviering)
   - [@scherermichael](https://github.com/scherermichael)
