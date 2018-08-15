@@ -20,7 +20,6 @@ const styles = theme => ({
     'font-size': theme.font.size.default,
     'border-bottom': '1px solid rgba(255,255,255, 0.1)',
     color: 'rgba(255, 255, 255, 0.65)',
-    'font-weight': 400,
 
     '& a, a:visited': {
       color: 'rgba(255, 255, 255, 0.65)',
