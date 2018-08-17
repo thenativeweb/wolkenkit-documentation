@@ -54,15 +54,6 @@ const styles = theme => ({
     }
   },
 
-  //     .wk-chapter__pages .wk-page a {
-  //       opacity: 1;
-  //     }
-  //
-  //     .wk-chapter__pages .wk-page a:hover {
-  //       color: @color-brand-blue-highlight;
-  //     }
-  //   }
-
   Pages: {
     padding: 0
   }
