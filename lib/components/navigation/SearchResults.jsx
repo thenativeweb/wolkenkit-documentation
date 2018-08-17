@@ -47,7 +47,7 @@ const styles = theme => ({
       'margin-bottom': theme.grid.stepSize * 2
     },
 
-    '& a': {
+    '& a, & a:visited': {
       'margin-right': theme.grid.stepSize * 3,
       color: 'inherit'
     },
