@@ -1,10 +1,11 @@
 'use strict';
 
-/* eslint-disable no-unused-vars */
 const createHistory = require('history').createBrowserHistory,
       React = require('react'),
-      ReactDom = require('react-dom');
-/* eslint-enable no-unused-vars */
+      ReactDom = require('react-dom'),
+      { ThemeProvider } = require('thenativeweb-ux');
+
+const theme = require('../theme/docs');
 
 // Polyfills for IE11.
 require('es6-object-assign/auto');
@@ -33,15 +34,28 @@ page.load({
     return;
   }
 
-  ReactDom.hydrate(
-    <Docs
-      activePath={ activePath }
-      activeVersion={ activeVersion }
-      history={ history }
-      pageContent={ loadedPage.content }
-      pageInfo={ loadedPage.info }
-      metadata={ metadata }
-    />,
-    global.document.querySelector('#root')
+  global.document.querySelector('#root').innerHTML = '';
+
+  ReactDom.render(
+    <ThemeProvider theme={ theme }>
+      <Docs
+        activePath={ activePath }
+        activeVersion={ activeVersion }
+        history={ history }
+        pageContent={ loadedPage.content }
+        pageInfo={ loadedPage.info }
+        metadata={ metadata }
+      />
+    </ThemeProvider>
+    ,
+    global.document.querySelector('#root'),
+    () => {
+      // We don't need the static css any more once we have launched our application.
+      const styles = global.document.getElementById('server-side-styles');
+
+      if (styles) {
+        styles.parentNode.removeChild(styles);
+      }
+    }
   );
 });

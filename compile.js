@@ -17,8 +17,7 @@ const webpackConfiguration = {
   mode: isProductionMode ? 'production' : 'development',
   context: path.join(__dirname, 'lib'),
   entry: [
-    './client/index.jsx',
-    './theme/wk-docs.less'
+    './client/index.jsx'
   ],
   output: {
     path: path.join(__dirname, 'build'),
@@ -39,12 +38,10 @@ const webpackConfiguration = {
         }
       },
       {
-        test: /\.less$/,
+        test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { minimize: true }},
-          'postcss-loader',
-          'less-loader'
+          'css-loader'
         ]
       }
     ]
@@ -58,7 +55,8 @@ const webpackConfiguration = {
 
 const environmentConfig = {
   'process.env': {
-    NEWS_URL: JSON.stringify(processenv('NEWS_URL'))
+    NEWS_URL: JSON.stringify(processenv('NEWS_URL')),
+    APP_ENV: JSON.stringify('browser')
   }
 };
 

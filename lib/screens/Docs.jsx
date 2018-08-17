@@ -1,13 +1,17 @@
 'use strict';
 
-const { Helmet } = require('react-helmet'),
+const classNames = require('classnames'),
+      { Helmet } = require('react-helmet'),
+      injectSheet = require('react-jss').default,
       PropTypes = require('prop-types'),
-      React = require('react');
+      React = require('react'),
+      { Application, View } = require('thenativeweb-ux');
 
 const IntroPage = require('../components/IntroPage.jsx'),
       MobileNavigation = require('../components/MobileNavigation.jsx'),
       Navigation = require('../components/navigation/Navigation.jsx'),
-      PageContent = require('../components/PageContent.jsx'),
+      PageContent = require('../components/PageContent/index.jsx'),
+      styles = require('./styles'),
       Symbols = require('../components/Symbols.jsx');
 
 const page = require('../services/page');
@@ -25,7 +29,8 @@ class Docs extends React.Component {
       activePath: props.activePath,
       activeVersion: props.activeVersion,
       pageContent: props.pageContent,
-      pageInfo: props.pageInfo
+      pageInfo: props.pageInfo,
+      showMobileNav: false
     };
   }
 
@@ -63,7 +68,7 @@ class Docs extends React.Component {
     const { history } = this.props;
 
     this.setState({
-      mobileNavVisible: false
+      showMobileNav: false
     });
 
     history.push(path);
@@ -74,7 +79,7 @@ class Docs extends React.Component {
     const { activeVersion } = this.state;
 
     this.setState({
-      mobileNavVisible: false
+      showMobileNav: false
     });
 
     history.push(`/${activeVersion}/`);
@@ -87,36 +92,37 @@ class Docs extends React.Component {
   }
 
   handleMobileNavigationClick () {
-    const { mobileNavVisible } = this.state;
+    const { showMobileNav } = this.state;
 
     this.setState({
-      mobileNavVisible: !mobileNavVisible
+      showMobileNav: !showMobileNav
     });
   }
 
   render () {
     const {
+      classes,
       metadata
     } = this.props;
 
     const {
       activePath,
       activeVersion,
-      mobileNavVisible,
+      showMobileNav,
       pageContent,
       pageInfo
     } = this.state;
 
     const isRootPath = activePath.length <= 1;
 
-    let classes = 'wk-docs';
-
-    if (mobileNavVisible) {
-      classes += ' wk-mobile--nav-visible';
-    }
+    const componentClasses = classNames(classes.Docs, {
+      'wk-mobile--nav-visible': showMobileNav
+    });
 
     return (
-      <div className={ classes }>
+      <View orientation='horizontal' className={ componentClasses }>
+        <Application.Services />
+
         <Helmet>
           <title>{ metadata.name }</title>
         </Helmet>
@@ -132,6 +138,7 @@ class Docs extends React.Component {
           activePath={ activePath }
           metadata={ metadata }
           activeVersion={ activeVersion }
+          isVisibleOnMobile={ showMobileNav }
           onLogoClick={ this.handleLogoClick }
           onPageClick={ this.handlePageClick }
           onVersionChange={ this.handleVersionChange }
@@ -148,8 +155,9 @@ class Docs extends React.Component {
 
         <MobileNavigation
           onClick={ this.handleMobileNavigationClick }
+          isVisible={ showMobileNav }
         />
-      </div>
+      </View>
     );
   }
 }
@@ -166,4 +174,4 @@ Docs.propTypes = {
   ])
 };
 
-module.exports = Docs;
+module.exports = injectSheet(styles)(Docs);

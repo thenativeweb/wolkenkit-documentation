@@ -1,9 +1,50 @@
 'use strict';
 
-const PropTypes = require('prop-types'),
-      React = require('react');
+const classNames = require('classnames'),
+      injectSheet = require('react-jss').default,
+      PropTypes = require('prop-types'),
+      React = require('react'),
+      { Icon, Text } = require('thenativeweb-ux');
 
-const Icon = require('../Icon.jsx');
+const styles = theme => ({
+  Section: {
+    flex: '1 1 100%',
+    display: 'flex',
+    'flex-direction': 'row',
+    'justify-content': 'space-between',
+    'align-items': 'center',
+    'border-bottom': '1px solid rgba(255,255,255, 0.1)',
+
+    '& a:link, & a:visited, & a:active': {
+      flex: '1 1 100%',
+      display: 'flex',
+      'flex-direction': 'row',
+      'justify-content': 'space-between',
+      'align-items': 'center',
+      'text-decoration': 'none',
+      padding: [ theme.grid.stepSize, theme.grid.stepSize * 1.5 ],
+      color: theme.color.brand.white
+    },
+
+    '& a:hover': {
+      color: theme.color.brand.highlight
+    }
+  },
+
+  Chevron: {
+    fill: theme.color.brand.white,
+    'margin-left': theme.grid.stepSize
+  },
+
+  Label: {
+    flex: '1 1 100%',
+    padding: 0
+  },
+
+  IsActive: {
+    'font-weight': 800
+  }
+});
 
 class Section extends React.PureComponent {
   constructor (props) {
@@ -22,19 +63,17 @@ class Section extends React.PureComponent {
   }
 
   render () {
-    const { isActive, title } = this.props;
+    const { classes, isActive, title } = this.props;
 
-    let sectionClasses = 'wk-section';
-
-    if (isActive) {
-      sectionClasses += ' wk-section--active';
-    }
+    const componentClasses = classNames(classes.Section, {
+      [classes.IsActive]: isActive
+    });
 
     return (
-      <div className={ sectionClasses }>
+      <div className={ componentClasses }>
         <a href='#' onClick={ this.handleItemClicked }>
-          <div className='label'>{ title }</div>
-          <Icon name='chevron' />
+          <Text className={ classes.Label }>{ title }</Text>
+          <Icon className={ classes.Chevron } name='chevron' size='s' />
         </a>
       </div>
     );
@@ -48,4 +87,4 @@ Section.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-module.exports = Section;
+module.exports = injectSheet(styles)(Section);

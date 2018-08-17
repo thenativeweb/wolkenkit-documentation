@@ -1,24 +1,65 @@
 'use strict';
 
-const PropTypes = require('prop-types'),
-      React = require('react');
+const injectSheet = require('react-jss').default,
+      PropTypes = require('prop-types'),
+      React = require('react'),
+      { Brand } = require('thenativeweb-ux');
 
-const Icon = require('./Icon.jsx');
+const styles = theme => ({
+  PageFooter: {
+    margin: [ theme.grid.stepSize * 3, 0, 0, 0 ],
+    padding: [ theme.grid.stepSize * 3, theme.grid.stepSize * 5 ],
+    'font-size': theme.font.size.default,
+    'font-weight': 300,
 
-const PageFooter = function ({ activePath, activeVersion }) {
+    '& a': {
+      'font-weight': 400
+    }
+  },
+
+  About: {
+    'border-top': `1px solid ${theme.color.content.border}`,
+    padding: [ theme.grid.stepSize * 3, 0, 0, 0 ],
+    'text-align': 'center',
+
+    '& p': {
+      margin: 0
+    }
+  },
+
+  Copyright: {
+    'text-align': 'center',
+    padding: 0,
+
+    '& p': {
+      margin: 0
+    }
+  },
+
+  [theme.device.small]: {
+    PageFooter: {
+      margin: 0,
+      'padding-right': theme.grid.stepSize * 1.5
+    },
+
+    Copyright: {
+      'margin-top': theme.grid.stepSize * 1.5
+    }
+  }
+});
+
+const PageFooter = function ({ classes, activePath, activeVersion }) {
   const editThisPageUrl = `https://github.com/thenativeweb/wolkenkit-documentation/edit/master/lib/docs/${activePath.join('/')}/index.md`;
 
   return (
-    <footer className='wk-page-footer'>
-      <div className='about'>
-        <p>
-          Made with <Icon name='heart' size='small' /> by <a href='https://www.thenativeweb.io'>the native web</a>.
-        </p>
+    <footer className={ classes.PageFooter }>
+      <div className={ classes.About }>
+        <Brand.MadeBy size='m' color='light' />
         <p>
           Found a bug? Missing something? Want to contribute? Just <a href={ editThisPageUrl }>edit this page</a>.
         </p>
       </div>
-      <div className='copyright'>
+      <div className={ classes.Copyright }>
         <p>
           © Copyright 2016-2018 the native web GmbH. All rights reserved.
         </p>
@@ -35,4 +76,4 @@ PageFooter.propTypes = {
   activeVersion: PropTypes.string.isRequired
 };
 
-module.exports = PageFooter;
+module.exports = injectSheet(styles)(PageFooter);

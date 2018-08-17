@@ -3,11 +3,13 @@
 /* eslint-disable no-unused-vars */
 const createHistory = require('history').createMemoryHistory,
       React = require('react'),
-      ReactDOM = require('react-dom/server');
+      ReactDOM = require('react-dom/server'),
+      { StyleCollector, ThemeProvider } = require('thenativeweb-ux');
 /* eslint-enable no-unused-vars */
 
 const metadata = require('../docs/metadata'),
-      page = require('../services/page');
+      page = require('../services/page'),
+      theme = require('../theme/docs');
 
 const Docs = require('../screens/Docs.jsx');
 
@@ -29,16 +31,25 @@ const index = function (options) {
 
   const pageInfo = page.getInfo(activePath);
 
-  return ReactDOM.renderToString(
-    <Docs
-      activePath={ activePath }
-      activeVersion={ activeVersion }
-      history={ history }
-      pageInfo={ pageInfo }
-      pageContent={ pageContent }
-      metadata={ metadata }
-    />
+  const html = ReactDOM.renderToString(
+    <StyleCollector>
+      <ThemeProvider theme={ theme }>
+        <Docs
+          activePath={ activePath }
+          activeVersion={ activeVersion }
+          history={ history }
+          pageInfo={ pageInfo }
+          pageContent={ pageContent }
+          metadata={ metadata }
+        />
+      </ThemeProvider>
+    </StyleCollector>
   );
+
+  return {
+    html,
+    styles: StyleCollector.getStyles()
+  };
 };
 
 module.exports = index;
