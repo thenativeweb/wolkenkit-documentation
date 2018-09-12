@@ -6,6 +6,8 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `2.0.0`:
 
+- **Added** a landing page to the API endpoint
+  - When opening the API endpoint in a browser, in the past this resulted in a `404`. This has been changed, as the API endpoint now contains a landing page which improves the user experience when approaching the API manually for the first time.
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
 - **Improved** error handling in the CLI `start` and `restart` commands
