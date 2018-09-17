@@ -24,9 +24,40 @@ E.g., to set environment variables, use the following code:
 }
 ```
 
+## Securing environment variables
+
+In some cases you may not want to store certain environment variables in plain text in `package.json`, e.g. when specifying credentials. For these cases you can create another file called `wolkenkit-secrets.json` next to your `package.json` file where you can store the sensitive data. Do not commit this file into your version control system. This way the sensitive data remain secret.
+
+Basically, `wolkenkit-secrets.json` is a normal JSON file in which you can store arbitrary key-value pairs, which can even be nested:
+
+```json
+{
+  "password": "secret",
+  "roles": {
+    "isAdministrator": true
+  }
+}
+```
+
+Inside of the `package.json` file you can then reference the appropriate keys using the `secret://` protocol. Provide the key you want to use as path. For nested keys use the `.` character as separator. Please note that you are allowed to mix normal and secret values at will:
+
+```json
+"wolkenkit": {
+  "environments": {
+    "default": {
+      "environmentVariables": {
+        "username": "jane.doe@example.com",
+        "password": "secret://password",
+        "isAdministrator": "secret://roles.isAdministrator"
+      }
+    }
+  }  
+}
+```
+
 ## Accessing environment variables
 
-To access the previously set environment variables inside the application, use the `process.env` object:
+No matter how you defined the environment variables – to access them inside the application, use the `process.env` object:
 
 ```javascript
 process.env.WOLKENKIT_USERNAME
