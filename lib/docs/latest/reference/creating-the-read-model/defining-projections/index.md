@@ -66,6 +66,29 @@ const projections = {
 };
 ```
 
+## Upserting items
+
+From time to time it may be necessary to add or update an item, depending on whether it already exists or not. For these cases you may use the `orUpdate` extension of the `add` function, which acts as a combination of `add` and `update`:
+
+```javascript
+const projections = {
+  'accounting.invoice.sentAsLetterPost' (invoices, event) {
+    invoices.add({
+      amount: event.data.amount,
+      participant: event.data.participant,
+      sentAsLetterPost: true
+    }).orUpdate({
+      where: { id: event.aggregate.id },
+      set: {
+        sentAsLetterPost: true
+      }
+    });
+  }
+};
+```
+
+First, this tries to `add` the given item. If adding the item was successful, everything is fine and nothing else happens. If adding the item failed, the extension runs the `orUpdate` part. This allows you to ensure that an item you want to update exists beforehand.
+
 ## Removing items
 
 Finally, to remove an item, call the list's `remove` function and provide a `where` clause to describe one or more items to be removed.
