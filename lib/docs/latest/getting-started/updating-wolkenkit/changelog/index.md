@@ -8,17 +8,27 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 
 - **Added** a landing page to the API endpoint
   - When opening the API endpoint in a browser, in the past this resulted in a `404`. This has been changed, as the API endpoint now contains a landing page which improves the user experience when approaching the API manually for the first time.
+- **Added** upsert semantics for read models
+  - From time to time it is necessary to add an item to a read model, if the item does not exist yet, or update it otherwise. This was inconvenient in the past. Now there is the [`orUpdate` extension](../../../../<%= current.version %>/reference/creating-the-read-model/defining-projections/#upserting-items) to the `add` command, which allows you to easily fall back to updating an item.
+- **Added** support for managing secrets in `package.json`
+  - When configuring a wolkenkit application by using environment variables, there was always the problem of how to handle secrets, such as credentials. Now there is the option of [securing environment variables](../../../../<%= current.version %>/reference/configuring-an-application/setting-environment-variables/#securing-environment-variables) to make sure that secrets actually stay secret.
+- **Added** a search feature to the wolkenkit documentation
+  - In the past you always had to navigate the documentation manually. If you didn't know where to find information on a specific topic, this was cumbersome. Now there is a search feature which allows you to easier navigate the documentation by keywords.
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
 - **Improved** error handling in the CLI `start` and `restart` commands
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
+- **Rewritten** wolkenkit's blob store from scratch
+  - The depot, wolkenkit's blob store, was rewritten from scratch. The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove blobs as well as an option to authorize them.
 - **Fixed** handling commands when no read model is defined
   - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
+  - [@go4cas](https://github.com/go4cas)
   - [@marcusstenbeck](https://github.com/marcusstenbeck)
   - [@nelreina](https://github.com/nelreina)
   - [@reneviering](https://github.com/reneviering)
   - [@scherermichael](https://github.com/scherermichael)
+  - [@schmuto](https://github.com/schmuto)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
