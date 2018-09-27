@@ -66,7 +66,7 @@ const projections = {
 };
 ```
 
-## Upserting items
+## Adding or updating items
 
 From time to time it may be necessary to add or update an item, depending on whether it already exists or not. For these cases you may use the `orUpdate` extension of the `add` function, which acts as a combination of `add` and `update`:
 
@@ -87,7 +87,25 @@ const projections = {
 };
 ```
 
-First, this tries to `add` the given item. If adding the item was successful, everything is fine and nothing else happens. If adding the item failed, the extension runs the `orUpdate` part. This allows you to ensure that an item you want to update exists beforehand.
+First, this tries to `add` the given item. If adding the item was successful, everything is fine. If adding the item failed, the `orUpdate` part is run. This allows you to ensure that an item you want to update exists beforehand.
+
+## Ensuring that items exist
+
+Sometimes you may want to add an item if it does not exist yet, or do nothing otherwise. For these cases you may use the `orDiscard` extension of the `add` function, which acts as a combination of `add` and do nothing:
+
+```javascript
+const projections = {
+  'accounting.invoice.sentAsLetterPost' (invoices, event) {
+    invoices.add({
+      amount: event.data.amount,
+      participant: event.data.participant,
+      sentAsLetterPost: true
+    }).orDiscard();
+  }
+};
+```
+
+This first tries to `add` the item. If it worked, everything is fine. If the item had already existed, no error will be thrown, and nothing will happen.
 
 ## Removing items
 

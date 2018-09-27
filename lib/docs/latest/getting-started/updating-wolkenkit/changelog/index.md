@@ -8,8 +8,10 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 
 - **Added** a landing page to the API endpoint
   - When opening the API endpoint in a browser, in the past this resulted in a `404`. This has been changed, as the API endpoint now contains a landing page which improves the user experience when approaching the API manually for the first time.
-- **Added** upsert semantics for read models
-  - From time to time it is necessary to add an item to a read model, if the item does not exist yet, or update it otherwise. This was inconvenient in the past. Now there is the [`orUpdate` extension](../../../../<%= current.version %>/reference/creating-the-read-model/defining-projections/#upserting-items) to the `add` command, which allows you to easily fall back to updating an item.
+- **Added** `upsert` semantics for read models
+  - From time to time it is necessary to add an item to a read model, if the item does not exist yet, or update it otherwise. This was inconvenient in the past. Now there is the [`orUpdate` extension](../../../../<%= current.version %>/reference/creating-the-read-model/defining-projections/#adding-or-updating-items) to the `add` command, which allows you to easily fall back to updating an item.
+- **Added** `do nothing` semantics for read models
+  - Sometimes you may want to add an item to a read model, if it does not exist yet, but do nothing otherwise. This was cumbersome in the past. Now there is the [`orDiscard` extension](../../../../<%= current.version %>/reference/creating-the-read-model/defining-projections/#ensuring-that-items-exist) to the `add` command, which allows you to easily handle this case.
 - **Added** support for managing secrets in `package.json`
   - When configuring a wolkenkit application by using environment variables, there was always the problem of how to handle secrets, such as credentials. Now there is the option of [securing environment variables](../../../../<%= current.version %>/reference/configuring-an-application/setting-environment-variables/#securing-environment-variables) to make sure that secrets actually stay secret.
 - **Added** a search feature to the wolkenkit documentation
