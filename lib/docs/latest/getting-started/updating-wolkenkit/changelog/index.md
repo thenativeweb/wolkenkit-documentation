@@ -27,6 +27,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 - **Contributions** by the community
   - [@go4cas](https://github.com/go4cas)
   - [@marcusstenbeck](https://github.com/marcusstenbeck)
+  - [@nicolaisueper](https://github.com/nicolaisueper)
   - [@nelreina](https://github.com/nelreina)
   - [@reneviering](https://github.com/reneviering)
   - [@scherermichael](https://github.com/scherermichael)
