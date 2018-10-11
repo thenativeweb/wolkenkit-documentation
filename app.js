@@ -1,6 +1,6 @@
 'use strict';
 
-require('babel-register')();
+require('@babel/register')();
 
 const http = require('http'),
       path = require('path');

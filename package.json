@@ -45,12 +45,12 @@
     }
   ],
   "dependencies": {
+    "@babel/core": "7.1.2",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-react": "7.0.0",
+    "@babel/register": "7.0.0",
     "array.prototype.find": "2.0.4",
-    "babel-core": " 6.26.3",
-    "babel-loader": "7.1.5",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-react": "6.24.1",
-    "babel-register": "6.26.0",
+    "babel-loader": "8.0.4",
     "color": "3.0.0",
     "compression": "1.7.3",
     "css-loader": "1.0.0",
@@ -68,20 +68,20 @@
     "mini-css-extract-plugin": "0.4.1",
     "processenv": "1.1.0",
     "prop-types": "15.6.2",
-    "react": "16.4.2",
-    "react-dom": "16.4.2",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
     "react-helmet": "5.2.0",
     "react-highlight-words": "0.12.0",
     "require-dir": "1.0.0",
     "semver": "5.5.0",
     "superagent": "3.8.3",
-    "thenativeweb-ux": "0.7.0",
-    "webpack": "4.16.5"
+    "thenativeweb-ux": "thenativeweb/thenativeweb-ux#fix-server-side-rendering",
+    "webpack": "4.20.2"
   },
   "devDependencies": {
     "broken-link-checker": "0.7.8",
     "knockat": "1.0.4",
-    "roboter": "1.0.6",
+    "roboter": "2.0.0",
     "runfork": "1.0.3"
   },
   "scripts": {
