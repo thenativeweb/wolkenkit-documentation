@@ -1,17 +1,17 @@
 'use strict';
 
-/* eslint-disable no-unused-vars */
 const createHistory = require('history').createMemoryHistory,
       React = require('react'),
       ReactDOM = require('react-dom/server'),
       { StyleCollector, ThemeProvider } = require('thenativeweb-ux');
-/* eslint-enable no-unused-vars */
 
 const metadata = require('../docs/metadata'),
       page = require('../services/page'),
       theme = require('../theme/docs');
 
 const Docs = require('../screens/Docs.jsx');
+
+const stylesForUrl = {};
 
 const index = function (options) {
   const { pageContent, url } = options;
@@ -31,24 +31,46 @@ const index = function (options) {
 
   const pageInfo = page.getInfo(activePath);
 
+  if (!stylesForUrl[url]) {
+    stylesForUrl[url] = StyleCollector.createCollection();
+
+    const html = ReactDOM.renderToString(
+      <StyleCollector collection={ stylesForUrl[url] }>
+        <ThemeProvider theme={ theme }>
+          <Docs
+            activePath={ activePath }
+            activeVersion={ activeVersion }
+            history={ history }
+            pageInfo={ pageInfo }
+            pageContent={ pageContent }
+            metadata={ metadata }
+          />
+        </ThemeProvider>
+      </StyleCollector>
+    );
+
+    return {
+      html,
+      styles: stylesForUrl[url].toString()
+    };
+  }
+
   const html = ReactDOM.renderToString(
-    <StyleCollector>
-      <ThemeProvider theme={ theme }>
-        <Docs
-          activePath={ activePath }
-          activeVersion={ activeVersion }
-          history={ history }
-          pageInfo={ pageInfo }
-          pageContent={ pageContent }
-          metadata={ metadata }
-        />
-      </ThemeProvider>
-    </StyleCollector>
+    <ThemeProvider theme={ theme }>
+      <Docs
+        activePath={ activePath }
+        activeVersion={ activeVersion }
+        history={ history }
+        pageInfo={ pageInfo }
+        pageContent={ pageContent }
+        metadata={ metadata }
+      />
+    </ThemeProvider>
   );
 
   return {
     html,
-    styles: StyleCollector.getStyles()
+    styles: stylesForUrl[url].toString()
   };
 };
 
