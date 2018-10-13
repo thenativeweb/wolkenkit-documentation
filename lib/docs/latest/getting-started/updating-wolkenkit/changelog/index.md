@@ -18,6 +18,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - In the past you always had to navigate the documentation manually. If you didn't know where to find information on a specific topic, this was cumbersome. Now there is a search feature which allows you to easier navigate the documentation by keywords.
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
+- **Improved** the performance of command handling
+  - In previous versions of wolkenkit commands were always executed one after the other. This could lead to slow behavior, for example when a command was blocked by a long-running action. Now commands are executed in parallel, which dramatically increases their execution speed. Only commands that refer to an identical aggregate are still executed sequentially.
 - **Improved** error handling in the CLI `start` and `restart` commands
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
 - **Rewritten** wolkenkit's blob store from scratch
