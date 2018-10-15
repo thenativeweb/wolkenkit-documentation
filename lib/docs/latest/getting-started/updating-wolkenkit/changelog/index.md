@@ -27,6 +27,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 - **Fixed** handling commands when no read model is defined
   - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
+  - [@cessor](https://github.com/cessor)
   - [@go4cas](https://github.com/go4cas)
   - [@marcusstenbeck](https://github.com/marcusstenbeck)
   - [@nelreina](https://github.com/nelreina)
