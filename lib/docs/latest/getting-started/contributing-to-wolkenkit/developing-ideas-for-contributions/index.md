@@ -1,13 +1,13 @@
 # Developing ideas for contributions
 
-If you would like to contribute to wolkenkit, you may already have a specific idea – or none at all. Just like there are no stupid questions we strongly believe that every contribution is important, from code to documentation, from asking questions to providing answers.
+If you would like to contribute to wolkenkit, you may already have a specific idea – or none at all. Just like there are no stupid questions there are also no worthless contributions. We strongly believe that every contribution is important, from code to documentation, from asking questions to providing answers.
 
-In the following we describe different aspects how you can contribute to wolkenkit. Before starting to work on an issue, please read [submitting a contribution](../submitting-a-contribution/).
+In the following we describe different aspects how you can contribute to wolkenkit. Before you start working on an issue, please read [submitting a contribution](../submitting-a-contribution/).
 
 :::hint-warning
-> **Not sure how to start?**
+> **Unsure what to contribute?**
 >
-> Maybe you would like to contribute to wolkenkit, but are not sure how or where to start. [We are always there to help](../../understanding-wolkenkit/getting-help/), so feel free to contact us.
+> Maybe you would like to contribute something to wolkenkit, but are unsure about your idea, or maybe you don't know where to start. Actually, we are always there to help, so feel free to [contact us](../../understanding-wolkenkit/getting-help/).
 :::
 
 ## Contributing code
@@ -19,12 +19,12 @@ In the [thenativeweb/wolkenkit](https://github.com/thenativeweb/wolkenkit/issues
 Typical questions to come up with ideas are:
 
 - What feature does not work as expected?
-- What feature could be extended?
+- What feature could be extended in its functionality?
 - What feature are you missing completely?
 
 ## Improving the documentation
 
-Sometimes a helpful contribution is simply to correct a typo in the documentation, or to improve and enhance a vague explanation. For this purpose, each page of the documentation contains a link at the bottom, which you can use to [edit the appropriate page](https://github.com/thenativeweb/wolkenkit-documentation/edit/master/lib/docs/<%= current.version %>/getting-started/contributing-to-wolkenkit/getting-ideas-for-contributions/index.md) on GitHub.
+A helpful contribution can be to correct a typo or to improve and enhance an explanation that is too vague. For this purpose, each page of the documentation contains a link at the bottom, which you can use to directly [edit the page](https://github.com/thenativeweb/wolkenkit-documentation/edit/master/lib/docs/<%= current.version %>/getting-started/contributing-to-wolkenkit/getting-ideas-for-contributions/index.md) on GitHub.
 
 Typical questions to come up with ideas are:
 
@@ -54,4 +54,4 @@ Typical questions to come up with ideas are:
 - What have been your experiences with using wolkenkit?
 - What have you learned from using wolkenkit?
 
-If you would like to write, but don't run your own blog, we can also discuss writing a guest post for our [company blog](https://www.thenativeweb.io/blog). Additionally, we would be happy to link to your content, such as videos of your talks. Either way, feel free to [contact us](mailto:hello@thenativeweb.io).
+If you would like to write, but don't have your own blog, we can also talk about a guest post for the [blog by the native web](https://www.thenativeweb.io/blog). Additionally, we would be happy to link to your content, such as videos of your talks. Either way, feel free to [contact us](mailto:hello@thenativeweb.io).

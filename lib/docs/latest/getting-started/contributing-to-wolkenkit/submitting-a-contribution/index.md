@@ -1,14 +1,20 @@
 # Submitting a contribution
 
-When you would like to work on a contribution, you may ask yourself what the process of submitting a contribution looks like. In the following we describe the steps you will typically follow.
+If you want to contribute to wolkenkit, you might wonder what the actual process of submitting a contribution looks like. In the following we describe the steps that you will typically follow. Please note that from time to time there are exceptions to the rule, but in most cases the steps described here apply.
 
-## Writing an issue
+Additionally, to get an idea of how contributing to open-source works in general, you might be interested in [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/).
 
-When you have a concrete idea for a contribution to wolkenkit, the first thing to do should be to check whether there is already an [open issue](https://github.com/thenativeweb/wolkenkit/issues) that deals with your idea. If so, you can use this issue as the foundation for your work.
+## Starting with an issue
 
-Otherwise, [create an issue](https://github.com/thenativeweb/wolkenkit/issues/new) by using one of the templates and explain in detail what you intend to do and how you plan to do it. This issue serves as a place to discuss your idea and to develop a sustainable concept for its implementation.
+When you have a concrete idea for a contribution to wolkenkit, the first thing to do should be to check whether there is already an [open issue](https://github.com/thenativeweb/wolkenkit/issues) that addresses your idea. If so, use this issue and the information within it as the foundation for your work. This way you can also see whether someone is already working on something similar, so maybe you can join forces and work together.
 
-The procedure helps to avoid unnecessary work and prevents you from putting work into a solution that turns out to be unsustainable and then requires reworking. Also, when submitting a pull request later on, it is good to have an issue you can refer to in order to provide some context for your pull request.
+:::hint-warning
+> **No issue, no pull request**
+>
+> If you want to make a substantial contribution, open an issue to ask before working on it. It helps to avoid unnecessary work, and gives context to the pull request you will create later.
+:::
+
+If no issue exists yet, [create an issue](https://github.com/thenativeweb/wolkenkit/issues/new) by using one of the templates and explain in detail what you intend to do and how you plan to do it. This issue serves as a place to discuss your idea and to develop a sustainable concept for the implementation. The more details you provide, the more targeted and productive the discussion will be.
 
 ## Forking the repositories
 
@@ -16,24 +22,28 @@ Once the direction for the issue is set, fork the necessary repositories. This a
 
 ## Commiting your changes
 
-As said before, commit and push any work you do to your forked repositories. While working on them, you may need to [synchronize your forks with the upstream repositories](https://help.github.com/articles/syncing-a-fork/) and resolve conflicts from time to time. In general, it is advisable to keep work on a fork short in order to avoid conflicts as much as possible.
+You can then commit and push any work you do to your forked repositories. While working on them, you may need to [synchronize your forked repositories with the upstream repositories](https://help.github.com/articles/syncing-a-fork/) and resolve conflicts from time to time. In general, it is advisable to keep work on a fork short in order to avoid conflicts as much as possible.
 
 ## Submitting a pull request
 
-Before submitting a pull request, please make sure to [synchronize your forks with the upstream `master` branches of the repositories](https://help.github.com/articles/syncing-a-fork/), and resolve any conflicts that may appear. Then create a pull request and link it to the appropriate issue.
+Once you are done with your work, you are basically ready to create a pull request. Before submitting a pull request, please make sure to [synchronize your forked repositories with the upstream repositories](https://help.github.com/articles/syncing-a-fork/), and resolve any conflicts that may appear. Then create a pull request and link it to the appropriate issue.
 
-You may also want to write a few comments on what your pull request does, which makes it easier to review the pull request as one then knows what to expect.
+:::hint-warning
+> **Watch the scope of pull requests**
+>
+> Keep your pull requests focused on one thing. If you want to contribute multiple things, use separate pull requests, as they can be reviewed, discussed and merged individually. The more a pull request contains, the harder this gets.
+:::
 
-Please keep pull requests small and focused on one thing. If you want to contribute multiple things, use separate pull requests, as they can be individually reviewed, discussed and merged. The more a pull request contains, the harder this gets.
+You may also want to write a few comments on what your pull request does, and why you solved things in the way you did. All of this makes it easier to understand and review a pull request.
 
 ## Signing the CLA
 
 If the pull request you submit is your first pull request for a repository, you will be asked to sign our [contributor license agreement (CLA)](https://gist.github.com/goloroden/71fedc0689d1c65a56aef5a5d3415fdd). Please understand that for legal reasons we will not merge pull requests from authors who reject to sign the CLA.
 
-## Handling a review
+## Reviewing changes
 
-[…]
+Next, a maintainer will review your pull request. This includes a functional and a technical review. The maintainer will comment on your code and maybe ask you to change or adjust a few things.
 
-## Merging your changes
+## Merging your pull request
 
-[…]
+When everything is ready, the maintainer will finally merge the pull request.
