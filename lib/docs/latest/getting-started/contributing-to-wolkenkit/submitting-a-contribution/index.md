@@ -14,7 +14,7 @@ When you have a concrete idea for a contribution to wolkenkit, the first thing t
 > If you want to make a substantial contribution, open an issue to ask before working on it. It helps to avoid unnecessary work, and gives context to the pull request you will create later.
 :::
 
-If no issue exists yet, [create an issue](https://github.com/thenativeweb/wolkenkit/issues/new) by using one of the templates and explain in detail what you intend to do and how you plan to do it. This issue serves as a place to discuss your idea and to develop a sustainable concept for the implementation. The more details you provide, the more targeted and productive the discussion will be.
+If no issue exists yet, [create an issue](https://github.com/thenativeweb/wolkenkit/issues/new/choose) by using one of the templates and explain in detail what you intend to do and how you plan to do it. This issue serves as a place to discuss your idea and to develop a sustainable concept for the implementation. The more details you provide, the more targeted and productive the discussion will be.
 
 ## Fork the repositories
 

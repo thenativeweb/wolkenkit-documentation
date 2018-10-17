@@ -22,7 +22,7 @@ Typical questions to come up with ideas are:
 
 ## Reporting issues and raising ideas
 
-If you found a bug or have an idea for a new feature, [report an issue](https://github.com/thenativeweb/wolkenkit/issues/new) for it. To prevent the identical issue being reported multiple times, you should verify whether there is already an issue for your concern in the list of [open issues](https://github.com/thenativeweb/wolkenkit/issues).
+If you found a bug or have an idea for a new feature, [report an issue](https://github.com/thenativeweb/wolkenkit/issues/new/choose) for it. To prevent the identical issue being reported multiple times, you should verify whether there is already an issue for your concern in the list of [open issues](https://github.com/thenativeweb/wolkenkit/issues).
 
 Typical questions to come up with ideas are:
 
