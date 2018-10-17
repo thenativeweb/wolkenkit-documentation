@@ -6,4 +6,4 @@ Sponsored development is available in different flavours. One option is to pay u
 
 However, sponsored development is reasonable if there are things on the [roadmap](https://github.com/thenativeweb/wolkenkit/blob/master/roadmap.md) of wolkenkit that you would like to have sooner rather than later. Not that you get us wrong – those features are planned anyway, it’s just that you could help us to build them faster.
 
-The costs for this depend on the specific feature. If you are interested in this, please [contact us](mailto:hello@thenativeweb.io), to discuss the feature in question, its scope, and our estimation for it. The same, of course, applies if you or your team want to help us by submitting code.
+If you are interested in this, please [contact us](mailto:hello@thenativeweb.io), to discuss the feature in question, its scope, and our estimation for it. The same, of course, applies if you or your team want to help us by submitting code.

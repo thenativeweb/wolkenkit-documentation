@@ -4,7 +4,7 @@ If you would like to contribute to wolkenkit, you may already have a specific id
 
 In the following we describe different aspects how you can contribute to wolkenkit. Before you start working on an issue, please read [submitting a contribution](../submitting-a-contribution/).
 
-:::hint-warning
+:::hint-question
 > **Unsure what to contribute?**
 >
 > Maybe you would like to contribute something to wolkenkit, but are unsure about your idea, or maybe you don't know where to start. Actually, we are always there to help, so feel free to [contact us](../../understanding-wolkenkit/getting-help/).
@@ -12,9 +12,17 @@ In the following we describe different aspects how you can contribute to wolkenk
 
 ## Contributing code
 
-The most obvious way to add value to wolkenkit is by contributing code. This includes fixing bugs, extending existing features, and even implementing new features.
+The most obvious way to add value to wolkenkit is by contributing code. This includes fixing bugs, extending existing features, and even implementing new features. In the [thenativeweb/wolkenkit](https://github.com/thenativeweb/wolkenkit/issues) repository you can find a list of all currently open issues. Additionally, to get a high-level overview of what is planned for wolkenkit, have a look at the [roadmap](https://github.com/thenativeweb/wolkenkit/blob/master/roadmap.md).
 
-In the [thenativeweb/wolkenkit](https://github.com/thenativeweb/wolkenkit/issues) repository you can find a list of all currently open issues. This is also the right place to [report an issue](https://github.com/thenativeweb/wolkenkit/issues/new). Additionally, to get a high-level overview of what is planned for wolkenkit, have a look at the [roadmap](https://github.com/thenativeweb/wolkenkit/blob/master/roadmap.md).
+Typical questions to come up with ideas are:
+
+- What feature does not work as expected?
+- What feature could be extended in its functionality?
+- What feature are you missing completely?
+
+## Reporting issues and raising ideas
+
+If you found a bug or have an idea for a new feature, [report an issue](https://github.com/thenativeweb/wolkenkit/issues/new) for it. To prevent the identical issue being reported multiple times, you should verify whether there is already an issue for your concern in the list of [open issues](https://github.com/thenativeweb/wolkenkit/issues).
 
 Typical questions to come up with ideas are:
 
@@ -34,7 +42,7 @@ Typical questions to come up with ideas are:
 
 ## Developing a sample application
 
-Although there are already a number of [sample applications](../../../media/sample-applications/wolkenkit-boards/), we would actually love to know what you are building with wolkenkit. Additionally, this helps others interested in wolkenkit to get a better understanding of how things work.
+[Sample applications](../../../media/sample-applications/wolkenkit-boards/) help others interested in wolkenkit to get a better understanding of how things work. Whether you want to develop a new sample application or enhance an existing one, we would love to know what you are building with wolkenkit.
 
 Typical questions to come up with ideas are:
 
