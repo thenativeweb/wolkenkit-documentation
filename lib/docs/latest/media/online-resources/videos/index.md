@@ -9,3 +9,9 @@ If you think that a video is missing, [contact the native web](mailto:hello@then
 - Munich Node.js user group
   - [Domain-driven design](https://www.youtube.com/watch?v=B5uoLWZv0AA)
   - [wolkenkit](https://www.youtube.com/watch?v=yAnzic2yGaQ)
+
+## German
+
+- Webmontag Kassel
+  - [Domain-Driven Design](https://www.youtube.com/watch?v=uYeDRnRS8aE)
+  - [wolkenkit](https://www.youtube.com/watch?v=CHLQ9ZuYmwA)
