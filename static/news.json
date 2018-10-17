@@ -2,6 +2,15 @@
   {
     "date": {
       "year": 2018,
+      "month": 10,
+      "day": 17
+    },
+    "title": "Published Webmontag Kassel talk on DDD and wolkenkit 🎊",
+    "content": "Ten days ago, Golo Roden was giving a talk on DDD and wolkenkit at the Webmontag Kassel. The recordings of this talk have now been published. For details see the [videos](https://docs.wolkenkit.io/latest/media/online-resources/videos/) section."
+  },
+  {
+    "date": {
+      "year": 2018,
       "month": 6,
       "day": 25
     },
