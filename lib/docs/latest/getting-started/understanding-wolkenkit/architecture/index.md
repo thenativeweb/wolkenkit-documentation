@@ -4,7 +4,7 @@ In a wolkenkit application, you typically have a client with a task-based UI. Th
 
 The server acknowledges the commands' receipt. For now, the client is done. This means that the client does not know whether the command was handled successfully in the first place. Instead, it's fire-and-forget. The reason the client does not wait for a response is that the UI shall not block, and handling the command may take a while.
 
-![Architecture Graphic](/architecture/architecture.svg)
+![Architecture](/architecture/architecture.svg)
 
 The server typically stores the command in a queue to decouple receiving commands from handling them. The queue allows the workers behind the queue to scale independently, as it acts as a buffer.
 
