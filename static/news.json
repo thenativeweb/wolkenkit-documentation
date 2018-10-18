@@ -5,6 +5,15 @@
       "month": 10,
       "day": 17
     },
+    "title": "Published talk on DDD, event-sourcing and CQRS at the International JavaScript Conference 2018 🦄",
+    "content": "Today, Golo Roden was giving a talk on DDD, event-sourcing and CQRS at the Internation JavaScript Conference 2018. The recording of this talk has now been published. For details see the [videos](https://docs.wolkenkit.io/latest/media/online-resources/videos/) section."
+  },
+  {
+    "date": {
+      "year": 2018,
+      "month": 10,
+      "day": 17
+    },
     "title": "Published Webmontag Kassel talk on DDD and wolkenkit 🎊",
     "content": "Ten days ago, Golo Roden was giving a talk on DDD and wolkenkit at the Webmontag Kassel. The recordings of this talk have now been published. For details see the [videos](https://docs.wolkenkit.io/latest/media/online-resources/videos/) section."
   },
