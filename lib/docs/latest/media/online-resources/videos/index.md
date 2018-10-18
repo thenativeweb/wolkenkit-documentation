@@ -6,6 +6,8 @@ If you think that a video is missing, [contact the native web](mailto:hello@then
 
 ## English
 
+- International JavaScript conference
+  - [DDD, event-sourcing and CQRS – theory and practice](https://www.youtube.com/watch?v=rolfJR9ERxo)
 - Munich Node.js user group
   - [Domain-driven design](https://www.youtube.com/watch?v=B5uoLWZv0AA)
   - [wolkenkit](https://www.youtube.com/watch?v=yAnzic2yGaQ)
