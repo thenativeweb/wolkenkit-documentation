@@ -1,25 +1,33 @@
 # Architecture
 
-In a wolkenkit application, you typically have a client with a task-based UI. This may be a static web site, a mobile application, or anything else. Everytime the user performs a task, the client sends one or more commands to the server.
+Any wolkenkit application runs as a set of Docker containers. The heart of the application consists of two containers that are responsible for [the write model and the read model](../data-flow/). These two containers are called `core` and `broker`.
 
-The server acknowledges the commands' receipt. For now, the client is done. This means that the client does not know whether the command was handled successfully in the first place. Instead, it's fire-and-forget. The reason the client does not wait for a response is that the UI shall not block, and handling the command may take a while.
+The *core* contains the actual domain code and publishes events based on commands. It is also responsible for storing the published events in the event store, or retrieving a replay from there. The core is not directly accessible from the outside, but works as a service in the background.
+
+In contrast, the *broker* takes care of the read model, which primarily means that it executes the application's projections and updates the lists. The broker runs as a public-facing service, which means that it is responsible for the HTTP and websocket interface of the API.
+
+By default, the *event store* is a PostgreSQL database, and the *read model* uses a MongoDB database. For the reliable delivery of internal messages between core and broker RabbitMQ is used as *message queue*. When the broker sends a command to the core, it uses the *command bus*; when the core sends an event to the broker, it uses the *event bus*.
 
 ![Architecture](/architecture/architecture.svg)
 
-The server typically stores the command in a queue to decouple receiving commands from handling them. The queue allows the workers behind the queue to scale independently, as it acts as a buffer.
+In addition, there is also a Docker container called `flows`, which is responsible for running the *stateless and stateful flows*. As the flows react to events, they need to be notified by the core about new events. For this, there is the *flow bus*, which is basically another message queue.
 
-These workers are called *command handlers*. They decide which aggregate the command refers to, load and run the appropriate domain logic on it. This is where event-sourcing and domain-driven design come into play. We'll look at this in a minute.
+Furthermore, the Docker container `depot` provides a *blob storage* service, and the `node_modules` container finally contains all the application's dependencies that are installed by npm.
 
-The aggregate then decides whether to run the command. It may be that a command is not allowed in a certain state of the aggregate, e.g. the text of a message can only be edited if the message is not older than 24 hours. Anyway, the aggregate publishes events on what has happened. This way, you always get an event, even in case of an error.
+As you can see, some of these docker containers are application-specific, while others provide generic infrastructure. There are base images for all of them, but new images are built locally for the application-specific ones. All these Docker containers and images are managed by the *CLI* called `wolkenkit`.
 
-Finally, the command handler forwards those events to anyone who is interested. This is done by storing them to a queue again.
+## Finding the code
 
-To display results the client could subscribe and react to events. This enables live-updates, but makes it incredibly hard to get the initial view. For that, the events must be materialized into a snapshot the client can fetch at any point in time.
+The code for the various components is located in repositories on [GitHub](https://github.com/thenativeweb). On [Docker Hub](https://hub.docker.com/r/thenativeweb/), there is an automated build for each repository that is responsible for building the respective Docker image:
 
-This is done using *event denormalizers*. They again are workers, but handle events instead of commands. In their most essential form they map events to CRUD. Each denormalizer is responsible for a table that backs a specific view in the client and updates it accordingly.
-
-This way, each time an event is received by a denormalizer, the view gets updated. As you can easily run more than one instance of a denormalizer, scaling them is very easy.
-
-So, the client fetches these tables. As there is a dedicated table for each of the client's views, a simple `SELECT * FROM table` is usually enough. This works because the denormalizers do not care about 3<sup>rd</sup> normal form but store data in a denormalized form perfectly suited for each view. Additionally, clients may subscribe to the events themselves, e.g. to display updates in real-time.
-
-In summary, clients send commands to the domain which, as a reaction, publishes appropriate events. These events are then used to make up materialized views. All the events are stored within an event store.
+| Component | Repository | Docker image |
+|-|-|-|
+| wolkenkit (CLI) | [wolkenkit](https://github.com/thenativeweb/wolkenkit) | n/a |
+| Broker | [wolkenkit-broker](https://github.com/thenativeweb/wolkenkit-broker) | [wolkenkit-broker](https://hub.docker.com/r/thenativeweb/wolkenkit-broker/) |
+| Core | [wolkenkit-core](https://github.com/thenativeweb/wolkenkit-core) | [wolkenkit-core](https://hub.docker.com/r/thenativeweb/wolkenkit-core/) |
+| Flows | [wolkenkit-flows](https://github.com/thenativeweb/wolkenkit-flows) | [wolkenkit-flows](https://hub.docker.com/r/thenativeweb/wolkenkit-flows/) |
+| Blob storage | [wolkenkit-depot](https://github.com/thenativeweb/wolkenkit-depot) | [wolkenkit-depot](https://hub.docker.com/r/thenativeweb/wolkenkit-depot/) |
+| Event store (PostgreSQL) | [wolkenkit-box-postgres](https://github.com/thenativeweb/wolkenkit-box-postgres) | [wolkenkit-postgres](https://hub.docker.com/r/thenativeweb/wolkenkit-postgres/) |
+| Read model (MongoDB) | [wolkenkit-box-mongodb](https://github.com/thenativeweb/wolkenkit-box-mongodb) | [wolkenkit-mongodb](https://hub.docker.com/r/thenativeweb/wolkenkit-mongodb/) |
+| Message queue (RabbitMQ) | [wolkenkit-box-rabbitmq](https://github.com/thenativeweb/wolkenkit-box-rabbitmq) | [wolkenkit-rabbitmq](https://hub.docker.com/r/thenativeweb/wolkenkit-rabbitmq/) |
+| Shared Node.js modules | [wolkenkit-box-node-modules](https://github.com/thenativeweb/wolkenkit-box-node-modules) | [wolkenkit-node-modules](https://hub.docker.com/r/thenativeweb/wolkenkit-node-modules/) |
