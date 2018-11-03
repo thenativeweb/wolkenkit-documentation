@@ -35,6 +35,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - [@nelreina](https://github.com/nelreina)
   - [@nicolaisueper](https://github.com/nicolaisueper)
   - [@reneviering](https://github.com/reneviering)
+  - [@radumaerza](https://github.com/radumaerza)
   - [@scherermichael](https://github.com/scherermichael)
   - [@schmuto](https://github.com/schmuto)
 
