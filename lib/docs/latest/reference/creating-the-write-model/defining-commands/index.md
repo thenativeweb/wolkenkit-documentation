@@ -54,6 +54,12 @@ if (command.data.amount > 0) {
 }
 ```
 
+:::hint-warning
+> **File storage for large documents**
+>
+> Commands represent a user's request to the system. Although they contain data, they should not contain large documents such as PDFs, images or videos. If you want to store such documents, think about using [file storage](../../storing-large-files/accessing-file-storage/).
+:::
+
 ## Accessing the aggregate state
 
 To decide whether a command may be run you may need to access the aggregate state. For that, use the `state` property of the aggregate.
@@ -65,6 +71,8 @@ if (invoice.state.isIssued) {
   // ...
 }
 ```
+
+To get the aggregate ID, access the property `id` of the aggregate directly, as the ID is not part of the state.
 
 ## Publishing events
 
