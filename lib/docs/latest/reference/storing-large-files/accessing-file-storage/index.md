@@ -4,7 +4,7 @@ wolkenkit contains a service for storing large files. It is designed to allow yo
 
 To access file storage, you must use different urls depending on whether the access is from the client or from within the wolkenkit application. From the outside you use `https://local.wolkenkit.io:3001` (the exact port depends on your configuration, but it is always `1` higher than the port of the API), from the application you use `http://depot`.
 
-In addition to the ability to store and retrieve files, file storage also provides the ability to authenticate and authorize users. By default, each user is allowed to store files, for all further actions you can individually [configure authorization](../configuring-authorization/) per file.
+In addition to the ability to store and retrieve files, file storage also provides the ability to authenticate and authorize users. By default, each user is allowed to store files, but you can change who can initially add files by [configuring file storage](../../configuring-an-application/configuring-file-storage/). All further actions can be configured individually by [configuring authorization](../configuring-authorization/) per file.
 
 ## Selecting an access mechanism
 

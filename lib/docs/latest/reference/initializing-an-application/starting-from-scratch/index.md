@@ -54,6 +54,9 @@ As default, use the following template:
             "port": 3000
           },
           "allowAccessFrom": "*"
+        },
+        "fileStorage": {
+          "allowAccessFrom": "*"
         }
       }
     }
