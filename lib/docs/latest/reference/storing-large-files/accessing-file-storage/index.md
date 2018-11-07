@@ -1,14 +1,14 @@
-# Accessing blob storage
+# Accessing file storage
 
-wolkenkit contains a blob storage where you can store large files. This storage is called *depot* and is available in every wolkenkit application by default.
+wolkenkit contains a service for storing large files. It is designed to allow you to store documents such as PDFs, images and videos so that your commands remain small. This file storage is called *depot*.
 
-To access blob storage, you must use different urls depending on whether the access is from the client or from within the wolkenkit application. From the outside you use `https://local.wolkenkit.io:3001` (the exact port depends on your configuration, but it is always `1` higher than the port of the API), from the application you use `http://depot`.
+To access file storage, you must use different urls depending on whether the access is from the client or from within the wolkenkit application. From the outside you use `https://local.wolkenkit.io:3001` (the exact port depends on your configuration, but it is always `1` higher than the port of the API), from the application you use `http://depot`.
 
-In addition to the ability to store and retrieve blobs, blob storage also provides the ability to authenticate and authorize users. By default, each user is allowed to store data, for all further actions you can individually [configure authorization](../configuring-authorization/) per blob.
+In addition to the ability to store and retrieve files, file storage also provides the ability to authenticate and authorize users. By default, each user is allowed to store files, for all further actions you can individually [configure authorization](../configuring-authorization/) per file.
 
 ## Selecting an access mechanism
 
-Basically, there are two different ways to access blob storage. For easy access, there is the depot SDK, which is available as a universal module, and therefore works in the browser as well as in Node.js. Alternatively, it is possible to access the blob storage directly via an HTTP API.
+Basically, there are two different ways to access file storage. For easy access, there is the depot SDK, which is available as a universal module, and therefore works in the browser as well as in Node.js. Alternatively, it is possible to access file storage directly via an HTTP API.
 
 The depot SDK has been tested against Chrome <%= current.versions.chrome %>+ and Node.js <%= current.versions.node %>+. Other platforms may work as well, they have just not been tested.
 
@@ -34,7 +34,7 @@ While Node.js supports the `require` function out of the box, you have to use a 
 
 ## Creating a client
 
-To use blob storage, create a new instance of the `DepotClient` class and specify the hostname of the server you want to use:
+To use file storage, create a new instance of the `DepotClient` class and specify the hostname of the service you want to use:
 
 ```javascript
 const depotClient = new DepotClient({
