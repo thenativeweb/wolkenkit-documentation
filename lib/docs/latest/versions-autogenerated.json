@@ -8,5 +8,6 @@
   "safari": "11.1",
   "edge": "17.0",
   "ie": "11.0",
-  "clientSdkJs": "2.0.0"
+  "clientSdkJs": "2.0.0",
+  "depotClientSdkJs": "2.0.0"
 }

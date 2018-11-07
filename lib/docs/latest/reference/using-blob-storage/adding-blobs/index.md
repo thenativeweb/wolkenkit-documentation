@@ -1,0 +1,93 @@
+# Adding blobs
+
+To store a blob, call the `addBlob` function of the depot SDK and pass the blob content and its file name as parameters. In Node.js the blob can be passed as a stream or a buffer, in the browser it can be an instance of `File` or `Blob`. Either way, the function then returns the ID of the stored blob:
+
+```javascript
+const content = fs.createReadStream('wolkenkit.png');
+
+const id = await depotClient.addBlob({
+  content,
+  fileName: 'wolkenkit.png'
+});
+```
+
+In the browser the same example looks like this:
+
+```javascript
+const fileInput = document.getElementById('file-input');
+
+fileInput.addEventListener('change', async () => {
+  const content = fileInput.files[0];
+
+  const id = await depotClient.addBlob({
+    content,
+    fileName: 'wolkenkit.png'
+  });
+});
+```
+
+## Setting the content type
+
+By default, stored blobs are delivered with the content type `application/octet-stream`. To change this, set the `contentType` property to the desired value:
+
+```javascript
+const id = await depotClient.addBlob({
+  content,
+  contentType: 'image/png',
+  fileName: 'wolkenkit.png'
+});
+```
+
+## Configuring authorization
+
+Individual permissions for various actions can be configured for each blob. To do this, you must use the `isAuthorized` property to pass an object that contains the desired permissions. If you only want to configure a few permissions, you can simply specify only selected sections.
+
+If you do not configure permissions at all, the default values shown in the following example are used. They are set so that only the user who originally stored a blob has access to it:
+
+```javascript
+const id = await depotClient.addBlob({
+  content,
+  fileName: 'wolkenkit.png',
+  isAuthorized: {
+    commands: {
+      removeBlob: { forAuthenticated: false, forPublic: false },
+      transferOwnership: { forAuthenticated: false, forPublic: false },
+      authorize: { forAuthenticated: false, forPublic: false }
+    },
+    queries: {
+      getBlob: { forAuthenticated: false, forPublic: false }
+    }
+  }
+});
+```
+
+## Using the HTTP API
+
+To add a blob using the HTTP API, call the route `POST /api/v1/add-blob`.
+
+For the blob, use the request body; for the file name and, if necessary, the content type and permissions, set the `x-metadata` header to a stringified JSON object with the following structure:
+
+```json
+{
+  "contentType": "image/png",
+  "fileName": "wolkenkit.png",
+  "isAuthorized": {
+    ...
+  }
+}
+```
+
+To authenticate your request, proceed as described in [accessing blob storage](../accessing-blob-storage/#using-the-http-api).
+
+If the blob was successfully added, you will receive the status code `200` and the following response body:
+
+```json
+{ "id": "<uuid>" }
+```
+
+In case of errors, you will receive one of the following error codes:
+
+- `400 (Bad request)`
+- `401 (Unauthorized)`
+- `409 (Conflict)`
+- `500 (Internal server error)`

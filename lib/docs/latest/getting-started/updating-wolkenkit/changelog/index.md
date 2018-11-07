@@ -18,6 +18,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - In the past you always had to navigate the documentation manually. If you didn't know where to find information on a specific topic, this was cumbersome. Now there is a search feature which allows you to easier navigate the documentation by keywords.
 - **Added** a section for contributing to wolkenkit to the documentation
   - In the past, there was no central point of information for contributors. To change this there is now a section on [contributing to wolkenkit](../../../../<%= current.version %>/getting-started/contributing-to-wolkenkit/overview/).
+- **Added** the aggregate ID in command and event handlers
+  - In the past if you wanted to access the aggregate ID from within a command handler or an event handler, there was no direct way to do so. This has now been added, so that you can use the aggregate's `id` property to access the value directly.
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
 - **Improved** the performance of command handling
