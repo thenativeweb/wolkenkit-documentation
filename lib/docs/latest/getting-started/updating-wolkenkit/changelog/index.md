@@ -19,7 +19,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 - **Added** a section for contributing to wolkenkit to the documentation
   - In the past, there was no central point of information for contributors. To change this there is now a section on [contributing to wolkenkit](../../../../<%= current.version %>/getting-started/contributing-to-wolkenkit/overview/).
 - **Added** the aggregate ID in command and event handlers
-  - In the past if you wanted to access the aggregate ID from within a command handler or an event handler, there was no direct way to do so. This has now been added, so that you can use the aggregate's `id` property to access the value directly.
+  - In the past if you wanted to access the aggregate ID from within a [command handler](../../../../<%= current.version %>/reference/creating-the-write-model/defining-commands/#accessing-the-aggregate-state) or an [event handler](../../../../<%= current.version %>/reference/creating-the-write-model/defining-events/#accessing-the-event-data), there was no direct way to do so. This has now been added, so that you can use the aggregate's `id` property to access the value directly.
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
 - **Improved** the performance of command handling
@@ -27,7 +27,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 - **Improved** error handling in the CLI `start` and `restart` commands
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
 - **Rewritten** wolkenkit's blob store from scratch
-  - The depot, wolkenkit's blob store, was rewritten from scratch. The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove blobs as well as an option to authorize them.
+  - The depot, wolkenkit's blob store, was [rewritten from scratch](../../../../<%= current.version %>/reference/using-blob-storage/accessing-blob-storage/). The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove blobs as well as an option to authorize them.
 - **Fixed** handling commands when no read model is defined
   - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
