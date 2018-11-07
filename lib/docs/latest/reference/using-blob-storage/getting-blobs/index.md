@@ -37,6 +37,11 @@ const blob = await depotClient.getBlob({
 });
 
 const dataUrl = await blob.asDataUrl();
+```
+
+You can use a data url, for example, to easily display blobs containing images:
+
+```javascript
 const image = new Image();
 
 image.src = dataUrl;

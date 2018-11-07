@@ -82,7 +82,7 @@ To authenticate your request, proceed as described in [accessing blob storage](.
 If the blob was successfully added, you will receive the status code `200` and the following response body:
 
 ```json
-{ "id": "<uuid>" }
+{ "id": "2a7e9f8f-9bfc-4c19-87b9-274c0e193401" }
 ```
 
 In case of errors, you will receive one of the following error codes:
