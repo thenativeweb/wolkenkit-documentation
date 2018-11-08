@@ -24,9 +24,9 @@ You will typically want to limit access to a few specific domains. For developme
 }
 ```
 
-## Configuring initial storing of files
+## Configuring who is allowed to add files
 
-To configure who is initially allowed to store files, open the application's `package.json` file, navigate to `wolkenkit/environments/default/fileStorage/isAuthorized`, and provide an object that represents your desired configuration.
+To configure who is allowed to store files, open the application's `package.json` file, navigate to `wolkenkit/environments/default/fileStorage/isAuthorized`, and provide an object that represents your desired configuration.
 
 E.g., to allow storing files for everyone, use the following code:
 
