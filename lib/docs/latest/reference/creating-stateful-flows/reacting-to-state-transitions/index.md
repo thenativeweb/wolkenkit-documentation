@@ -18,7 +18,7 @@ const reactions = {
 };
 ```
 
-Some reactions require asynchronous code. Therefore, you can use the keywords `async` and `await`. To be able do this, define the reaction using the `async` keyword:
+Some reactions require asynchronous code. Therefore, you can use the keywords `async` and `await`. To be able to do this, define the reaction using the `async` keyword:
 
 ```javascript
 const reactions = {
