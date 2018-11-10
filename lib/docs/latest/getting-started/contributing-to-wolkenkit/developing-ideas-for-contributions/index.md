@@ -12,7 +12,7 @@ In the following we describe different aspects how you can contribute to wolkenk
 
 ## Contributing code
 
-The most obvious way to add value to wolkenkit is by contributing code. This includes fixing bugs, extending existing features, and even implementing new features. In the [thenativeweb/wolkenkit](https://github.com/thenativeweb/wolkenkit/issues) repository you can find a list of all currently open issues. Additionally, to get a high-level overview of what is planned for wolkenkit, have a look at the [roadmap](https://github.com/thenativeweb/wolkenkit/blob/master/roadmap.md).
+The most obvious way to add value to wolkenkit is by contributing code. This includes fixing bugs, extending existing features, and even implementing new features. In the [thenativeweb/wolkenkit](https://github.com/thenativeweb/wolkenkit/issues) repository you can find a list of all currently open issues. There you can also find a list of [good first issues](https://github.com/thenativeweb/wolkenkit/issues?q=is%3Aissue+is%3Aopen+label%3A%22Good+first+issue%22) to start with. Additionally, to get a high-level overview of what is planned for wolkenkit, have a look at the [roadmap](https://github.com/thenativeweb/wolkenkit/blob/master/roadmap.md).
 
 Typical questions to come up with ideas are:
 
