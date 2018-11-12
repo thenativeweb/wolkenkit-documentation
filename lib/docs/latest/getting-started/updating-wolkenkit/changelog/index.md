@@ -6,6 +6,10 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `2.0.0`:
 
+- **[BREAKING] Rewritten** wolkenkit's file storage from scratch
+  - The file storage service of wolkenkit, depot, was [rewritten from scratch](../../../../<%= current.version %>/reference/storing-large-files/accessing-file-storage/). The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove files as well as an option to manage authorization for them.
+- **[BREAKING] Changed** client SDK requires polyfill for Internet Explorer 11
+  - In the past the client SDK worked without a polyfill in Internet Explorer 11. This has changed, you now need to [add the `@babel/polyfill` module](../../../../<%= current.version %>/reference/building-a-client/connecting-to-an-application/#installing-the-sdk) if you are targeting Internet Explorer 11.
 - **Added** a landing page to the API endpoint
   - When opening the API endpoint in a browser, in the past this resulted in a `404`. This has been changed, as the API endpoint now contains a landing page which improves the user experience when approaching the API manually for the first time.
 - **Added** `export` and `import` commands to the CLI
@@ -28,8 +32,6 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - In previous versions of wolkenkit commands were always executed one after the other. This could lead to slow behavior, for example when a command was blocked by a long-running action. Now commands are executed in parallel, which dramatically increases their execution speed. Only commands that refer to an identical aggregate are still executed sequentially.
 - **Improved** error handling in the CLI `start` and `restart` commands
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
-- **Rewritten** wolkenkit's file storage from scratch
-  - The file storage service of wolkenkit, depot, was [rewritten from scratch](../../../../<%= current.version %>/reference/storing-large-files/accessing-file-storage/). The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove files as well as an option to manage authorization for them.
 - **Fixed** delivery of `Failed` and `Rejected` events
   - In the past when a command failed or was rejected, everyone received the related events. This has been fixed, so that now only the original sender of the command gets notified.
 - **Fixed** handling commands when no read model is defined
