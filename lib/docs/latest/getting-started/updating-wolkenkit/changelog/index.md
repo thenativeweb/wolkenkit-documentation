@@ -8,6 +8,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
 
 - **Added** a landing page to the API endpoint
   - When opening the API endpoint in a browser, in the past this resulted in a `404`. This has been changed, as the API endpoint now contains a landing page which improves the user experience when approaching the API manually for the first time.
+- **Added** `export` and `import` commands to the CLI
+  - To backup and restore your application's data such as the events from the event store, there are now two new CLI commands, [`export` and `import`](../../../../<%= current.version %>/reference/using-the-cli/exporting-and-importing-data/).
 - **Added** `upsert` semantics for read models
   - From time to time it is necessary to add an item to a read model, if the item does not exist yet, or update it otherwise. This was inconvenient in the past. Now there is the [`orUpdate` extension](../../../../<%= current.version %>/reference/creating-the-read-model/defining-projections/#adding-or-updating-items) to the `add` command, which allows you to easily fall back to updating an item.
 - **Added** `do nothing` semantics for read models
