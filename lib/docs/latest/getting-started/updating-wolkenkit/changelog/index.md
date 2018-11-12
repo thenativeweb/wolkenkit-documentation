@@ -28,6 +28,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
 - **Rewritten** wolkenkit's file storage from scratch
   - The file storage service of wolkenkit, depot, was [rewritten from scratch](../../../../<%= current.version %>/reference/storing-large-files/accessing-file-storage/). The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove files as well as an option to manage authorization for them.
+- **Fixed** delivery of `Failed` and `Rejected` events
+  - In the past when a command failed or was rejected, everyone received the related events. This has been fixed, so that now only the original sender of the command gets notified.
 - **Fixed** handling commands when no read model is defined
   - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
