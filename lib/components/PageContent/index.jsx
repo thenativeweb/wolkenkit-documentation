@@ -51,10 +51,12 @@ class PageContent extends React.Component {
       metadata
     } = this.props;
 
-    let pageTitle = metadata.name;
+    let title = `${activeVersion} | ${metadata.name}`;
 
     if (info.title) {
-      pageTitle = `${info.title} | ${metadata.name}`;
+      const pageTitle = [ ...info.breadcrumbs ].reverse().join(' | ');
+
+      title = `${pageTitle} | ${title}`;
     }
 
     const componentClasses = classNames(classes.PageContent, {
@@ -64,7 +66,7 @@ class PageContent extends React.Component {
     return (
       <div ref={ this.saveContainerRef } className={ componentClasses }>
         <Helmet>
-          <title>{ pageTitle }</title>
+          <title>{ title }</title>
         </Helmet>
 
         <Breadcrumbs breadcrumbs={ info.breadcrumbs } />
