@@ -43,3 +43,5 @@ invoice.setState({
   requiresAttention: event.data.amount > 2500
 });
 ```
+
+To get the aggregate ID, access the property `id` of the aggregate directly, as the ID is not part of the state.

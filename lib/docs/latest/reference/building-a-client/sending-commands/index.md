@@ -18,6 +18,12 @@ app.accounting.invoice().issue({
 });
 ```
 
+:::hint-warning
+> **File storage for large documents**
+>
+> Commands represent a user's request to the system. Although they contain data, they should not contain large documents such as PDFs, images or videos. If you want to store such documents, think about using [file storage](../../storing-large-files/accessing-file-storage/).
+:::
+
 ## Addressing existing aggregates
 
 If a command addresses an existing aggregate, hand over the aggregate id as a parameter to the aggregate function.

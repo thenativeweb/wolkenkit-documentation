@@ -12,6 +12,12 @@ To install the wolkenkit SDK, use npm:
 $ npm install wolkenkit-client@<%= current.versions.clientSdkJs %>
 ```
 
+:::hint-warning
+> **Polyfill old browsers**
+>
+> Please note that for Internet Explorer 11, you additionally need to install the module [@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill) to make things work. For details on how to integrate this polyfill into your application, see its [documentation](https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack).
+:::
+
 ## Using the SDK
 
 To use the SDK, call the require function to load the `wolkenkit-client` module:

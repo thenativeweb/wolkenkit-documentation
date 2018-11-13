@@ -6,8 +6,14 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `2.0.0`:
 
+- **[BREAKING] Rewritten** wolkenkit's file storage from scratch
+  - The file storage service of wolkenkit, depot, was [rewritten from scratch](../../../../<%= current.version %>/reference/storing-large-files/accessing-file-storage/). The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove files as well as an option to manage authorization for them.
+- **[BREAKING] Changed** client SDK requires polyfill for Internet Explorer 11
+  - In the past the client SDK worked without a polyfill in Internet Explorer 11. This has changed, you now need to [add the `@babel/polyfill` module](../../../../<%= current.version %>/reference/building-a-client/connecting-to-an-application/#installing-the-sdk) if you are targeting Internet Explorer 11.
 - **Added** a landing page to the API endpoint
   - When opening the API endpoint in a browser, in the past this resulted in a `404`. This has been changed, as the API endpoint now contains a landing page which improves the user experience when approaching the API manually for the first time.
+- **Added** `export` and `import` commands to the CLI
+  - To backup and restore your application's data such as the events from the event store, there are now two new CLI commands, [`export` and `import`](../../../../<%= current.version %>/reference/using-the-cli/exporting-and-importing-data/).
 - **Added** `upsert` semantics for read models
   - From time to time it is necessary to add an item to a read model, if the item does not exist yet, or update it otherwise. This was inconvenient in the past. Now there is the [`orUpdate` extension](../../../../<%= current.version %>/reference/creating-the-read-model/defining-projections/#adding-or-updating-items) to the `add` command, which allows you to easily fall back to updating an item.
 - **Added** `do nothing` semantics for read models
@@ -18,14 +24,16 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - In the past you always had to navigate the documentation manually. If you didn't know where to find information on a specific topic, this was cumbersome. Now there is a search feature which allows you to easier navigate the documentation by keywords.
 - **Added** a section for contributing to wolkenkit to the documentation
   - In the past, there was no central point of information for contributors. To change this there is now a section on [contributing to wolkenkit](../../../../<%= current.version %>/getting-started/contributing-to-wolkenkit/overview/).
+- **Added** the aggregate ID in command and event handlers
+  - In the past if you wanted to access the aggregate ID from within a [command handler](../../../../<%= current.version %>/reference/creating-the-write-model/defining-commands/#accessing-the-aggregate-state) or an [event handler](../../../../<%= current.version %>/reference/creating-the-write-model/defining-events/#accessing-the-event-data), there was no direct way to do so. This has now been added, so that you can use the aggregate's `id` property to access the value directly.
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
 - **Improved** the performance of command handling
   - In previous versions of wolkenkit commands were always executed one after the other. This could lead to slow behavior, for example when a command was blocked by a long-running action. Now commands are executed in parallel, which dramatically increases their execution speed. Only commands that refer to an identical aggregate are still executed sequentially.
 - **Improved** error handling in the CLI `start` and `restart` commands
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
-- **Rewritten** wolkenkit's blob store from scratch
-  - The depot, wolkenkit's blob store, was rewritten from scratch. The new code base is of much better quality and introduces a variety of new features. This includes, but is not limited to, an option to remove blobs as well as an option to authorize them.
+- **Fixed** delivery of `Failed` and `Rejected` events
+  - In the past when a command failed or was rejected, everyone received the related events. This has been fixed, so that now only the original sender of the command gets notified.
 - **Fixed** handling commands when no read model is defined
   - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
@@ -35,6 +43,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - [@nelreina](https://github.com/nelreina)
   - [@nicolaisueper](https://github.com/nicolaisueper)
   - [@reneviering](https://github.com/reneviering)
+  - [@radumaerza](https://github.com/radumaerza)
   - [@scherermichael](https://github.com/scherermichael)
   - [@schmuto](https://github.com/schmuto)
 
