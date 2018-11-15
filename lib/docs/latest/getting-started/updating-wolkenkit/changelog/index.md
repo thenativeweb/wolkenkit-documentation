@@ -26,6 +26,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - In the past, there was no central point of information for contributors. To change this there is now a section on [contributing to wolkenkit](../../../../<%= current.version %>/getting-started/contributing-to-wolkenkit/overview/).
 - **Added** the aggregate ID in command and event handlers
   - In the past if you wanted to access the aggregate ID from within a [command handler](../../../../<%= current.version %>/reference/creating-the-write-model/defining-commands/#accessing-the-aggregate-state) or an [event handler](../../../../<%= current.version %>/reference/creating-the-write-model/defining-events/#accessing-the-event-data), there was no direct way to do so. This has now been added, so that you can use the aggregate's `id` property to access the value directly.
+- **Updated** wolkenkit to use Node.js `10.13.0`
+  - Now that Node.js 10.x has become the new LTS version, wolkenkit runs on Node.js `10.13.0`.
 - **Updated** connection handling in application startup
   - When starting a wolkenkit application, the application immediately restarted if it was unable to connect to the infrastructure services, such as the event store. Now, the application retries things before performing a restart. This results in slightly better startup performance and stability.
 - **Improved** the performance of command handling
