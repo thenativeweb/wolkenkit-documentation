@@ -46,6 +46,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - [@radumaerza](https://github.com/radumaerza)
   - [@scherermichael](https://github.com/scherermichael)
   - [@schmuto](https://github.com/schmuto)
+  - [@zibur](https://github.com/zibur)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
