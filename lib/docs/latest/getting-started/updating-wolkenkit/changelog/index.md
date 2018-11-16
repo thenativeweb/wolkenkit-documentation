@@ -36,6 +36,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
 - **Fixed** delivery of `Failed` and `Rejected` events
   - In the past when a command failed or was rejected, everyone received the related events. This has been fixed, so that now only the original sender of the command gets notified.
+- **Fixed** `transferOwnership` and `authorize` in the read model
+  - When transferring the ownership or authorizing a read model item, the client did not get notified correctly, which could lead to missed notifications for some users. This has been fixed.
 - **Fixed** handling commands when no read model is defined
   - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
