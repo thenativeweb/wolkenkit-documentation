@@ -36,44 +36,34 @@ Since wolkenkit is designed as a distributed system and based on Docker, it is (
 > While not currently available, a lightweight wolkenkit runtime environment could be done. If you are interested in this, please [contact the native web](mailto:hello@thenativeweb.io).
 :::
 
-### UI prototypes and frontend development
-
-UI prototypes, as the name implies, focus on the design and development of a frontend. They are usually developed by agencies or design teams, and used for example to demonstrate concepts. However, often not all concepts, processes and requirements are known from the beginning, instead they are developed on the basis of the prototype together with the customer.
-
-Unfortunately, at least at this point in time, this makes it difficult to model the underlying domain in detail using domain-driven design, which in turn makes it hard to develop the backend with wolkenkit. Once the concepts are well defined, e.g. using design thinking and story telling, and the domain is modeled this will change, since wolkenkit can then be used to develop a solid and sustainable backend that reflects the domain and perfectly matches the frontend.
-
 ## Good use cases
 
 The following examples show use cases that are well suited for the use of wolkenkit. Please note that the individual reasons are more important than the specific examples.
 
-### Complex domains
+### In-depth domain knowledge
 
-Complex domains require a detailed and in-depth analysis of the underlying processes, for which the use of domain-driven design in an [interdisciplinary team](../why-wolkenkit/#empowering-interdisciplinary-teams) is ideal. Once a domain has been modeled, it is essential to transform the model into code as seamlessly as possible.
+In-depth domain knowledge and a sound understanding of the essential business processes are a valuable component of successful software development. This is especially true for [interdisciplinary teams](../why-wolkenkit/#empowering-interdisciplinary-teams), which is also the reason why the use of domain-driven design in such teams is particularly useful and helpful.
 
-This is exactly where wolkenkit has its strengths: It allows developers to focus on the domain and hides the technical details, making the code easier to read and to reason about. This way you can efficiently build and maintain an API for your business, that also enables integration with other services.
+Since wolkenkit allows you to seamlessly transform domain knowledge into code while abstracting away the technical details, it leads to more readable and understandable code.
 
 ### Historical data
 
-In many applications, you need access to historical data at some point in time, for example to create reports or analyze data. Since wolkenkit is based on [event-sourcing](../why-wolkenkit/#learning-from-your-past) and therefore stores all events that have happened in your domain, it provides historical data without further ado.
+Historical data is a valuable asset in many applications, which can be used, for example, to generate reports or analyze data. Typically, the collection of historical data is not planned in many applications, which makes implementation time-consuming.
 
-The better the underlying domain was modelled, the more meaningful are the correlations that can be recognized in the events. This empowers you to learn from the past and get new insights into your domain – even back in time! This way you will get answers to questions of which you do not know today that you will ask them tomorrow.
+Since wolkenkit is based on [event-sourcing](../why-wolkenkit/#learning-from-your-past) and therefore stores all events that have happened in your domain, it provides historical data without further ado. This empowers you to learn from the past and get new insights into your domain, even back in time. This way you will get answers to questions of which you do not know today that you will ask them tomorrow.
 
 ### Soft real-time
 
-Soft real-time is becoming increasingly important for applications as digital collaboration becomes more and more popular. However, push notifications and live updates of already delivered data are difficult to implement from a technical point of view, if you want to get the details right.
+Soft real-time is becoming increasingly important for applications, as digital collaboration becomes more and more popular. However, push notifications and live updates of already delivered data are quite difficult to implement, if you want to get the details right.
 
-Fortunately, wolkenkit comes with support for soft real-time by default. This makes wolkenkit an ideal platform for collaborative web applications in which different users manage a shared state, similar to what you may know from Trello or other collaboration tools.
+Fortunately, wolkenkit comes with built-in support for soft real-time. This makes wolkenkit an ideal platform for collaborative web applications in which different users manage a shared state, similar to what you may know from Trello or other collaboration tools.
 
 ### High availability
 
-High availability and scalability are important factors for successful web and cloud applications. By building on eventual consistency and preferring availability to hard consistency, wolkenkit enables your applications to [scale with confidence](../why-wolkenkit/#scaling-with-confidence). You can even scale the write and the read model of your application independent of each other, without having to care about the technical details in your code.
+High availability and scalability are important factors for successful web and cloud applications. By using eventual consistency and preferring availability to hard consistency, wolkenkit enables your applications to [scale with confidence](../why-wolkenkit/#scaling-with-confidence). You can even scale the write and the read model of your application independent of each other, without having to care about the technical details in your code.
 
-### Domain preto- and prototyping
+### API design and backend prototyping
 
 From time to time there are specific ideas for domains that could be worth implementing. In the past, this was a time-consuming process, because in addition to the actual domain, the technical foundation always had to be developed, too.
 
-With wolkenkit this additional effort is no longer necessary as it enables you to focus exclusively on the domain. This way, you can rapidly try out and evaluate ideas, and build an API for them, which you can then use, for example, to wire them up with a UI prototype.
-
-### Take-away backend for frontend developers
-
-With wolkenkit you no longer have to be concerned with the technical foundation of an application, but instead can focus on the domain-oriented code. This makes it easier for frontend and UI teams to develop backends and APIs. In other words, wolkenkit is the take-away backend for frontend developers.
+With wolkenkit this additional effort is no longer necessary as it enables you to focus exclusively on the domain. This way, you can rapidly try out and evaluate ideas. In the end, wolkenkit allows you to build and maintain an API for your business efficiently.
