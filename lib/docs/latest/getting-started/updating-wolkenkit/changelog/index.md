@@ -34,6 +34,8 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - In previous versions of wolkenkit commands were always executed one after the other. This could lead to slow behavior, for example when a command was blocked by a long-running action. Now commands are executed in parallel, which dramatically increases their execution speed. Only commands that refer to an identical aggregate are still executed sequentially.
 - **Improved** error handling in the CLI `start` and `restart` commands
   - So far, when starting or restarting an application, an error in the application's JavaScript code led to an endless loops, what finally caused the CLI to crash. This has been improved, as the CLI now reports any errors and, after a few retries, gives up.
+- **Fixed** updating an aggregate's state
+  - When calling `setState`, it was impossible to reset an array to an empty array, as the current state and the new state always got merged. This has been fixed. Now any properties of the new state completely overwrite the appropriate properties of the current state.
 - **Fixed** delivery of `Failed` and `Rejected` events
   - In the past when a command failed or was rejected, everyone received the related events. This has been fixed, so that now only the original sender of the command gets notified.
 - **Fixed** `transferOwnership` and `authorize` in the read model
@@ -42,6 +44,7 @@ The following significant changes have been made since wolkenkit `2.0.0`:
   - When sending a command without having a read model defined, the wolkenkit application crashed. While this does probably not happen in production, it happened in the getting started guides. This has been fixed.
 - **Contributions** by the community
   - [@cessor](https://github.com/cessor)
+  - [@domma](https://github.com/domma)
   - [@go4cas](https://github.com/go4cas)
   - [@marcusstenbeck](https://github.com/marcusstenbeck)
   - [@nelreina](https://github.com/nelreina)

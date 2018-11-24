@@ -1,4 +1,4 @@
-# Architecture
+# Data flow
 
 In a wolkenkit application, you typically have a client with a task-based UI. This may be a static web site, a mobile application, or anything else. Everytime the user performs a task, the client sends one or more commands to the server.
 
