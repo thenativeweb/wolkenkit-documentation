@@ -49,4 +49,4 @@ You are now able to chat. This even works with multiple browsers concurrently:
 > You have initialized and run your first wolkenkit application!
 :::
 
-All in all, this was pretty easy because you were able to use a template. If you want to learn to build a chat by yourself, have a look at [creating an application from scratch](../../../advanced-guides/creating-an-application-from-scratch/setting-the-objective/). For now, we wish you some happy chatting 😊!
+All in all, this was pretty easy because you were able to use a template. If you want to learn to build a chat by yourself, have a look at [creating an application from scratch](../../../guides/creating-an-application-from-scratch/setting-the-objective/). For now, we wish you some happy chatting 😊!
