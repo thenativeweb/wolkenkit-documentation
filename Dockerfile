@@ -1,4 +1,4 @@
-FROM thenativeweb/wolkenkit-box-node:2.0.0
+FROM thenativeweb/wolkenkit-box-node:3.0.0
 MAINTAINER the native web <hello@thenativeweb.io>
 
 ADD . /documentation/
