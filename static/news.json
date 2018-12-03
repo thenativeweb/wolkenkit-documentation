@@ -2,6 +2,15 @@
   {
     "date": {
       "year": 2018,
+      "month": 12,
+      "day": 3
+    },
+    "title": "Released wolkenkit 3.0.0 🦄",
+    "content": "Today, we have released wolkenkit 3.0.0. The new version provides a rewritten file storage, and import/export commands. It now also runs on Node.js 10.13.0. For details see the [changelog](https://docs.wolkenkit.io/3.0.0/getting-started/updating-wolkenkit/changelog/)."
+  },
+  {
+    "date": {
+      "year": 2018,
       "month": 10,
       "day": 18
     },
