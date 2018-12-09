@@ -2,7 +2,7 @@
 
 If you run a wolkenkit application this also includes running multiple infrastructure services, such as databases and message queues. To avoid running these services without password protection, the CLI creates a random key and prints it to the terminal when starting an application.
 
-You may need to provide the key manually. For that, provide it using the `--shared-key` flag when starting the application:
+Sometimes you may want to set the key manually. For that, use the `--shared-key` flag when starting the application:
 
 ```shell
 $ wolkenkit start --shared-key <secret>
