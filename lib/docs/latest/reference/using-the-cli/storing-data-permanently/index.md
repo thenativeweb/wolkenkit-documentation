@@ -8,6 +8,12 @@ To enable permanent data storage, provide the `--persist` flag when starting the
 $ wolkenkit start --shared-key <secret> --persist
 ```
 
+:::hint-warning
+> **Beware of environment variables**
+>
+> If you use a shared key with special characters, it might contain the `$` sign. Since this character is used by the command line to access environment variables, unexpected things could happen. To avoid this, enclose the shared key in single quotes.
+:::
+
 ## Restarting an application
 
 When you restart an application, the CLI takes care of preserving the shared key between restarts. Hence you can simply run:
