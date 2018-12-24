@@ -9,7 +9,7 @@ The following significant changes have been made since wolkenkit `3.0.0`:
 - **Added** `--persist` flag to the CLI
   - In the past setting a shared key and enabling persistent data storage was linked to each other. This has been changed, so that now you can set a shared key to [protect your application](../../../../latest/reference/using-the-cli/protecting-an-application/) without enabling persistence, and there is a new dedicated `--persist` flag to [enable persistence](../../../../latest/reference/using-the-cli/storing-data-permanently/).
 - **Contributions** by the community
-  - [@...](https://github.com/...)
+  - [@maxtilford](https://github.com/maxtilford)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
