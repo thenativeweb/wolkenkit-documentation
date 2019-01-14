@@ -76,7 +76,7 @@ Then, open the file and add the following code:
           "allowAccessFrom": "*"
         },
         "fileStorage": {
-          "allowAccessFrom": "*",
+          "allowAccessFrom": "*"
         },
         "node": {
           "environment": "development"
