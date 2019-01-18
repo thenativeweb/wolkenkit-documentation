@@ -16,6 +16,7 @@ The following significant changes have been made since wolkenkit `3.0.0`:
   - Depending on your client's dependencies, the client SDK could run into an error because of a missing dependency. This has been fixed.
 - **Contributions** by the community
   - [@gossi](https://github.com/gossi)
+  - [@greeb](https://github.com/greeb)
   - [@maxtilford](https://github.com/maxtilford)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
