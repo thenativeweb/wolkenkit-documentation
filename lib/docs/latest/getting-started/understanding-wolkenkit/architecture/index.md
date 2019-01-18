@@ -32,6 +32,8 @@ For all processes of a wolkenkit application there are [Docker base images](http
 
 Finally, the images are run as containers that get connected to each other by using a virtual network. Since the application containers (broker, core and flows) run your application's code, they may need a few npm modules. To avoid having to install them to every single application container, they are only installed once to a shared Docker container named *node-modules* that is then used as a volume by the other containers.
 
+The publicly accessible ports of all the containers are exposed using a reverse proxy, which runs in a Docker container named *proxy*.
+
 ## Finding the code
 
 The code for wolkenkit is located in repositories on [GitHub](https://github.com/thenativeweb). On [Docker Hub](https://hub.docker.com/r/thenativeweb/), there is an automated build for each repository that is responsible for building the respective Docker image:
@@ -49,3 +51,4 @@ The code for wolkenkit is located in repositories on [GitHub](https://github.com
 | Depot | [wolkenkit-depot](https://github.com/thenativeweb/wolkenkit-depot) | [wolkenkit-depot](https://hub.docker.com/r/thenativeweb/wolkenkit-depot/) |
 | Message queue | [wolkenkit-box-rabbitmq](https://github.com/thenativeweb/wolkenkit-box-rabbitmq) | [wolkenkit-rabbitmq](https://hub.docker.com/r/thenativeweb/wolkenkit-rabbitmq/) |
 | Shared npm modules | [wolkenkit-box-node-modules](https://github.com/thenativeweb/wolkenkit-box-node-modules) | [wolkenkit-node-modules](https://hub.docker.com/r/thenativeweb/wolkenkit-node-modules/) |
+| Proxy | [wolkenkit-proxy](https://github.com/thenativeweb/wolkenkit-proxy) | [wolkenkit-proxy](https://hub.docker.com/r/thenativeweb/wolkenkit-proxy/) |

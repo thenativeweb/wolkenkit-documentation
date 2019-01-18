@@ -2,9 +2,9 @@
 
 The simplest way to initialize a new application is to use a ready-made template as its base. If you need more control you may consider [starting from scratch](../starting-from-scratch/).
 
-## Using the default template
+## Using a ready-made template
 
-To initialize a new application based on the default template run the following commands:
+To initialize a new application based on a ready-made template run the following commands, and select a template when asked for:
 
 ```shell
 $ mkdir <app>
@@ -12,7 +12,7 @@ $ cd <app>
 $ wolkenkit init
 ```
 
-This will download the default template that you can use as a starting point to build your own application.
+This will download the selected template that you can then use as a starting point to build your own application.
 
 ## Using a custom template
 

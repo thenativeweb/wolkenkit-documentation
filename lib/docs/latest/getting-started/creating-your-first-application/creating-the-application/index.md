@@ -8,7 +8,7 @@ $ mkdir chat
 
 ## Initializing the application
 
-From inside this directory, run the following command to initialize a new wolkenkit application using a ready-made template:
+From inside this directory, run the following command to initialize a new wolkenkit application. When asked to select a template, choose `Chat (sample application)`:
 
 ```shell
 $ wolkenkit init

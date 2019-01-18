@@ -6,9 +6,16 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `3.0.0`:
 
+- **[BREAKING] Removed** support for wolkenkit 1.x from the CLI
+  - Starting with wolkenkit <%= current.version %>, the CLI no longer supports the runtimes `1.0.0`, `1.0.1`, `1.1.0` and `1.2.0`. If you still need to run an application based on one of these runtime versions, use CLI `3.0.0` or less.
 - **Added** `--persist` flag to the CLI
   - In the past setting a shared key and enabling persistent data storage was linked to each other. This has been changed, so that now you can set a shared key to [protect your application](../../../../latest/reference/using-the-cli/protecting-an-application/) without enabling persistence, and there is a new dedicated `--persist` flag to [enable persistence](../../../../latest/reference/using-the-cli/storing-data-permanently/).
+- **Added** interactive template selection to the CLI's `init` command
+  - When you ran `wolkenkit init` in the past, the default template was always used to initialize your application. Now the CLI provides an interactive selection, which lets you choose which template to use, unless you explicitly specifiy the `--template` flag.
+- **Fix** missing dependency in the client SDK
+  - Depending on your client's dependencies, the client SDK could run into an error because of a missing dependency. This has been fixed.
 - **Contributions** by the community
+  - [@gossi](https://github.com/gossi)
   - [@maxtilford](https://github.com/maxtilford)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
