@@ -1,6 +1,15 @@
 [
   {
     "date": {
+      "year": 2019,
+      "month": 1,
+      "day": 19
+    },
+    "title": "Released wolkenkit 3.1.0 🦄",
+    "content": "Today, we have released wolkenkit 3.1.0. The new version improves handling persistent data. For details see the [changelog](https://docs.wolkenkit.io/3.1.0/getting-started/updating-wolkenkit/changelog/)."
+  },
+  {
+    "date": {
       "year": 2018,
       "month": 12,
       "day": 3

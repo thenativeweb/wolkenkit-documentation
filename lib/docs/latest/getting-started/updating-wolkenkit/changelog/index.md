@@ -4,10 +4,21 @@ Read what has changed in wolkenkit.
 
 ## <%= current.version %>
 
+The following significant changes have been made since wolkenkit `3.1.0`:
+
+- **Added** ...
+  - For details see ...
+- **Contributions** by the community
+  - [@...](https://github.com/...)
+
+For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
+
+## 3.1.0
+
 The following significant changes have been made since wolkenkit `3.0.0`:
 
 - **[BREAKING] Removed** support for wolkenkit 1.x from the CLI
-  - Starting with wolkenkit <%= current.version %>, the CLI no longer supports the runtimes `1.0.0`, `1.0.1`, `1.1.0` and `1.2.0`. If you still need to run an application based on one of these runtime versions, use CLI `3.0.0` or less.
+  - Starting with wolkenkit 3.1.0, the CLI no longer supports the runtimes `1.0.0`, `1.0.1`, `1.1.0` and `1.2.0`. If you still need to run an application based on one of these runtime versions, use CLI `3.0.0` or less.
 - **Added** `--persist` flag to the CLI
   - In the past setting a shared key and enabling persistent data storage was linked to each other. This has been changed, so that now you can set a shared key to [protect your application](../../../../latest/reference/using-the-cli/protecting-an-application/) without enabling persistence, and there is a new dedicated `--persist` flag to [enable persistence](../../../../latest/reference/using-the-cli/storing-data-permanently/).
 - **Added** interactive template selection to the CLI's `init` command
@@ -19,7 +30,7 @@ The following significant changes have been made since wolkenkit `3.0.0`:
   - [@greeb](https://github.com/greeb)
   - [@maxtilford](https://github.com/maxtilford)
 
-For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
+For details on how to update to version `3.1.0` see [updating the CLI](../../../../3.1.0/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../3.1.0/getting-started/updating-wolkenkit/updating-an-application/).
 
 ## 3.0.0
 
