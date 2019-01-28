@@ -6,9 +6,12 @@ Read what has changed in wolkenkit.
 
 The following significant changes have been made since wolkenkit `3.1.0`:
 
-- **Added** ...
-  - For details see ...
+- **Added** support for EcmaScript 2018 and 2019
+  - In previous versions, wolkenkit supported EcmaScript 2017 and earlier. The new version now also contains support for EcmaScript 2018 and 2019, which lets you use the latest language features.
+- **Fixed** `start` with an empty read model
+  - In the past, running `wolkenkit start` led to an error if no read model had been defined. This has been changed, so you can start even if you did not yet define any lists, but only commands.
 - **Contributions** by the community
+  - [@devmcc](https://github.com/devmcc)
   - [@madfist](https://github.com/madfist)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
