@@ -5,12 +5,11 @@ const classNames = require('classnames'),
       isEqual = require('lodash/isEqual'),
       PropTypes = require('prop-types'),
       React = require('react'),
-      { Icon } = require('thenativeweb-ux');
+      { Icon, Brand } = require('thenativeweb-ux');
 
 const BarBottom = require('../BarBottom.jsx'),
       MenuBar = require('./MenuBar.jsx'),
       PageMenu = require('./PageMenu.jsx'),
-      Pattern = require('../Pattern.jsx'),
       Search = require('./Search.jsx'),
       VersionBar = require('./VersionBar.jsx');
 
@@ -34,6 +33,22 @@ const styles = theme => ({
     'flex-direction': 'column',
     'z-index': theme.zIndex.navigation + 1,
     position: 'relative'
+  },
+
+  Pattern: {
+    'z-index': theme.zIndex.pattern
+  },
+
+  Mask: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '498px',
+    'background-image': 'url("/pattern/background-overlay.png")',
+    'background-repeat': 'repeat-x',
+    'background-size': '1px 498px',
+    'z-index': theme.zIndex.pattern + 1
   },
 
   SocialBar: {
@@ -164,7 +179,9 @@ class Navigation extends React.Component {
 
     return (
       <div className={ componentClasses }>
-        <Pattern />
+        <Brand.Pattern className={ classes.Pattern } />
+
+        <div className={ classes.Mask } />
 
         <div className={ classes.Content }>
           <VersionBar
