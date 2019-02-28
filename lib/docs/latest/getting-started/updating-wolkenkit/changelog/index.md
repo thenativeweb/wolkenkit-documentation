@@ -8,11 +8,17 @@ The following significant changes have been made since wolkenkit `3.1.0`:
 
 - **Added** support for EcmaScript 2018 and 2019
   - In previous versions, wolkenkit supported EcmaScript 2017 and earlier. The new version now also contains support for EcmaScript 2018 and 2019, which lets you use the latest language features.
+- **Added** code validation when starting an application
+  - When starting a wolkenkit application, the CLI now verifies whether all required directories and files exist, and if the files contain and export the required structure.
+- **Improved** the CLI error messages
+  - In the past, when something went wrong e.g. while running `wolkenkit start`, you were left with a generic error message. This has been improved, as you now always see the error's details, even if you are not in verbose mode.
 - **Fixed** `start` with an empty read model
   - In the past, running `wolkenkit start` led to an error if no read model had been defined. This has been changed, so you can start even if you did not yet define any lists, but only commands.
 - **Contributions** by the community
   - [@devmcc](https://github.com/devmcc)
   - [@madfist](https://github.com/madfist)
+  - [@schmuto](https://github.com/schmuto)
+  - [@steffengottschalk](https://github.com/steffengottschalk)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
@@ -26,7 +32,7 @@ The following significant changes have been made since wolkenkit `3.0.0`:
   - In the past setting a shared key and enabling persistent data storage was linked to each other. This has been changed, so that now you can set a shared key to [protect your application](../../../../latest/reference/using-the-cli/protecting-an-application/) without enabling persistence, and there is a new dedicated `--persist` flag to [enable persistence](../../../../latest/reference/using-the-cli/storing-data-permanently/).
 - **Added** interactive template selection to the CLI's `init` command
   - When you ran `wolkenkit init` in the past, the default template was always used to initialize your application. Now the CLI provides an interactive selection, which lets you choose which template to use, unless you explicitly specifiy the `--template` flag.
-- **Fix** missing dependency in the client SDK
+- **Fixed** missing dependency in the client SDK
   - Depending on your client's dependencies, the client SDK could run into an error because of a missing dependency. This has been fixed.
 - **Contributions** by the community
   - [@gossi](https://github.com/gossi)

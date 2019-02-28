@@ -36,6 +36,6 @@ compile(err => {
   const server = http.createServer(app);
 
   server.listen(port, () => {
-    logger.info('Server started.');
+    logger.info('Server started.', { port });
   });
 });
