@@ -9,19 +9,17 @@ E.g., when in addition to the `default` environment you want to have a `producti
   "environments": {
     "default": {
       "api": {
-        "address": {
-          "host": "local.wolkenkit.io",
-          "port": 3000
-        },
+        "port": 3000,
         "allowAccessFrom": "*"
       }
     },
     "production": {
       "api": {
-        "address": {
-          "host": "example.com",
-          "port": 443
+        "host": {
+          "name": "example.com",
+          "certificate": "/server/keys/example.com"
         },
+        "port": 443,
         "allowAccessFrom": "*"
       }
     }

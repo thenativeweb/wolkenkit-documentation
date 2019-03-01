@@ -22,11 +22,11 @@ Once the direction for the issue is set, fork the necessary repositories. This a
 
 ## Commit your changes
 
-You can then commit and push any work you do to your forked repositories. While working on them, you may need to [synchronize your forked repositories with the upstream repositories](https://help.github.com/articles/syncing-a-fork/) and resolve conflicts from time to time. In general, it is advisable to keep work on a fork short in order to avoid conflicts as much as possible.
+You can then commit and push any work you do to your forked repositories. While working on them, you may need to [synchronize your forked repositories with the upstream repositories](https://help.github.com/en/articles/syncing-a-fork) and resolve conflicts from time to time. In general, it is advisable to keep work on a fork short in order to avoid conflicts as much as possible.
 
 ## Submit a pull request
 
-Once you are done with your work, you are basically ready to create a pull request. Before submitting a pull request, please make sure to [synchronize your forked repositories with the upstream repositories](https://help.github.com/articles/syncing-a-fork/), and resolve any conflicts that may appear. Then create a pull request and link it to the appropriate issue.
+Once you are done with your work, you are basically ready to create a pull request. Before submitting a pull request, please make sure to [synchronize your forked repositories with the upstream repositories](https://help.github.com/en/articles/syncing-a-fork), and resolve any conflicts that may appear. Then create a pull request and link it to the appropriate issue.
 
 :::hint-warning
 > **Watch the scope of pull requests**

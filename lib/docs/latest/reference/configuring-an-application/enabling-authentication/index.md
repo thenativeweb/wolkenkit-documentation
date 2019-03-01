@@ -24,7 +24,7 @@ E.g., to use an identity provider that is hosted at `identity.example.com`, use 
 
 ## Configuring the identity provider
 
-To configure the identity provider, open the application's `package.json` file, navigate to `wolkenkit/environment/default/identityProvider`, and set the `name` property to the `iss` value of the identity provider's issued tokens, and the `certificate` property to the path to the certificate directory.
+To configure the identity provider, open the application's `package.json` file, navigate to `wolkenkit/environment/default/identityProvider`, and set the `issuer` property to the `iss` value of the identity provider's issued tokens, and the `certificate` property to the path to the certificate directory.
 
 :::hint-warning
 > **Choose the right environment**
@@ -39,7 +39,7 @@ E.g., to configure an identity provider that uses `identity.example.com` as its 
   "environments": {
     "default": {
       "identityProvider": {
-        "name": "identityprovider.example.com",
+        "issuer": "identityprovider.example.com",
         "certificate": "/server/keys/identityprovider.example.com"
       }
     }    

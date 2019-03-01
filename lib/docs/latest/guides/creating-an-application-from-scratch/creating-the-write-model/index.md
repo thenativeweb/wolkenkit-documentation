@@ -69,10 +69,7 @@ Then, open the file and add the following code:
     "environments": {
       "default": {
         "api": {
-          "address": {
-            "host": "local.wolkenkit.io",
-            "port": 3000
-          },
+          "port": 3000,
           "allowAccessFrom": "*"
         },
         "fileStorage": {
