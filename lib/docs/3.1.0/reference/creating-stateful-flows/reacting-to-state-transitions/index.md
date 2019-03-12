@@ -23,7 +23,7 @@ Some reactions require asynchronous code. Therefore, you can use the keywords `a
 ```javascript
 const reactions = {
   pristine: {
-    await 'awaiting-payment' (flow, event) {
+    async 'awaiting-payment' (flow, event) {
       // ...
     }
   }
