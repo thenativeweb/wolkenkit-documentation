@@ -21,6 +21,7 @@ The following significant changes have been made since wolkenkit `3.1.0`:
   - [@madfist](https://github.com/madfist)
   - [@schmuto](https://github.com/schmuto)
   - [@steffengottschalk](https://github.com/steffengottschalk)
+  - [@timrach](https://github.com/timrach)
 
 For details on how to update to version `<%= current.version %>` see [updating the CLI](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-the-cli/) and [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 
