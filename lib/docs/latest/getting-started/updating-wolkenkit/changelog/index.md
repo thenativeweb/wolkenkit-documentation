@@ -19,6 +19,7 @@ The following significant changes have been made since wolkenkit `3.1.0`:
 - **Fixed** `start` with an empty read model
   - In the past, running `wolkenkit start` led to an error if no read model had been defined. This has been changed, so you can start even if you did not yet define any lists, but only commands.
 - **Contributions** by the community
+  - [@damienbenon](https://github.com/damienbenon)
   - [@devmcc](https://github.com/devmcc)
   - [@madfist](https://github.com/madfist)
   - [@schmuto](https://github.com/schmuto)
