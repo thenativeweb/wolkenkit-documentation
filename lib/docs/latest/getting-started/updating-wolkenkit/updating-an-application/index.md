@@ -129,10 +129,12 @@ For details on how to configure a custom host, see [using a custom host](../../.
   },
   "environments": {
     "default": {
-      "identityProvider": {
-        "issuer": "identityprovider.example.com",
-        "certificate": "/server/keys/identityprovider.example.com"
-      }
+      "identityProviders": [
+        {
+          "issuer": "identityprovider.example.com",
+          "certificate": "/server/keys/identityprovider.example.com"
+        }
+      ]
     }
   },
   "...": "..."

@@ -4,9 +4,9 @@ Every wolkenkit application supports authentication of users. For that it relies
 
 ## Adding the certificate
 
-To enable authentication, you need the certificate of the identity provider that you want to use. To store the certificate create a `server/keys` directory. To keep things clear, create a dedicated sub-directory for the identity provider's domain.
+To enable authentication, you need the certificate of one of more identity providers you want to use. To store the certificate create a `server/keys` directory. To keep things clear, it is recommended to create a dedicated sub-directory for each identity provider.
 
-Then, copy the certificate into this directory. Use the `.pem` file format and name the file `certificate.pem`.
+Then, copy the certificate into the appropriate directory. Use the `.pem` file format and name the file `certificate.pem`.
 
 E.g., to use an identity provider that is hosted at `identity.example.com`, use the following directory structure:
 
@@ -22,9 +22,9 @@ E.g., to use an identity provider that is hosted at `identity.example.com`, use 
     writeModel
 ```
 
-## Configuring the identity provider
+## Configuring an identity provider
 
-To configure the identity provider, open the application's `package.json` file, navigate to `wolkenkit/environment/default/identityProvider`, and set the `issuer` property to the `iss` value of the identity provider's issued tokens, and the `certificate` property to the path to the certificate directory.
+To configure an identity provider, open the application's `package.json` file, navigate to `wolkenkit/environment/default/identityProviders`, and set the `issuer` property to the `iss` value of the identity provider's issued tokens, and the `certificate` property to the path to the certificate directory.
 
 :::hint-warning
 > **Choose the right environment**
@@ -38,11 +38,15 @@ E.g., to configure an identity provider that uses `identity.example.com` as its 
 "wolkenkit": {
   "environments": {
     "default": {
-      "identityProvider": {
-        "issuer": "identityprovider.example.com",
-        "certificate": "/server/keys/identityprovider.example.com"
-      }
+      "identityProviders": [
+        {
+          "issuer": "identityprovider.example.com",
+          "certificate": "/server/keys/identityprovider.example.com"
+        }
+      ]
     }    
   }
 }
 ```
+
+If you provide more than one identity provider, your wolkenkit application will accept tokens created by any of them.
