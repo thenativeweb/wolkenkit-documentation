@@ -1,6 +1,8 @@
 # Introduction
 
-While you have created your Web-App, What is still missing is the handling of authentication and authorization of your users. To avoid having to worry about these things in every application, you can outsource this to a trusted third party, an **identity provider**. Its primary job is to identify your **users** and to issue **tokens** for them, similar to a passport.
+![Our chat Web-App without authentication](auth0.png)
+
+While you have created your Chat Web-App, What is still missing is the handling of authentication and authorization of your users. To avoid having to worry about these things in every application, you can outsource this to a trusted third party, an **identity provider**. Its primary job is to identify your **users** and to issue **tokens** for them, similar to a passport.
 
 Then, your **users need to send this token with every request**, so your backend can verify the validity of the token and identify the user based on the data stored in the token, or the **claims**. Since your application relies on an external service for handling identity, it becomes the **relying party**.
 
@@ -16,11 +18,11 @@ If you don't have an account yet, now is a good time to sign up for a free Auth0
 
 In your account, you need to create a new application first. For that, log in (or sign up) and go to the dashboard. Then, click the New Application button in the upper right corner to create a new application:
 
-[!Using Auth0 dashboard to create a new application](auth1.png)
+![Using Auth0 dashboard to create a new application](auth1.png)
 
 Now enter a name for the application, such as `chat`, and select **Single Page Web Applications** as the type. Confirming your input takes you to the quick start page of your newly created application. Open the _Settings_ tab:
 
-[!Open the settings tab of the new application](auth2.png)
+![Open the settings tab of the new application](auth2.png)
 
 Make a note of the following data, as you will need them later for configuring the application:
 
@@ -35,7 +37,7 @@ Now, still in the _Advanced Settings_ section, open the _Certificates_ tab, clic
 
 However, before you can do this, you need to configure which strategies your users can use to authenticate themselves. Therefore, open the client's _Connections_ tab. By default, Auth0 uses a database to store your users' credentials. Also, the social `google-oauth2` strategy is enabled by default, which allows your users to authenticate using their Google account:
 
-[!use the connections tab to configure authentication strategies](auth3.png)
+![use the connections tab to configure authentication strategies](auth3.png)
 
 Next, click the _Connections_ section in the left navigation, and select _Database_ to configure the database strategy. Select the _Username-Password-Authentication_ entry to get to its settings. Enable the _Requires Username_ setting. This way you can make sure that your users always have a username.
 
@@ -255,4 +257,4 @@ That's it. Now the wolkenkit client SDK knows that it should use OpenID Connect 
 
 Once you have reloaded the client in your browser and logged in, you can now use the chat as before, but this time with authentication:
 
-[!Running the chat with authentication](auth4.png)
+![Running the chat with authentication](auth4.png)
