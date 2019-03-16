@@ -10,6 +10,8 @@ The following significant changes have been made since wolkenkit `3.1.0`:
   - In the past, to use authentication, you had to configure an identity provider. Now it is possible to use one or even multiple identity providers at the same time, for example to support different user groups. For details on how to update your current application configuration, see [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 - **[BREAKING] Changed** how to configure an application's API address
   - The configuration in the `package.json` file for the host and port of a wolkenkit application's API have changed. For details on how to adjust your current application configuration, see [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
+- **Added** transformations for read models
+  - If you have accessed a read model in the past, it has been read and delivered as is. The new version of wolkenkit now offers the possibility to modify and filter data while reading by [using transformations](../../../../<%= current.version %>/reference/creating-the-read-model/defining-transformations/).
 - **Added** support for EcmaScript 2018 and 2019
   - In previous versions, wolkenkit supported EcmaScript 2017 and earlier. The new version now also contains support for EcmaScript 2018 and 2019, which lets you use the latest language features.
 - **Added** code validation when starting an application

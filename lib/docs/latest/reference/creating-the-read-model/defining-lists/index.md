@@ -45,3 +45,17 @@ const projections = {};
 
 module.exports = { fields, projections };
 ```
+
+If you need to [define transformations](../defining-transformations/), you also have to add a `transformations` section. Since transformations are optional, you do not need to provide this section if you don't need it:
+
+```javascript
+'use strict';
+
+const fields = {};
+
+const projections = {};
+
+const transformations = {};
+
+module.exports = { fields, projections, transformations };
+```
