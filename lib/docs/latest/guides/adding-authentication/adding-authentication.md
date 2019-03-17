@@ -1,8 +1,23 @@
 # Introduction
 
+## Thinking about Security.
+
+When thinking about security, you have to think about authentication and authorization with respect to three aspects, due to the CQRS and the event-based architecture:
+
+* Who is allowed to send commands, such as send and like?
+* Who is allowed to receive events, such as sent and liked?
+* Who is allowed to run queries, such as listing any previously sent messages?
+
+For the first iteration, we saw that it was sensible to allow everything to everyone, even to anonymous users. This made it easier to initially test and debug the application. 
+This means that you were not able to add identity management for the first iteration. Instead, you will do this once the base of your application is up and running.
+
+But now, we should have to functunality to only allow authenticated users to communicate.
+
+IF you have followed along our previous guide, you would now be having a small chat Web-App (without authentication) which is able to send messages.
+
 ![Our chat Web-App without authentication](auth0.png)
 
-While you have created your Chat Web-App, What is still missing is the handling of authentication and authorization of your users. To avoid having to worry about these things in every application, you can outsource this to a trusted third party, an **identity provider**. Its primary job is to identify your **users** and to issue **tokens** for them, similar to a passport.
+What is still missing is the handling of authentication and authorization of your users. To avoid having to worry about these things in every application, you can outsource this to a trusted third party, an **identity provider**. Its primary job is to identify your **users** and to issue **tokens** for them, similar to a passport.
 
 Then, your **users need to send this token with every request**, so your backend can verify the validity of the token and identify the user based on the data stored in the token, or the **claims**. Since your application relies on an external service for handling identity, it becomes the **relying party**.
 
