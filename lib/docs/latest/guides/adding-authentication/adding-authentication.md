@@ -4,9 +4,9 @@
 
 When thinking about security, you have to think about authentication and authorization with respect to three aspects, due to the CQRS and the event-based architecture:
 
-* Who is allowed to send commands, such as send and like?
-* Who is allowed to receive events, such as sent and liked?
-* Who is allowed to run queries, such as listing any previously sent messages?
+* Who is allowed to **send commands**, such as `send` and `like`?
+* Who is allowed to **receive events**, such as `sent` and `liked`?
+* Who is allowed to **run queries**, such as listing any previously sent messages?
 
 For the first iteration, we saw that it was sensible to allow everything to everyone, even to anonymous users. This made it easier to initially test and debug the application. 
 This means that you were not able to add identity management for the first iteration. Instead, you will do this once the base of your application is up and running.
@@ -25,7 +25,9 @@ To avoid tampering with the tokens, they need to be **cryptographically signed**
 
 Since your users send their tokens with every request, you do not need to use cookies and sessions anymore. Instead, this works perfectly well with stateless services, which is one of the main reasons why JWT and OpenID Connect gained a lot of popularity in the past few years.
 
-This is where **Auth0** comes into play, because Auth0 is **identity management as a service**. This way you can make use of JWT and OpenID Connect without the need to setup all the identity infrastructure by yourself. 
+This is where an **Identity Provider** comes into play, because these identity providers are **identity management as a service**, we can make use of _JWT_ and _OpenID Connect_ without the need to setup all the identity infrastructure by yourself.
+You can use a variey of different Identity Providers such as ADFS, KeyCloak .etc
+For the purpose of this article, we will be using the **Auth0** framework but bear in mind that any type of identity proving service can be implemented here, as long as it has all the features you need.
 
 ## Setting up Auth0
 
