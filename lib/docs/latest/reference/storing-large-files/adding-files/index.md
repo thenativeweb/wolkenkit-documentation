@@ -26,6 +26,18 @@ fileInput.addEventListener('change', async () => {
 });
 ```
 
+## Setting the ID manually
+
+Sometimes it may be necessary to set the ID manually. Therefore it is possible to pass the optional parameter `id` to the function `addFile`. Please note that the value of the `id` parameter must be a UUID:
+
+```javascript
+const id = await depotClient.addFile({
+  id: 'f9b14a28-b64e-4c07-893b-3566472100b7',
+  content,
+  fileName: 'wolkenkit.png'
+});
+```
+
 ## Setting the content type
 
 By default, files are stored with the content type `application/octet-stream`. To change this, set the `contentType` property to the desired value:
@@ -65,10 +77,11 @@ const id = await depotClient.addFile({
 
 To add a file using the HTTP API, call the route `POST /api/v1/add-file`.
 
-For the content, use the request body; for the file name and, if necessary, the content type and permissions, set the `x-metadata` header to a stringified JSON object with the following structure:
+For the content, use the request body; for the id, the file name and, if necessary, the content type and permissions, set the `x-metadata` header to a stringified JSON object with the following structure:
 
 ```json
 {
+  "id": "4bb37f02-a734-4f7e-85dc-6f239bf1b44d",
   "contentType": "image/png",
   "fileName": "wolkenkit.png",
   "isAuthorized": {
@@ -79,13 +92,7 @@ For the content, use the request body; for the file name and, if necessary, the 
 
 To authenticate your request, proceed as described in [accessing file storage](../accessing-file-storage/#using-the-http-api).
 
-If the file was successfully added, you will receive the status code `200` and the following response body:
-
-```json
-{ "id": "2a7e9f8f-9bfc-4c19-87b9-274c0e193401" }
-```
-
-In case of errors, you will receive one of the following error codes:
+If the file was successfully added, you will receive the status code `200`. In case of errors, you will receive one of the following error codes:
 
 - `400 (Bad request)`
 - `401 (Unauthorized)`

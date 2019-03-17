@@ -12,6 +12,8 @@ The following significant changes have been made since wolkenkit `3.1.0`:
   - The configuration in the `package.json` file for the host and port of a wolkenkit application's API have changed. For details on how to adjust your current application configuration, see [updating an application](../../../../<%= current.version %>/getting-started/updating-wolkenkit/updating-an-application/).
 - **Added** transformations for read models
   - If you have accessed a read model in the past, it has been read and delivered as is. The new version of wolkenkit now offers the possibility to modify and filter data while reading by [using transformations](../../../../<%= current.version %>/reference/creating-the-read-model/defining-transformations/).
+- **Added** the option to set the ID of file uploads manually
+  - When you upload a file to the file storage, an ID is created and returned for that file. Now it is also possible to [set the ID manually](../../../../<%= current.version %>/reference/storing-large-files/adding-files/#setting-the-id-manually).
 - **Added** support for EcmaScript 2018 and 2019
   - In previous versions, wolkenkit supported EcmaScript 2017 and earlier. The new version now also contains support for EcmaScript 2018 and 2019, which lets you use the latest language features.
 - **Added** code validation when starting an application
