@@ -18,6 +18,8 @@ The following significant changes have been made since wolkenkit `3.1.0`:
   - In previous versions, wolkenkit supported EcmaScript 2017 and earlier. The new version now also contains support for EcmaScript 2018 and 2019, which lets you use the latest language features.
 - **Added** code validation when starting an application
   - When starting a wolkenkit application, the CLI now verifies whether all required directories and files exist, and if the files contain and export the required structure.
+- **Added** a guide on how to use the latest runtime
+  - Although generally not recommended for developers of wolkenkit applications, from time to time it may make sense to use the `latest` runtime, e.g. to evaluate new features that have not yet been officially released. There are a number of pitfalls you have to watch out for when doing this, which is why there is now a guide that explains how to [use the latest runtime](../../../../<%= current.version %>/guides/using-the-latest-runtime/overview/).
 - **Improved** the CLI error messages
   - In the past, when something went wrong e.g. while running `wolkenkit start`, you were left with a generic error message. This has been improved, as you now always see the error's details, even if you are not in verbose mode.
 - **Fixed** `start` with an empty read model
