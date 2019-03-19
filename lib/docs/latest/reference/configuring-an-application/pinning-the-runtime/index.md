@@ -11,3 +11,9 @@ E.g., to pin the runtime to version <%= current.version %>, use the following co
   }  
 }
 ```
+
+:::hint-warning
+> **Be careful with latest**
+>
+> You can pin your application to the `latest` runtime, e.g. if you want to evaluate new features that have not yet been officially released. If you do so, please note that unexpected things may happen, and be sure to read [using the latest runtime](../../../guides/using-the-latest-runtime/overview/).
+:::
