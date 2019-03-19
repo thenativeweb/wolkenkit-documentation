@@ -17,15 +17,16 @@ IF you have followed along our previous guide, you would now be having a small c
 
 ![Our chat Web-App without authentication](auth0.png)
 
-What is still missing is the handling of authentication and authorization of your users. To avoid having to worry about these things in every application, you can outsource this to a trusted third party, an **identity provider**. Its primary job is to identify your **users** and to issue **tokens** for them, similar to a passport.
+What is still missing is the handling of authentication and authorization of your users. To avoid having to worry about these things in every application, you can outsource this to a trusted third party, an **identity provider**. An **identity provider** here can be termed as a service/software that creates, maintains, and manages identity information for users while providing authentication services to relying applications. Its primary job here is to identify your **users** (a User here can be any person who logs into our Web-App) and to issue **tokens** for them, similar to a passport, when a user authenticates themselves (e.g. signs in using their email and password) a secure and unique **token** is generated which the user's client can offer up to the server or the identity provider to verify their identity.
 
-Then, your **users need to send this token with every request**, so your backend can verify the validity of the token and identify the user based on the data stored in the token, or the **claims**. Since your application relies on an external service for handling identity, it becomes the **relying party**.
+Therefore, your **users need to send this token with every request**, so your backend can verify the validity of the token and identify the user based on the data stored in the token, or the **claims**. Since your application relies on an external service for handling identity, it becomes the **relying party**. A **relying party** can be seen as an application that requires the services of another software/service or gives access to it (in this case our **identity provider**) for it's proper functioning.
 
 To avoid tampering with the tokens, they need to be **cryptographically signed**. Fortunately, there is a standard for issuing and handling these tokens. It is called _JWT (JSON Web Token) and uses a JSON-based format_ for implementing the tokens. The way how applications exchange these tokens is also described in a standard, called **OpenID Connect**.
 
 Since your users send their tokens with every request, you do not need to use cookies and sessions anymore. Instead, this works perfectly well with stateless services, which is one of the main reasons why JWT and OpenID Connect gained a lot of popularity in the past few years.
 
 This is where an **Identity Provider** comes into play, because these identity providers are **identity management as a service**, we can make use of _JWT_ and _OpenID Connect_ without the need to setup all the identity infrastructure by yourself.
+
 You can use a variey of different Identity Providers such as ADFS, KeyCloak .etc
 For the purpose of this article, we will be using the **Auth0** framework but bear in mind that any type of identity proving service can be implemented here, as long as it has all the features you need.
 
