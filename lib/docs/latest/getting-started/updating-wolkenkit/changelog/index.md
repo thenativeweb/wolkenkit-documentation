@@ -27,6 +27,7 @@ The following significant changes have been made since wolkenkit `3.1.0`:
 - **Contributions** by the community
   - [@damienbenon](https://github.com/damienbenon)
   - [@devmcc](https://github.com/devmcc)
+  - [@jbeaudoin11](https://github.com/jbeaudoin11)
   - [@madfist](https://github.com/madfist)
   - [@schmuto](https://github.com/schmuto)
   - [@steffengottschalk](https://github.com/steffengottschalk)
