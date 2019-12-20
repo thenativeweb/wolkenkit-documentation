@@ -34,7 +34,7 @@ const transformations = {
 
 ## Mapping items
 
-Besides filtering items, you may also want to modify them while reading. This can be reasonable to hide fields that contain sensible data from specific users, or to dynamically add new fields that contain values that are calculated based on the other fields.
+Besides filtering items, you may also want to modify them while reading. This can be reasonable to hide fields that contain sensitive data from specific users, or to dynamically add new fields that contain values that are calculated based on the other fields.
 
 For this, provide a `map` function as part of the `transformations` section. This function is then called for each item individually, and you are handed over the item as well as the query that was sent by the client. The `map` function has to return the modified item (or the original one if you don't want to apply any modifications):
 
