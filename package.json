@@ -93,7 +93,7 @@
   "devDependencies": {
     "broken-link-checker": "0.7.8",
     "knockat": "1.0.4",
-    "roboter": "3.0.4",
+    "roboter": "13.2.1",
     "runfork": "1.0.3"
   },
   "scripts": {
